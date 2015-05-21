@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="menu_bacground_black">#ff000000</color>
+    <color name="black_translucent">#80000000</color>
+
+
+    <color name="purple_light">#a276eb</color>
+    <color name="purple_middle">#8658ce</color>
+    <color name="purple_dark">#6a3ab2</color>
+
+    <!--backgrounds-->
+    <color name="bg_grey">#777777</color>
+
+    <!--text color-->
+    <color name="text_grey">#EEEEEE</color>
+</resources>
