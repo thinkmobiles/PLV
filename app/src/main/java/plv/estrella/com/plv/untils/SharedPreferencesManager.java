@@ -3,7 +3,8 @@ package plv.estrella.com.plv.untils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.galicia.galicia.SplashScreen;
+import plv.estrella.com.plv.SplashScreen;
+import plv.estrella.com.plv.global.Constants;
 
 
 /**

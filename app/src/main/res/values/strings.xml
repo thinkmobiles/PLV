@@ -3,4 +3,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="title_inicio">INICIO</string>
+    <string name="title_envios">ENVIOS PENDIENTES</string>
+    <string name="download">Download..</string>
+
 </resources>

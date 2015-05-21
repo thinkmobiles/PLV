@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.galicia.galicia.R;
-
 import java.util.List;
+
+import plv.estrella.com.plv.R;
 
 /**
  * Created by Bogdan on 06.05.2015.

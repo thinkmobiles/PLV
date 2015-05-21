@@ -3,8 +3,7 @@ package plv.estrella.com.plv.untils;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.galicia.galicia.R;
-
+import plv.estrella.com.plv.R;
 
 /**
  * Created by Виталий on 31/07/2014.
