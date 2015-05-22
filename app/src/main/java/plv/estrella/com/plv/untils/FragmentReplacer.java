@@ -1,12 +1,15 @@
 package plv.estrella.com.plv.untils;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
+
+import plv.estrella.com.plv.R;
 
 public abstract class FragmentReplacer {
 
     public static final void popSupBackStack(final FragmentActivity _activity) {
-
         _activity.getSupportFragmentManager().popBackStack();
     }
 
@@ -19,6 +22,7 @@ public abstract class FragmentReplacer {
     }
 
     public static final int getSupBackStackEntryCount(final FragmentActivity _activity) {
+        int i = _activity.getSupportFragmentManager().getBackStackEntryCount();
         return _activity.getSupportFragmentManager().getBackStackEntryCount();
     }
 
@@ -26,31 +30,32 @@ public abstract class FragmentReplacer {
         _activity.getFragmentManager().popBackStack(null, _activity.getFragmentManager().POP_BACK_STACK_INCLUSIVE);
     }
 
-//    public static final void replaceTopNavigationFragment(final Activity _activity,
-//                                                          final Fragment _fragment) {
-//         _activity.getFragmentManager().beginTransaction()
-//                .replace(R.id.container, _fragment)
-//                .commit();
-//    }
-//
 //    public static final void replaceTopNavigationFragment(final FragmentActivity _activity,
-//                                                          final android.support.v4.app.Fragment _fragment) {
-//        _activity.getSupportFragmentManager().beginTransaction()
+//                                                          final Fragment _fragment) {
+//         _activity.getSupportFragmentManager().beginTransaction()
 //                .replace(R.id.container, _fragment)
 //                .commit();
 //    }
-//    public static final void replaceFragmentWithoutBackStack(final FragmentActivity _activity,
-//                                                             final android.support.v4.app.Fragment _fragment) {
-//        if ( _activity.getSupportFragmentManager().getFragments() == null ||
-//                !((Object) _activity.getSupportFragmentManager().getFragments().get(0)).getClass().getName().
-//                        equals(((Object)_fragment).getClass().getName())) {
-//            _activity.getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//            _activity.getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.container, _fragment)
-//                    .commit();
 //
-//        }
-//    }
+    public static final void replaceTopNavigationFragment(final FragmentActivity _activity,
+                                                          final android.support.v4.app.Fragment _fragment) {
+        _activity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, _fragment)
+                .commit();
+    }
+
+    public static final void replaceFragmentWithoutBackStack(final FragmentActivity _activity,
+                                                             final android.support.v4.app.Fragment _fragment) {
+        if ( _activity.getSupportFragmentManager().getFragments() == null ||
+                !((Object) _activity.getSupportFragmentManager().getFragments().get(0)).getClass().getName().
+                        equals(((Object)_fragment).getClass().getName())) {
+            _activity.getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            _activity.getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, _fragment)
+                    .commit();
+
+        }
+    }
 //
 //    public static final void replaceCurrentFragment(final Activity _activity,
 //                                                    final Fragment _fragment) {
@@ -92,12 +97,12 @@ public abstract class FragmentReplacer {
 //
 ////
 //
-//    public static final void replaceFragmentWithStack(final FragmentActivity _activity, final android.support.v4.app.Fragment _fragment) {
-//        _activity.getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.container, _fragment)
+    public static final void replaceFragmentWithStack(final FragmentActivity _activity, final android.support.v4.app.Fragment _fragment) {
+        _activity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, _fragment)
 //                .setCustomAnimations(R.anim.slide_right_in, R.anim.slide_left_out)
-//                .addToBackStack(_fragment.getClass().getName())
-//                .commit();
-//    }
+                .addToBackStack(_fragment.getClass().getName())
+                .commit();
+    }
 
 }

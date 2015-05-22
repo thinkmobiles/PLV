@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
 
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivColumnas_FMM"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:src="@drawable/index_spv"
+            android:layout_marginLeft="@dimen/main_menu_big_margin"
+            android:layout_marginTop="@dimen/main_menu_big_margin"
+            android:layout_marginBottom="@dimen/main_menu_big_margin"
+            android:layout_marginRight="@dimen/main_menu_central_margin" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivPLV_FMM"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:src="@drawable/index_plv"
+            android:layout_marginLeft="@dimen/main_menu_central_margin"
+            android:layout_marginTop="@dimen/main_menu_big_margin"
+            android:layout_marginRight="@dimen/main_menu_big_margin"
+            android:layout_marginBottom="@dimen/main_menu_big_margin" />
+    </FrameLayout>
 </LinearLayout>

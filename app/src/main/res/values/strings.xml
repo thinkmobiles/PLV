@@ -7,5 +7,8 @@
     <string name="title_inicio">INICIO</string>
     <string name="title_envios">ENVIOS PENDIENTES</string>
     <string name="download">Download..</string>
+    <string name="columnas">COLUMNAS</string>
+    <string name="plv">PLV</string>
+    <string name="click_back">Please click BACK again to exit</string>
 
 </resources>

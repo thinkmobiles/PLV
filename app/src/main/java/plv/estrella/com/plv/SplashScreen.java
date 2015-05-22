@@ -64,7 +64,7 @@ public class SplashScreen extends Activity {
                 Executors.newSingleThreadScheduledExecutor();
         Runnable task = new Runnable() {
             public void run() {
-                openNewActivity();
+                openMainActivity();
             }
         };
         worker.schedule(task, 1, TimeUnit.SECONDS);
@@ -90,7 +90,7 @@ public class SplashScreen extends Activity {
         return f.exists();
     }
 
-    private void openNewActivity() {
+    private void openMainActivity() {
         startActivity(new Intent(SplashScreen.this, MainActivity.class));
         mProgressView.stopAnim();
         finish();
@@ -121,7 +121,7 @@ public class SplashScreen extends Activity {
                                 SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
 //                                ProgressDialogWorker.dismissDialog();
                                 ApiManager.setOfflineMode();
-                                openNewActivity();
+                                openMainActivity();
 //                            }
 //                        }));
 
@@ -134,7 +134,7 @@ public class SplashScreen extends Activity {
                                 SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
                                 ProgressDialogWorker.dismissDialog();
                                 ApiManager.setOfflineMode();
-                                openNewActivity();
+                                openMainActivity();
                                 String date  = ApiManager.getDateUpdate();
                                 Log.d("tag", "update date" + date);
                             }
