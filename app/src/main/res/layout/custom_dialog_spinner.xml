@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_dark"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/abc_text_size_title_material_toolbar">
+
+    <LinearLayout
+        android:id="@+id/ll_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/abc_button_padding_horizontal_material"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_dialogTitle_CD"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="30pt"
+            android:textColor="#FFFFFF"
+            android:text="dialog lable"/>
+
+        <Spinner
+            android:id="@+id/dialogSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/white"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/abc_button_padding_horizontal_material">
+
+            </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_spinner"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_cancel_action_CD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/abc_action_bar_progress_bar_size"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/abc_button_padding_horizontal_material"
+            android:text="cancel"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/tv_accept_action_CD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/abc_button_padding_horizontal_material"
+            android:text="accept"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_new_Shop_CD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ll_buttons"
+        android:layout_marginBottom="@dimen/abc_button_padding_horizontal_material"
+        android:background="@android:color/white"
+        android:hint="enter shop"
+        android:padding="@dimen/abc_button_padding_horizontal_material"
+        android:visibility="gone" />
+</RelativeLayout>

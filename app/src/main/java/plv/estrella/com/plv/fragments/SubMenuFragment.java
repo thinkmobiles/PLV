@@ -20,6 +20,7 @@ import java.util.List;
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.SubMenuAdapter;
+import plv.estrella.com.plv.custom.CustomSpinerDialog;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
@@ -119,9 +120,10 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        FragmentReplacer.replaceFragmentWithStack(
-                mCallingActivity,
-                ProductFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
-        );
+//        FragmentReplacer.replaceFragmentWithStack(
+//                mCallingActivity,
+//                ProductFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
+//        );
+        new CustomSpinerDialog(mCallingActivity, mSubMenuItemList.get(position)).addProduct();
     }
 }

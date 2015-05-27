@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import plv.estrella.com.plv.fragments.MainMenuFragment;
+import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 
@@ -32,8 +34,19 @@ public class MainActivity extends FragmentActivity {
         ApiManager.setOfflineMode();
         setBackground();
         startMainMenu();
-    }
 
+        test();
+
+    }
+    //
+    private void test(){
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentReplacer.replaceFragmentWithStack(MainActivity.this, new ShopsFragment());
+            }
+        });
+    }
 
     private void findUI() {
         menuBtn = (ImageButton) findViewById(R.id.ibMenu);
@@ -64,7 +77,7 @@ public class MainActivity extends FragmentActivity {
             }
 
             doubleBackToExitPressedOnce = System.currentTimeMillis();
-            Toast.makeText(this, getResources().getString(R.string.click_back), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.click_back), Toast.LENGTH_SHORT).show();
 
         } else {
             goBack();

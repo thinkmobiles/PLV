@@ -19,7 +19,7 @@ public class SubMenuAdapter extends BaseAdapter {
 
     private List<Item> mItems;
     private Context mContext;
-    private static final int[] COLUMNAS_IMAGES = {R.drawable.index_plv_eg, R.drawable.index_plv_1906, R.drawable.index_plv_1906bc, R.drawable.index_plv_1906rv, R.drawable.index_plv_eg00, R.drawable.index_plv_cabreiroa, R.drawable.index_plv_magma};
+
     public SubMenuAdapter(List<Item> _items, Context _context) {
         mItems = _items;
         mContext = _context;
@@ -57,7 +57,7 @@ public class SubMenuAdapter extends BaseAdapter {
         if (mItems.get(_position).getIcon() != null && !mItems.get(_position).getIcon().equals(""))
             holder.ivMenuImage.setImageDrawable(BitmapCreator.getDrawable(mItems.get(_position).getIcon()));
         else
-            holder.ivMenuImage.setImageResource(R.drawable.index_plv_cabreiroa);
+            holder.ivMenuImage.setImageResource(R.drawable.index_spv_cosmos);
         return convertView;
     }
 

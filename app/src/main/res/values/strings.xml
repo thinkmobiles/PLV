@@ -11,4 +11,8 @@
     <string name="plv">PLV</string>
     <string name="click_back">Please click BACK again to exit</string>
 
+    <!-- fragment shop product-->
+    <string name="borrar_lista">BORRAR LISTA</string>
+    <string name="vaciar">VACIAR</string>
+    <string name="locales">LOCALES</string>
 </resources>

@@ -11,4 +11,7 @@
     <!-- main menu-->
     <dimen name="main_menu_big_margin">60dp</dimen>
     <dimen name="main_menu_central_margin">30dp</dimen>
+
+    <!--shop product fragment -->
+    <dimen name="product_item_image_size">50dp</dimen>
 </resources>
