@@ -14,4 +14,8 @@
 
     <!--shop product fragment -->
     <dimen name="product_item_image_size">50dp</dimen>
+
+    <dimen name="custom_dialog_message_text_size">30sp</dimen>
+    <dimen name="dialog_big_margin">100dp</dimen>
+    <dimen name="dialog_button_width">200dp</dimen>
 </resources>

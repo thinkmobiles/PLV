@@ -1,6 +1,7 @@
 package plv.estrella.com.plv.adapters;
 
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
+import plv.estrella.com.plv.custom.CustomDialog;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
+import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
  * Created by vasia on 27.05.2015.
@@ -20,10 +24,10 @@ import plv.estrella.com.plv.database.Shop;
 public class ShopListAdapter extends BaseAdapter implements View.OnClickListener {
 
     private ArrayList<Shop> mShops;
-    private Context mContext;
+    private MainActivity mActivity;
 
-    public ShopListAdapter(Context _context, List<Shop> _shops) {
-        mContext = _context;
+    public ShopListAdapter(MainActivity _mainActivity, List<Shop> _shops) {
+        mActivity = _mainActivity;
         setShops(_shops);
     }
 
@@ -55,7 +59,7 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
         final ViewHolder holder;
 
         if (_convertView == null){
-            final LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            final LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             _convertView = inflater.inflate(R.layout.item_shop, _parent, false);
             holder = getHolder(_convertView, _position);
 
@@ -100,7 +104,8 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
                 see(position);
                 break;
             case R.id.ivDelete_IS:
-                delete(position);
+//                deleteShop(position);
+                startDeleteDialog(position);
                 break;
         }
     }
@@ -113,7 +118,21 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
 
     }
 
-    private void delete(int _position){
+    private void startDeleteDialog(final int _position){
+        final CustomDialog dialog = new CustomDialog.Builder()
+                .setPositiveButton("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteShop(_position);
+                    }
+                })
+                .setNegativeButton("cancel", null)
+                .setMessage("Remove shop?")
+                .create();
+        dialog.show(mActivity);
+    }
+
+    private void deleteShop(int _position){
         DBManager.deleteShop(mShops.get(_position));
         setShops(DBManager.getShops());
         notifyDataSetChanged();

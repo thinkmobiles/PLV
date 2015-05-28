@@ -1,6 +1,7 @@
 package plv.estrella.com.plv.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;

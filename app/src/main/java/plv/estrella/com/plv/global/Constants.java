@@ -9,4 +9,5 @@ public abstract class Constants {
     public static final  int MENU_PLV             = 2;
 
     public static final String SHOP               = "shop";
+    public static final String PARAMS             = "params";
 }

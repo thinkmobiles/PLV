@@ -76,14 +76,14 @@ public abstract class FragmentReplacer {
 ////        manageBackButton(_activity, true);
 //    }
 //
-//    public static final void addFragment(final Activity _context,
-//                                         final Fragment _fragment) {
-//
-//        _context.getFragmentManager().beginTransaction()
-//                .add(R.id.container, _fragment)
-//                .addToBackStack(null)
-//                .commit();
-//    }
+    public static final void addFragment(final FragmentActivity _context,
+                                         final Fragment _fragment) {
+
+        _context.getSupportFragmentManager().beginTransaction()
+                .add(R.id.container, _fragment)
+                .addToBackStack(null)
+                .commit();
+    }
 //
 //    public static final void replaceFragmentWithAnim(final FragmentActivity _activity,
 //                                                     final android.support.v4.app.Fragment _fragment) {

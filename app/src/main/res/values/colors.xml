@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="menu_bacground_black">#ff000000</color>
+    <color name="menu_background_black">#ff000000</color>
     <color name="black_translucent">#80000000</color>
+    <color name="background_color_gray">#666666</color>
 
 
     <color name="purple_light">#a276eb</color>
@@ -14,4 +15,5 @@
 
     <!--text color-->
     <color name="text_grey">#EEEEEE</color>
+    <color name="text_white">#FFFFFF</color>
 </resources>

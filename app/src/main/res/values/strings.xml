@@ -15,4 +15,9 @@
     <string name="borrar_lista">BORRAR LISTA</string>
     <string name="vaciar">VACIAR</string>
     <string name="locales">LOCALES</string>
+
+    <string name="cancel">CANCELAR</string>
+    <string name="accept">ACEPTAR</string>
+
+
 </resources>
