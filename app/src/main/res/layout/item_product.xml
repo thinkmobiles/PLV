@@ -4,9 +4,9 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="@dimen/product_item_image_size"
-        android:layout_height="@dimen/product_item_image_size"
-        android:id="@+id/ivPrductPhoto_IP"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivProductPhoto_IP"
         android:layout_margin="@dimen/default_margin" />
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvProductName_IP"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/ivPrductPhoto_IP"
+        android:layout_toRightOf="@+id/ivProductPhoto_IP"
         android:singleLine="true"
         android:layout_toLeftOf="@+id/ivDeleteProduct_IP"
         android:layout_toStartOf="@+id/ivDeleteProduct_IP" />

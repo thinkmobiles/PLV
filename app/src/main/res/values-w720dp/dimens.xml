@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- drawable-->
+    <dimen name="side_counter_products">67px</dimen>
+
     <!-- Main Activity-->
     <dimen name="action_bar_title_height">56dp</dimen>
     <dimen name="action_bar_bottom_margin">18dp</dimen>

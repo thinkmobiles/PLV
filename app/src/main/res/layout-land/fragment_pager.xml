@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="android.support.v4.view.ViewPager"
+        android:id="@+id/view"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/ivLable"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/btn_circle_save" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/rlPrev"
+        android:layout_alignParentLeft="true">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivPrev"
+
+            android:src="@drawable/btn_prev"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/rlNext"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivNext"
+
+            android:src="@drawable/btn_next"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

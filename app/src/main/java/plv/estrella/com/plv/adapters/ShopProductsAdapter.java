@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.cristaliza.mvc.models.estrella.Item;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.database.DBItem;
@@ -76,7 +75,7 @@ public class ShopProductsAdapter extends BaseAdapter implements View.OnClickList
         holder.ivDeleteProduct = (ImageView) _convertView.findViewById(R.id.ivDeleteProduct_IP);
         holder.ivDeleteProduct.setTag(_position);
         holder.ivDeleteProduct.setOnClickListener(this);
-        holder.ivProductPhoto = (ImageView) _convertView.findViewById(R.id.ivPrductPhoto_IP);
+        holder.ivProductPhoto = (ImageView) _convertView.findViewById(R.id.ivProductPhoto_IP);
         _convertView.setTag(holder);
         return holder;
     }

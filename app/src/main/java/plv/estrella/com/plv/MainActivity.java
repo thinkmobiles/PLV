@@ -1,5 +1,6 @@
 package plv.estrella.com.plv;
 
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
@@ -59,8 +60,12 @@ public class MainActivity extends FragmentActivity {
         FragmentReplacer.replaceFragmentWithStack(this, new MainMenuFragment());
     }
 
-    public void setBackground() {
-        mBackgroundLayout.setBackground(getResources().getDrawable(R.drawable.bg_splashscreen));
+    private void setBackground() {
+        mBackgroundLayout.setBackground(getResources().getDrawable(R.drawable.background));
+    }
+
+    public void setBackground(final String _path){
+        mBackgroundLayout.setBackground(Drawable.createFromPath(ApiManager.getPath() + _path));
     }
 
     public void setTitle(String _title){

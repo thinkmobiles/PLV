@@ -57,7 +57,7 @@ public class SubMenuAdapter extends BaseAdapter {
         if (mItems.get(_position).getIcon() != null && !mItems.get(_position).getIcon().equals(""))
             holder.ivMenuImage.setImageDrawable(BitmapCreator.getDrawable(mItems.get(_position).getIcon()));
         else
-            holder.ivMenuImage.setImageResource(R.drawable.index_spv_cosmos);
+            holder.ivMenuImage.setImageResource(R.mipmap.ic_launcher);
         return convertView;
     }
 

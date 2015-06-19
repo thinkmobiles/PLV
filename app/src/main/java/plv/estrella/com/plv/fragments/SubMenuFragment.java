@@ -20,7 +20,6 @@ import java.util.List;
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.SubMenuAdapter;
-import plv.estrella.com.plv.custom.CustomSpinnerDialog;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
@@ -30,6 +29,8 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
  * Created by vasia on 22.05.2015.
  */
 public class SubMenuFragment extends Fragment implements AdapterView.OnItemClickListener {
+
+    private int TYPE_SUBMENU;
 
     private MainActivity mCallingActivity;
     private GridView gvSubMenuContainer;
@@ -108,8 +109,10 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
         switch (mMenuOpen){
             case Constants.MENU_COLUMNAS:
                 gvSubMenuContainer.setNumColumns(5);
+                TYPE_SUBMENU = 0;
                 break;
             case Constants.MENU_PLV:
+                TYPE_SUBMENU = 1;
                 gvSubMenuContainer.setNumColumns(4);
                 break;
         }
@@ -120,11 +123,13 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        FragmentReplacer.replaceFragmentWithStack(
-//                mCallingActivity,
-//                ProductFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
-//        );
-//        new CustomSpinerDialog(mCallingActivity, mSubMenuItemList.get(position)).addProduct();
-        FragmentReplacer.addFragment(mCallingActivity, CustomSpinnerDialog.newInstance(new ItemSerializable(mSubMenuItemList.get(position))));
-    }
+        switch (TYPE_SUBMENU){
+            case 0:
+                FragmentReplacer.replaceFragmentWithStack(mCallingActivity, new ColumnaFragment());
+                break;
+            case 1:
+                FragmentReplacer.replaceFragmentWithStack(mCallingActivity, ProductsPagerFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position))));
+                break;
+        }
+        }
 }
