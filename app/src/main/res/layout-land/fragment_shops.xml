@@ -18,7 +18,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:drawableLeft="@drawable/btn_delete"
-            android:gravity="center" />
+            android:gravity="center"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,6 +29,18 @@
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:paddingTop="@dimen/abc_action_bar_subtitle_bottom_margin_material"
+            android:paddingBottom="@dimen/abc_action_bar_subtitle_bottom_margin_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnVolver_FS"
+            android:src="@drawable/btn_volver"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tvLocales_FS"
+            android:layout_toEndOf="@+id/tvLocales_FS"
+            android:layout_marginLeft="@dimen/action_bar_title_txt"/>
     </RelativeLayout>
 
     <FrameLayout

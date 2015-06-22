@@ -24,7 +24,7 @@ import plv.estrella.com.plv.untils.BitmapCreator;
 public class ColumnaFragment extends Fragment implements View.OnClickListener {
 
     private MainActivity mCallingActivity;
-    private ImageView mAddEnvio, mAddCarrita, mMore, mLess, mProdAward, mPhotoGal1, mPhotoGal2;
+    private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mProdAward, mPhotoGal1, mPhotoGal2;
     private TextView mCounter, mNameColumna;
     private RelativeLayout rlBackground;
 
@@ -71,6 +71,8 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mCounter        = (TextView) _view.findViewById(R.id.tvCount_FC);
         mNameColumna    = (TextView) _view.findViewById(R.id.tvNameColumna);
         rlBackground    = (RelativeLayout) _view.findViewById(R.id.rlBackground_FC);
+        mGoToBack       = (ImageView) _view.findViewById(R.id.btnVolver_FC);
+
     }
 
     private void setListeners(){
@@ -80,6 +82,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mLess.setOnClickListener(this);
         mPhotoGal1.setOnClickListener(this);
         mPhotoGal2.setOnClickListener(this);
+        mGoToBack.setOnClickListener(this);
     }
 
     private void fillData(){
@@ -108,6 +111,9 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
             case R.id.ivPhotoGal1_FC:
                 break;
             case R.id.ivPhotoGal2_FC:
+                break;
+            case R.id.btnVolver_FC:
+                getActivity().onBackPressed();
                 break;
         }
     }
