@@ -1,7 +1,6 @@
 package plv.estrella.com.plv.adapters;
 
 import android.content.Context;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.custom.CustomDialog;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
-import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
  * Created by vasia on 27.05.2015.

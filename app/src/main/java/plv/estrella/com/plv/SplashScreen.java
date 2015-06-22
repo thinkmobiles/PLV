@@ -52,6 +52,7 @@ public class SplashScreen extends Activity {
         }
     }
 
+
     private void getLastUpdate(){
         makeDownloadListener();
         ScheduledExecutorService worker =

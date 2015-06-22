@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.List;
-import plv.estrella.com.plv.database.Shop;
+
 import plv.estrella.com.plv.R;
+import plv.estrella.com.plv.database.Shop;
 
 /**
  * Created by vasia on 26.05.2015.

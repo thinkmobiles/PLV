@@ -80,11 +80,11 @@ public class SlidingMenuManager implements View.OnClickListener {
         }
         listColumnas.setAdapter(new MenuAdapter(list, activity));
         list = new ArrayList<>();
-        for (Item item : mListPLV) {
-            list.add(item.getName());
+            for (Item item : mListPLV) {
+                list.add(item.getName());
+            }
+            listPLV.setAdapter(new MenuAdapter(list, activity));
         }
-        listPLV.setAdapter(new MenuAdapter(list, activity));
-    }
 
     private void setListeners() {
         tvInicio.setOnClickListener(this);
