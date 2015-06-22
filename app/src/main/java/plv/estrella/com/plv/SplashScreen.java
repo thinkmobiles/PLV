@@ -34,8 +34,8 @@ public class SplashScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-//        mProgressView = (CircleProgress) findViewById(R.id.progress);
+        setContentView(R.layout.splash_screen);
+        mProgressView = (CircleProgress) findViewById(R.id.progress);
 
         if (isHasContent()) {
 //            if(hasNewContent()){

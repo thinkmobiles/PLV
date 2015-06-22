@@ -2,6 +2,7 @@ package plv.estrella.com.plv.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import plv.estrella.com.plv.R;
