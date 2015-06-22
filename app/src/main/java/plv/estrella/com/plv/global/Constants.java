@@ -10,4 +10,5 @@ public abstract class Constants {
 
     public static final String SHOP               = "shop";
     public static final String PARAMS             = "params";
+    public static final String PARAM_ITEM         = "item";
 }

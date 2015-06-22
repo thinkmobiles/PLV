@@ -32,7 +32,7 @@ public class SubMenuAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Item getItem(int position) {
         return mItems.get(position);
     }
 

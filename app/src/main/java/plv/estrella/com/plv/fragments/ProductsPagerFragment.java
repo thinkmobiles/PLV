@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -33,6 +34,7 @@ public class ProductsPagerFragment extends Fragment implements ViewPager.OnPageC
     private RelativeLayout rlPrev, rlNext;
     private ArrayList<ItemPagerFragment> mList;
     private ImageView ivLable;
+    private HorizontalScrollView hsvList;
 
     private MainActivity mCallingActivity;
 
@@ -68,6 +70,8 @@ public class ProductsPagerFragment extends Fragment implements ViewPager.OnPageC
         initAdapter();
         setListeners();
 
+        fillHorizontalList();
+
         return view;
     }
 
@@ -76,6 +80,7 @@ public class ProductsPagerFragment extends Fragment implements ViewPager.OnPageC
         rlPrev  = (RelativeLayout) v.findViewById(R.id.rlPrev);
         rlNext  = (RelativeLayout) v.findViewById(R.id.rlNext);
         ivLable = (ImageView) v.findViewById(R.id.ivLable);
+        hsvList = (HorizontalScrollView) v.findViewById(R.id.hsvListProducts);
     }
 
     private void setListeners(){
@@ -152,5 +157,9 @@ public class ProductsPagerFragment extends Fragment implements ViewPager.OnPageC
 
         rlNext.setVisibility(View.VISIBLE);
         rlPrev.setVisibility(View.VISIBLE);
+    }
+
+    private void fillHorizontalList(){
+
     }
 }
