@@ -21,6 +21,7 @@ import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
+import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**

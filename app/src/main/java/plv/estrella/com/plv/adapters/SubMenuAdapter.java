@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import com.cristaliza.mvc.models.estrella.Item;
 import java.util.List;
+
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.untils.BitmapCreator;
 

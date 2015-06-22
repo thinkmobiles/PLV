@@ -1,7 +1,6 @@
 package plv.estrella.com.plv.fragments;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,15 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.ShopProductsAdapter;
-import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.global.Constants;
-import plv.estrella.com.plv.models.ItemSerializable;
 
 /**
  * Created by vasia on 27.05.2015.
