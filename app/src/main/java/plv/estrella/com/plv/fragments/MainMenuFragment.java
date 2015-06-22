@@ -21,6 +21,7 @@ import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
+import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
@@ -78,8 +79,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
     private void createMenu(){
         mMenuItemList = ApiManager.getFirstList();
-//        ivColumnas.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(0).getIcon()));
-//        ivPLV.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(1).getIcon()));
     }
 
     private void setListeners(){

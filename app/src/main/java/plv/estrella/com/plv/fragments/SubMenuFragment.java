@@ -125,10 +125,16 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (TYPE_SUBMENU){
             case 0:
-                FragmentReplacer.replaceFragmentWithStack(mCallingActivity, new ColumnaFragment().newInstance(new ItemSerializable(mSubMenuItemList.get(position))));
+                FragmentReplacer.replaceFragmentWithStack(
+                        mCallingActivity,
+                        new ColumnaFragment().newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
+                );
                 break;
             case 1:
-                FragmentReplacer.replaceFragmentWithStack(mCallingActivity, ProductsPagerFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position))));
+                FragmentReplacer.replaceFragmentWithStack(
+                        mCallingActivity,
+                        PLVFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
+                );
                 break;
         }
         }

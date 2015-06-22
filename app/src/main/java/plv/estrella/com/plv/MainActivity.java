@@ -46,17 +46,6 @@ public class MainActivity extends FragmentActivity {
         menuManager = new SlidingMenuManager();
         menuManager.initMenu(this);
 
-        test();
-
-    }
-    //
-    private void test(){
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentReplacer.replaceFragmentWithStack(MainActivity.this, new ShopsFragment());
-            }
-        });
     }
 
     private void findUI() {
@@ -95,6 +84,10 @@ public class MainActivity extends FragmentActivity {
         mTitle.setText(_title);
     }
 
+    public void setEnableSlideMenu(boolean isEnable){
+        menuManager.enableMenu(isEnable);
+    }
+
     @Override
     public void onBackPressed() {
         if (FragmentReplacer.getSupBackStackEntryCount(this) == 1) {
@@ -111,7 +104,6 @@ public class MainActivity extends FragmentActivity {
             goBack();
         }
     }
-
 
     private void goBack() {
         if (FragmentReplacer.getSupBackStackEntryCount(this) != 0) {
