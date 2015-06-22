@@ -12,10 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
 import plv.estrella.com.plv.fragments.MainMenuFragment;
 import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.SlidingMenuManager;
 
 
 public class MainActivity extends FragmentActivity {
@@ -25,16 +28,23 @@ public class MainActivity extends FragmentActivity {
     private TextView mTitle;
     private ImageView logo;
     private double doubleBackToExitPressedOnce;
+    private SlidingMenuManager menuManager;
+
+    private boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         findUI();
         ApiManager.init(this);
         ApiManager.setOfflineMode();
         setBackground();
         startMainMenu();
+
+        menuManager = new SlidingMenuManager();
+        menuManager.initMenu(this);
 
         test();
 
@@ -54,6 +64,19 @@ public class MainActivity extends FragmentActivity {
         mTitle = (TextView) findViewById(R.id.tvMenuTitle);
         logo = (ImageView) findViewById(R.id.tvLogoTitle);
         mBackgroundLayout = (LinearLayout) findViewById(R.id.llAppContainer);
+
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isOpen){
+                    menuManager.toggle();
+                    isOpen = false;
+                } else {
+                    menuManager.show();
+                    isOpen = true;
+                }
+            }
+        });
     }
 
     private void startMainMenu(){

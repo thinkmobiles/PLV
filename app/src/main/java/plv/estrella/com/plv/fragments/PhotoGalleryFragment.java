@@ -23,5 +23,12 @@ public class PhotoGalleryFragment extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_photo_gallery);
 
+        mPhoto = (ImageView) findViewById(R.id.ivPhotoSolo);
+        mPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

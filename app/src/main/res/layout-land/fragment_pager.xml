@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:padding="10dp">
 
     <view
         android:layout_width="wrap_content"
@@ -9,18 +10,12 @@
         class="android.support.v4.view.ViewPager"
         android:id="@+id/view"
         android:paddingLeft="60dp"
-        android:paddingRight="60dp" />
+        android:paddingRight="60dp"
+        android:visibility="gone"/>
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/ivLable"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="40dp"
-        android:src="@drawable/btn_circle_save" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
         android:id="@+id/rlPrev"
         android:layout_alignParentLeft="true">
@@ -31,11 +26,20 @@
             android:id="@+id/ivPrev"
 
             android:src="@drawable/btn_prev"
-            android:layout_centerVertical="true" />
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/ivLable"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/btn_circle_save"
+        android:layout_marginLeft="20dp" />
+
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
         android:id="@+id/rlNext"
         android:layout_alignParentRight="true">
@@ -46,7 +50,29 @@
             android:id="@+id/ivNext"
 
             android:src="@drawable/btn_next"
-            android:layout_centerVertical="true" />
+            android:layout_centerInParent="true" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/rlPrev"
+        android:layout_toLeftOf="@+id/rlNext"
+        android:layout_below="@+id/ivLable"
+        android:gravity="center_horizontal">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/hsvListProducts"
+            android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        </HorizontalScrollView>
+    </LinearLayout>
 
 </RelativeLayout>
