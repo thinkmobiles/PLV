@@ -7,8 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         class="android.support.v4.view.ViewPager"
-        android:id="@+id/pagerSolo"
-        android:layout_above="@+id/rlContCarrito" />
+        android:id="@+id/pagerSolo" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -21,42 +20,63 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ivCross"
+            android:id="@+id/ivCross_P"
             android:src="@drawable/btn_close"
             android:layout_alignParentLeft="false"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/ivAddEnvio"
+            android:layout_toRightOf="@+id/ivAddEnvio_P"
             android:layout_marginRight="10dp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ivAddEnvio"
+            android:id="@+id/ivAddEnvio_P"
             android:src="@drawable/btn_add_envio"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="10dp" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/ivCarrita_P"
+        android:src="@drawable/btn_cart"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:id="@+id/rlContCarrito">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ivCarrito"
-            android:src="@drawable/btn_cart"
-            android:layout_toRightOf="@+id/tvCount" />
-    </RelativeLayout>
+        android:layout_alignParentRight="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ivPrev"
+        android:id="@+id/ivMore_P"
+        android:src="@drawable/btn_more"
+        android:layout_alignParentLeft="false"
+        android:layout_toLeftOf="@+id/tvCount_P"
+        android:layout_above="@+id/ivLess_P" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivLess_P"
+        android:src="@drawable/btn_less"
+        android:layout_alignParentLeft="false"
+        android:layout_toLeftOf="@+id/tvCount_P"
+        android:layout_alignBottom="@+id/tvCount_P" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="0"
+        android:id="@+id/tvCount_P"
+        android:gravity="center"
+        android:background="@drawable/bg_count_products"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/ivCarrita_P"
+        android:layout_alignParentBottom="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivPrev_P"
         android:src="@drawable/btn_prev"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -65,7 +85,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ivNext"
+        android:id="@+id/ivNext_P"
         android:src="@drawable/btn_next"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"

@@ -2,55 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:id="@+id/rlContCarrito">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ivCarrito_IS"
-            android:visibility="invisible"
-            android:src="@drawable/btn_cart"
-            android:layout_toRightOf="@+id/tvCount" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ivMore"
-            android:src="@drawable/btn_more"
-            android:layout_alignParentLeft="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ivLess"
-            android:src="@drawable/btn_less"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/ivMore" />
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="0"
-            android:id="@+id/tvCount"
-            android:layout_toRightOf="@+id/ivMore"
-            android:gravity="center"
-            android:background="@android:color/white"
-            android:layout_marginRight="10dp" />
-
-    </RelativeLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView2"
+        android:id="@+id/tvDescrSolo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_margin="15dp"
@@ -59,9 +15,10 @@
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:id="@+id/imageView4"
+        android:id="@+id/ivIconSolo"
         android:layout_centerInParent="true"
         android:layout_weight="1"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>

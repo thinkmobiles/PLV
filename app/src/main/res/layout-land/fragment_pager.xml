@@ -4,15 +4,6 @@
     android:background="@android:color/white"
     android:padding="10dp">
 
-    <view
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        class="android.support.v4.view.ViewPager"
-        android:id="@+id/view"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:visibility="gone"/>
-
 
     <RelativeLayout
         android:layout_width="100dp"
@@ -30,8 +21,8 @@
     </RelativeLayout>
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/ivLable"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -63,15 +54,18 @@
         android:gravity="center_horizontal">
 
         <HorizontalScrollView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#882230"
             android:id="@+id/hsvListProducts"
+            android:fadeScrollbars="true"
             android:layout_gravity="center_horizontal">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:id="@+id/llContProd" />
         </HorizontalScrollView>
     </LinearLayout>
 

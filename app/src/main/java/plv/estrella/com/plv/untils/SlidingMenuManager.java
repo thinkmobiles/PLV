@@ -1,7 +1,6 @@
 package plv.estrella.com.plv.untils;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -19,8 +18,10 @@ import java.util.List;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
+import plv.estrella.com.plv.adapters.MenuAdapter;
 import plv.estrella.com.plv.fragments.ColumnaFragment;
 import plv.estrella.com.plv.fragments.MainMenuFragment;
+import plv.estrella.com.plv.fragments.PLVFragment;
 import plv.estrella.com.plv.fragments.SubMenuFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
@@ -95,7 +96,10 @@ public class SlidingMenuManager implements View.OnClickListener {
         listColumnas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentReplacer.replaceFragmentWithStack(activity, new ColumnaFragment().newInstance(new ItemSerializable(mListColumnas.get(position))));
+                FragmentReplacer.replaceFragmentWithStack(
+                        activity,
+                        new ColumnaFragment().newInstance(new ItemSerializable(mListColumnas.get(position)))
+                );
                 menu.toggle();
             }
         });
@@ -103,7 +107,10 @@ public class SlidingMenuManager implements View.OnClickListener {
         listPLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentReplacer.replaceFragmentWithStack(activity, new ColumnaFragment().newInstance(new ItemSerializable(mListPLV.get(position))));
+                FragmentReplacer.replaceFragmentWithStack(
+                        activity,
+                        new PLVFragment().newInstance(new ItemSerializable(mListPLV.get(position)))
+                );
                 menu.toggle();
             }
         });
@@ -171,11 +178,17 @@ public class SlidingMenuManager implements View.OnClickListener {
                 break;
             case R.id.tvColumnas:
                 FragmentReplacer.clearBackStack(activity);
-                FragmentReplacer.replaceFragmentWithStack(activity, new SubMenuFragment().newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0))));
+                FragmentReplacer.replaceFragmentWithStack(
+                        activity,
+                        new SubMenuFragment().newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0)))
+                );
                 break;
             case R.id.tvPLV:
                 FragmentReplacer.clearBackStack(activity);
-                FragmentReplacer.replaceFragmentWithStack(activity, new SubMenuFragment().newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1))));
+                FragmentReplacer.replaceFragmentWithStack(
+                        activity,
+                        new SubMenuFragment().newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)))
+                );
                 break;
             case R.id.tvEnvios:
                 break;

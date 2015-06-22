@@ -155,7 +155,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginBottom="10dp"
-                android:text="New Text" />
+                android:text="New Text"
+                android:textAllCaps="true"
+                android:textSize="24dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
