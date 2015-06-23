@@ -19,6 +19,7 @@ import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 import plv.estrella.com.plv.untils.SlidingMenuManager;
+import plv.estrella.com.plv.untils.SlidingMenuManagerV2;
 
 
 public class MainActivity extends FragmentActivity {
@@ -28,7 +29,7 @@ public class MainActivity extends FragmentActivity {
     private TextView mTitle;
     private ImageView logo;
     private double doubleBackToExitPressedOnce;
-    private SlidingMenuManager menuManager;
+    private SlidingMenuManagerV2 menuManager;
 
     private boolean isOpen = false;
 
@@ -43,7 +44,7 @@ public class MainActivity extends FragmentActivity {
         setBackground();
         startMainMenu();
 
-        menuManager = new SlidingMenuManager();
+        menuManager = new SlidingMenuManagerV2();
         menuManager.initMenu(this);
 
     }

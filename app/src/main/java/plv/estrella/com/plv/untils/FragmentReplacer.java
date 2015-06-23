@@ -52,18 +52,17 @@ public abstract class FragmentReplacer {
             _activity.getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, _fragment)
                     .commit();
-
         }
     }
-//
-//    public static final void replaceCurrentFragment(final Activity _activity,
-//                                                    final Fragment _fragment) {
-//        _activity.getFragmentManager().beginTransaction()
-//                .replace(R.id.container, _fragment)
-//                .addToBackStack(null)
-//                .commit();
-//
-//    }
+
+    public static final void replaceCurrentFragment(final FragmentActivity _activity,
+                                                    final Fragment _fragment) {
+        popSupBackStack(_activity);
+        _activity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, _fragment)
+                .commit();
+
+    }
 //
 //    public static final void replaceFragmentWithAnim(final FragmentActivity _activity,
 //                                                     final Fragment _fragment) {
