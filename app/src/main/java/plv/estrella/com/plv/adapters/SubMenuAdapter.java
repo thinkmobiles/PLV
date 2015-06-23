@@ -1,11 +1,19 @@
 package plv.estrella.com.plv.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
 import com.cristaliza.mvc.models.estrella.Item;
 import java.util.List;
 
@@ -20,10 +28,20 @@ public class SubMenuAdapter extends BaseAdapter {
 
     private List<Item> mItems;
     private Context mContext;
+    private RelativeLayout.LayoutParams params;
 
-    public SubMenuAdapter(List<Item> _items, Context _context) {
+    public SubMenuAdapter(Context _context, List<Item> _items, int _type) {
         mItems = _items;
         mContext = _context;
+
+        Log.e("col", _type + "");
+        int height = getDisplayWidth() / 6;
+        int width = height;
+        if(_type == 1){
+            width = getDisplayWidth() / 5;
+        }
+
+        params = new RelativeLayout.LayoutParams(width, height);
     }
 
     @Override
@@ -46,11 +64,11 @@ public class SubMenuAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null){
-            final LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_sub_menu, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_sub_menu, parent, false);
             holder = new ViewHolder();
-
-            holder.ivMenuImage = (ImageView) convertView.findViewById(R.id.ivSubMenu_ISM);
+            ImageView imageView = (ImageView) convertView.findViewById(R.id.ivSubMenu_ISM);
+            imageView.setLayoutParams(params);
+            holder.ivMenuImage = imageView;
             convertView.setTag(holder);
 
         }else
@@ -60,6 +78,10 @@ public class SubMenuAdapter extends BaseAdapter {
         else
             holder.ivMenuImage.setImageResource(R.mipmap.ic_launcher);
         return convertView;
+    }
+
+    private int getDisplayWidth() {
+        return ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
     }
 
     class ViewHolder{

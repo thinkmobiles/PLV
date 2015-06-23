@@ -117,7 +117,7 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
                 gvSubMenuContainer.setNumColumns(4);
                 break;
         }
-        final SubMenuAdapter adapter = new SubMenuAdapter(mSubMenuItemList, mCallingActivity);
+        final SubMenuAdapter adapter = new SubMenuAdapter(mCallingActivity, mSubMenuItemList, TYPE_SUBMENU);
         gvSubMenuContainer.setAdapter(adapter);
         gvSubMenuContainer.setOnItemClickListener(this);
     }

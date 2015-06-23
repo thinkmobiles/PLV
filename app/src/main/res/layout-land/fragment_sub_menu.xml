@@ -6,7 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/glSubMenuContainer_FSM"
-        android:layout_margin="50dp">
+        android:layout_margin="50dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp">
 
     </GridView>
 </LinearLayout>
