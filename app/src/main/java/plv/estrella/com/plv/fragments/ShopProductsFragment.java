@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
     private Shop mShop;
     private TextView tvClearList, tvShopName;
     private ListView lvProductContainer;
+    private ImageView mGoToBack;
     private ShopProductsAdapter mAdapter;
 
 
@@ -60,11 +62,13 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
         tvClearList          = (TextView) _view.findViewById(R.id.tvClearProductList_FSP);
         tvShopName           = (TextView) _view.findViewById(R.id.tvShopName_FSP);
         lvProductContainer   = (ListView) _view.findViewById(R.id.lvProductContainer_FSP);
+        mGoToBack            = (ImageView)_view.findViewById(R.id.btnVolver_FC);
     }
 
     private void setListeners(){
         tvClearList.setOnClickListener(this);
         lvProductContainer.setOnItemClickListener(this);
+        mGoToBack.setOnClickListener(this);
     }
 
     @Override
@@ -73,6 +77,8 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
             case R.id.tvClearProductList_FSP:
                 clearProductList();
                 break;
+            case R.id.btnVolver_FC:
+                getActivity().onBackPressed();
         }
     }
 

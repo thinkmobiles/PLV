@@ -14,18 +14,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvShopName_FSP"
+            android:text="@string/fichas"
             android:singleLine="true"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
-            android:layout_toLeftOf="@+id/tvClearProductList_FSP"
+            android:layout_marginRight="@dimen/action_bar_menu_icon_margin"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnVolver_SP"
+            android:src="@drawable/btn_volver"
+            android:layout_toRightOf="@id/tvShopName_FSP"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/abc_action_bar_subtitle_bottom_margin_material"
+            android:paddingBottom="@dimen/abc_action_bar_subtitle_bottom_margin_material"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/borrar_lista"
+            android:text="@string/vaciar"
             android:id="@+id/tvClearProductList_FSP"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"

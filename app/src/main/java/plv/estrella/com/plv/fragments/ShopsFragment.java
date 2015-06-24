@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
     private ListView lvShopContainer;
     private TextView tvClearShopList;
     private ShopListAdapter mAdapter;
+    private ImageView mGoToBack;
 
     @Override
     public void onAttach(Activity activity) {
@@ -48,6 +50,7 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
     private void findViews(final View _view){
         lvShopContainer = (ListView) _view.findViewById(R.id.lvShopContainer_FS);
         tvClearShopList = (TextView) _view.findViewById(R.id.tvClearShopList_FS);
+        mGoToBack       = (ImageView)_view.findViewById(R.id.btnVolver_FC);
     }
 
     private void initShopList(){
@@ -58,6 +61,7 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
     private void setListeners(){
         tvClearShopList.setOnClickListener(this);
         lvShopContainer.setOnItemClickListener(this);
+        mGoToBack.setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +69,9 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
         switch (_v.getId()){
             case R.id.tvClearShopList_FS:
                 clearShopList();
+                break;
+            case R.id.btnVolver_FC:
+                getActivity().onBackPressed();
                 break;
         }
     }
