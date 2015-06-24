@@ -15,6 +15,7 @@ import com.cristaliza.mvc.events.Event;
 import com.cristaliza.mvc.models.estrella.AppModel;
 import com.cristaliza.mvc.models.estrella.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,10 +46,26 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     public static ProductPagerFragment newInstance(ItemSerializable _item, int _position) {
         ProductPagerFragment fragment = new ProductPagerFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable(Constants.PARAM_ITEM, _item);
-        bundle.putInt(Constants.PARAM_POSITION, _position);
+        ContainerItemAndPosition item = new ContainerItemAndPosition(_item.getItem(), _position);
+        bundle.putSerializable(Constants.PARAM_ITEM, item);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    public static class ContainerItemAndPosition implements Serializable{
+        private Item item;
+        private int position;
+
+        public ContainerItemAndPosition(Item item, int position){
+            this.item = item;
+            this.position = position;
+        }
+        public int getPosition() {
+            return position;
+        }
+        public Item getItem() {
+            return item;
+        }
     }
 
     @Override
@@ -56,8 +73,9 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         super.onAttach(activity);
         mCallingActivity = (MainActivity) activity;
         if (getArguments() != null) {
-            mCurrentItem = ((ItemSerializable) getArguments().getSerializable(Constants.PARAM_ITEM)).getItem();
-            targetPos = getArguments().getInt(Constants.PARAM_POSITION);
+            ContainerItemAndPosition item = (ContainerItemAndPosition) getArguments().getSerializable(Constants.PARAM_ITEM);
+            mCurrentItem = item.getItem();
+            targetPos = item.getPosition();
         }
     }
 
@@ -132,6 +150,9 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.ivCross_P:
+                mCallingActivity.onBackPressed();
+                break;
             case R.id.ivMore_P:
                 incCounter();
                 break;
@@ -152,11 +173,11 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     }
 
     private void incCounter(){
-        tvCount.setText(++massivCounters[targetPos]);
+        tvCount.setText(String.valueOf(++massivCounters[targetPos]));
     }
 
     private void decCounter(){
-        tvCount.setText((--massivCounters[targetPos] < 0) ? 0 : massivCounters[targetPos]);
+        tvCount.setText(String.valueOf(((--massivCounters[targetPos] < 0) ? 0 : massivCounters[targetPos])));
     }
 
     private void scrollPrev(){
@@ -203,6 +224,6 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         ivPrev.setVisibility(View.VISIBLE);
         ivNext.setVisibility(View.VISIBLE);
 
-        tvCount.setText(massivCounters[_position]);
+        tvCount.setText(String.valueOf(massivCounters[_position]));
     }
 }

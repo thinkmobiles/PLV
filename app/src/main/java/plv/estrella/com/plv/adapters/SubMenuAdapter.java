@@ -34,7 +34,6 @@ public class SubMenuAdapter extends BaseAdapter {
         mItems = _items;
         mContext = _context;
 
-        Log.e("col", _type + "");
         int height = getDisplayWidth() / 6;
         int width = height;
         if(_type == 1){
