@@ -119,11 +119,9 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
                 View view = LayoutInflater.from(mCallingActivity).inflate(R.layout.item_product_horizontal_list, null);
 
                 ImageView imageView = (ImageView) view.findViewById(R.id.ivIconProd);
-                TextView textView = (TextView) view.findViewById(R.id.tvDescription);
                 view.setLayoutParams(params);
 
                 imageView.setImageBitmap(BitmapCreator.getBitmap(mListProducts.get(i).getIcon()));
-                textView.setText(mListProducts.get(i).getDescription());
 
                 view.setOnClickListener(getClickListener(i));
                 llContProd.addView(view);

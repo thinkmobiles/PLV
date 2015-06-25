@@ -73,7 +73,7 @@ public class MainActivity extends FragmentActivity {
         FragmentReplacer.replaceFragmentWithStack(this, new MainMenuFragment());
     }
 
-    private void setBackground() {
+    public void setBackground() {
         mBackgroundLayout.setBackground(getResources().getDrawable(R.drawable.background));
     }
 

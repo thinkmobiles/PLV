@@ -22,6 +22,8 @@ import java.util.List;
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.ProductPagerAdapter;
+import plv.estrella.com.plv.custom.AddProductToShopDialog;
+import plv.estrella.com.plv.custom.CustomDialog;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
@@ -46,26 +48,10 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     public static ProductPagerFragment newInstance(ItemSerializable _item, int _position) {
         ProductPagerFragment fragment = new ProductPagerFragment();
         Bundle bundle = new Bundle();
-        ContainerItemAndPosition item = new ContainerItemAndPosition(_item.getItem(), _position);
-        bundle.putSerializable(Constants.PARAM_ITEM, item);
+        bundle.putSerializable(Constants.PARAM_ITEM, _item);
+        bundle.putInt(Constants.PARAM_POSITION, _position);
         fragment.setArguments(bundle);
         return fragment;
-    }
-
-    public static class ContainerItemAndPosition implements Serializable{
-        private Item item;
-        private int position;
-
-        public ContainerItemAndPosition(Item item, int position){
-            this.item = item;
-            this.position = position;
-        }
-        public int getPosition() {
-            return position;
-        }
-        public Item getItem() {
-            return item;
-        }
     }
 
     @Override
@@ -73,9 +59,8 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         super.onAttach(activity);
         mCallingActivity = (MainActivity) activity;
         if (getArguments() != null) {
-            ContainerItemAndPosition item = (ContainerItemAndPosition) getArguments().getSerializable(Constants.PARAM_ITEM);
-            mCurrentItem = item.getItem();
-            targetPos = item.getPosition();
+            mCurrentItem = ((ItemSerializable) getArguments().getSerializable(Constants.PARAM_ITEM)).getItem();
+            targetPos = getArguments().getInt(Constants.PARAM_POSITION);
         }
     }
 
@@ -166,9 +151,25 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
                 scrollNext();
                 break;
             case R.id.ivCarrita_P:
+                clickBtnCarrita();
                 break;
             case R.id.ivAddEnvio_P:
+                AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
+                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, this, massivCounters[targetPos]);
                 break;
+        }
+    }
+
+    private void clickBtnCarrita(){
+        if(massivCounters[targetPos] == 0){
+            final CustomDialog dialog = new CustomDialog.Builder()
+                    .setMessage("0 producto")
+                    .setPositiveButton(mCallingActivity.getString(R.string.button_accept), null)
+                    .create();
+            dialog.show(mCallingActivity);
+        } else {
+            AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
+                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, this, massivCounters[targetPos]);
         }
     }
 

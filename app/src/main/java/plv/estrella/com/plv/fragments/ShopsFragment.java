@@ -15,6 +15,7 @@ import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.ShopListAdapter;
 import plv.estrella.com.plv.database.DBManager;
+import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
@@ -27,15 +28,23 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
     private TextView tvClearShopList;
     private ShopListAdapter mAdapter;
     private ImageView mGoToBack;
+    private int typeShops;
+
+    public static ShopsFragment newInstance(int _type){
+        ShopsFragment fragment = new ShopsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constants.PARAM_TYPE, _type);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mCallingActivity = (MainActivity) activity;
-//        if (getArguments() != null) {
-//            mCurrentItem = ((ItemSerializable) getArguments().getSerializable(Constants.ITEM)).getItem();
-//            getArguments().remove(Constants.ITEM);
-//        }
+        if (getArguments() != null) {
+            typeShops = getArguments().getInt(Constants.PARAM_TYPE);
+        }
     }
 
     @Override

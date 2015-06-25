@@ -11,7 +11,8 @@ public abstract class Constants {
     public static final String SHOP             = "shop";
     public static final String PARAMS           = "params";
     public static final String PARAM_ITEM       = "item";
-    public static final String PARAM_POSITION   = "item";
+    public static final String PARAM_POSITION   = "position";
+    public static final String PARAM_TYPE       = "position";
 
     //Types of items of slidemenu
     public static final int TYPE_INICIO         = 0;
@@ -30,6 +31,11 @@ public abstract class Constants {
     public static final String ITEM_PEDIDOS     = "pedidos";
 
     //types of dialog
-    public static final int TYPE_DIALOG_ADD     = 0;
-    public static final int TYPE_DIALOG_ADDED   = 1;
+    public static final int TYPE_DIALOG_ADD_ENVIOS      = 0;
+    public static final int TYPE_DIALOG_ADD_CARRITA     = 1;
+    public static final int TYPE_DIALOG_ADDED           = 2;
+
+    //types of shop
+    public static final int TYPE_SHOPS_ENVIOS      = 0;
+    public static final int TYPE_SHOPS_PEDIDOS     = 1;
 }

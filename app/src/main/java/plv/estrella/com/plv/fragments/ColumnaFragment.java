@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cristaliza.mvc.models.estrella.Item;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
+import plv.estrella.com.plv.custom.AddProductToShopDialog;
+import plv.estrella.com.plv.custom.CustomDialog;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.BitmapCreator;
@@ -24,12 +25,9 @@ import plv.estrella.com.plv.untils.BitmapCreator;
 public class ColumnaFragment extends Fragment implements View.OnClickListener {
 
     private MainActivity mCallingActivity;
-    private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mProdAward, mPhotoGal1, mPhotoGal2;
+    private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mProdAward, mPhotoGal1, mPhotoGal2, mBackground;
     private TextView mCounter, mNameColumna;
-    private RelativeLayout rlBackground;
-
     private Item mCurrentItem;
-
     private int counterValue = 0;
 
     public static ColumnaFragment newInstance(ItemSerializable _item){
@@ -57,6 +55,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         findUI(view);
         setListeners();
         fillData();
+
         return view;
     }
 
@@ -68,11 +67,12 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mPhotoGal1      = (ImageView) _view.findViewById(R.id.ivPhotoGal1_FC);
         mPhotoGal2      = (ImageView) _view.findViewById(R.id.ivPhotoGal2_FC);
         mProdAward      = (ImageView) _view.findViewById(R.id.ivColumnaAward_FC);
+        mBackground     = (ImageView) _view.findViewById(R.id.ivBackground_FC);
+        mGoToBack       = (ImageView) _view.findViewById(R.id.btnVolver_FC);
         mCounter        = (TextView) _view.findViewById(R.id.tvCount_FC);
         mNameColumna    = (TextView) _view.findViewById(R.id.tvNameColumna);
-        rlBackground    = (RelativeLayout) _view.findViewById(R.id.rlBackground_FC);
-        mGoToBack       = (ImageView) _view.findViewById(R.id.btnVolver_FC);
 
+        mCallingActivity.setBackground();
     }
 
     private void setListeners(){
@@ -90,17 +90,22 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
 
         mNameColumna.setText(mCurrentItem.getName());
+        mBackground.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.getBackgroundImage()));
 //        mProdAward.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.getPrizes().get(0)));
 //        mPhotoGal1.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.));
 //        mPhotoGal2.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.));
+        mCounter.setText(String.valueOf(counterValue));
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ivAddCarrita_FC:
+                clickBtnCarrita();
                 break;
             case R.id.ivAddEnvio_FC:
+                AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
+                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, this, counterValue);
                 break;
             case R.id.ivMore_FC:
                 incCounter();
@@ -113,12 +118,23 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
             case R.id.ivPhotoGal2_FC:
                 break;
             case R.id.btnVolver_FC:
-                getActivity().onBackPressed();
+                mCallingActivity.onBackPressed();
                 break;
         }
     }
 
-
+    private void clickBtnCarrita(){
+        if(counterValue == 0){
+            final CustomDialog dialog = new CustomDialog.Builder()
+                    .setMessage("0 producto")
+                    .setPositiveButton(mCallingActivity.getString(R.string.button_accept), null)
+                    .create();
+            dialog.show(mCallingActivity);
+        } else {
+            AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
+                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, this, counterValue);
+        }
+    }
 
     private void incCounter(){
         mCounter.setText(String.valueOf(++counterValue));

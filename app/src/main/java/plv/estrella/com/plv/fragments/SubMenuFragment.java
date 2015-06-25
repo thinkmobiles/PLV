@@ -74,6 +74,8 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
 
     private void findUI(final View _view){
         gvSubMenuContainer = (GridView) _view.findViewById(R.id.glSubMenuContainer_FSM);
+
+        mCallingActivity.setBackground();
     }
 
     private void setTitle(){

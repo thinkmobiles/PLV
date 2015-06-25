@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="30pt"
             android:textColor="#FFFFFF"
-            android:text="@string/dialog_lable"
+            android:text="@string/anadir_ficha"
             android:textSize="@dimen/dialog_title_text_size" />
 
         <LinearLayout

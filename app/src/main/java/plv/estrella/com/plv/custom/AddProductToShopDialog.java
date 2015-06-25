@@ -27,6 +27,8 @@ import plv.estrella.com.plv.adapters.SpinnerPurchaseAdapter;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.fragments.ColumnaFragment;
+import plv.estrella.com.plv.fragments.PLVFragment;
+import plv.estrella.com.plv.fragments.ProductPagerFragment;
 import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
@@ -51,8 +53,10 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     private boolean isSelectChek, questionCheck=false;
     private boolean isShowListShop = false;
     private int typeDialog;
+    private int typeShop;
     private int numProducts;
-    private ColumnaFragment mFragmentBack;
+    private ColumnaFragment mFragmentBackC;
+    private ProductPagerFragment mFragmentBackP;
     private ArrayAdapter<String> adapter;
 
     public static AddProductToShopDialog newInstance(final ItemSerializable _item) {
@@ -64,8 +68,17 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     }
 
     public void show(MainActivity _mActivity, int _typeDialog, ColumnaFragment _fragment, int _numProducts){
-        mFragmentBack = _fragment;
+        mFragmentBackC = _fragment;
         typeDialog = _typeDialog;
+        typeShop = _typeDialog;
+        numProducts = _numProducts;
+        FragmentReplacer.addFragment(_mActivity, this);
+    }
+
+    public void show(MainActivity _mActivity, int _typeDialog, ProductPagerFragment _fragment, int _numProducts){
+        mFragmentBackP = _fragment;
+        typeDialog = _typeDialog;
+        typeShop = _typeDialog;
         numProducts = _numProducts;
         FragmentReplacer.addFragment(_mActivity, this);
     }
@@ -131,12 +144,16 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     }
 
     private void initTypeDialog(){
-        if(typeDialog == Constants.TYPE_DIALOG_ADD) {
-            addProduct();
-            setViewSettings();
-        } else {
+        if(typeDialog == Constants.TYPE_DIALOG_ADDED) {
             questionCheck = true;
             setVisible();
+        } else {
+            if(typeDialog == Constants.TYPE_DIALOG_ADD_CARRITA){
+                tvTitle.setText(mCallingActivity.getString(R.string.anadir_pedido));
+            }
+
+            fillShopList();
+            setViewSettings();
         }
     }
 
@@ -170,7 +187,6 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
                     onClickPositiveButton();
                 break;
             case R.id.flTop_PSD:
-                break;
             case R.id.flBottom_PSD:
                 FragmentReplacer.popSupBackStack(getActivity());
                 break;
@@ -205,7 +221,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
             } else {
                 Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString());
                 spinnerLayout.setVisibility(View.VISIBLE);
-                addProduct();
+                fillShopList();
 
                 DBManager.addItem(
                         mCurrentItem,
@@ -245,7 +261,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
 
     }
 
-    public void addProduct(){
+    public void fillShopList(){
         shopList = new ArrayList<>();
         subList = new ArrayList<>();
         shopList = DBManager.getShops();

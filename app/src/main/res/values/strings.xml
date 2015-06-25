@@ -8,6 +8,7 @@
     <string name="title_envios">ENVIOS PENDIENTES</string>
     <string name="download">Download..</string>
     <string name="columnas">COLUMNAS</string>
+    <string name="columna">COLUMNA</string>
     <string name="galeria">GALERÍA</string>
     <string name="plv">PLV</string>
     <string name="click_back">Please click BACK again to exit</string>
@@ -22,7 +23,8 @@
     <string name="accept">ACEPTAR</string>
 
     <!-- Dialogs-->
-    <string name="dialog_lable">ANADIR FICHA A:</string>
+    <string name="anadir_ficha">ANADIR FICHA A:</string>
+    <string name="anadir_pedido">ANADIR PEDIDO A:</string>
     <string name="want_continue">ESTA FICHA HA SIDO AÑADIDA</string>
     <string name="locales_shopping">LOCALES</string>
     <string name="guardar_shopping">ENVIAR</string>

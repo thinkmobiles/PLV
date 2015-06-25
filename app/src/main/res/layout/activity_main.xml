@@ -34,7 +34,8 @@
                 android:gravity="center_vertical"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/action_bar_title_txt"
-                android:text="Title"
+                android:text="Ti"
+                android:textAllCaps="true"
                 />
         </LinearLayout>
 
