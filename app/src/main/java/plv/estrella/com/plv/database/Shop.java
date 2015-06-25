@@ -18,7 +18,7 @@ public class Shop extends SugarRecord<Shop> implements Serializable {
         mName = _name;
     }
 
-    public String getShopName() {
+    public String getName() {
         return mName;
     }
 }

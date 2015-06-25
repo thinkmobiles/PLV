@@ -28,4 +28,8 @@ public abstract class Constants {
     public static final String ITEM_PLV         = "plv";
     public static final String ITEM_ENVIOS      = "envios pendientes ";
     public static final String ITEM_PEDIDOS     = "pedidos";
+
+    //types of dialog
+    public static final int TYPE_DIALOG_ADD     = 0;
+    public static final int TYPE_DIALOG_ADDED   = 1;
 }

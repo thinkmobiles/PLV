@@ -40,9 +40,10 @@ public  class DBManager {
         return Shop.listAll(Shop.class);
     }
 
-    public static final void addShop(final String _shopName){
+    public static final Shop addShop(final String _shopName){
         final Shop shop = new Shop(_shopName);
         shop.save();
+        return shop;
     }
 
     public static final void deleteShop(final Shop _shop){

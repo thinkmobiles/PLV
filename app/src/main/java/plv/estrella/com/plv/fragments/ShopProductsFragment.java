@@ -62,7 +62,7 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
         tvClearList          = (TextView) _view.findViewById(R.id.tvClearProductList_FSP);
         tvShopName           = (TextView) _view.findViewById(R.id.tvShopName_FSP);
         lvProductContainer   = (ListView) _view.findViewById(R.id.lvProductContainer_FSP);
-        mGoToBack            = (ImageView)_view.findViewById(R.id.btnVolver_FC);
+        mGoToBack            = (ImageView)_view.findViewById(R.id.btnVolver_FSP);
     }
 
     private void setListeners(){
@@ -77,8 +77,9 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
             case R.id.tvClearProductList_FSP:
                 clearProductList();
                 break;
-            case R.id.btnVolver_FC:
+            case R.id.btnVolver_FSP:
                 getActivity().onBackPressed();
+                break;
         }
     }
 
@@ -97,7 +98,7 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
     }
 
     private void setShopTitle(){
-        tvShopName.setText(mShop.getShopName());
+        tvShopName.setText(mShop.getName());
     }
 
 }

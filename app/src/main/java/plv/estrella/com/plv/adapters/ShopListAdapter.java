@@ -66,7 +66,7 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
         }
 
         setListeners(holder);
-        holder.tvShopName.setText(mShops.get(_position).getShopName());
+        holder.tvShopName.setText(mShops.get(_position).getName());
         return _convertView;
     }
 

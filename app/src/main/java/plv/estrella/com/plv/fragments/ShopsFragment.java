@@ -50,7 +50,7 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
     private void findViews(final View _view){
         lvShopContainer = (ListView) _view.findViewById(R.id.lvShopContainer_FS);
         tvClearShopList = (TextView) _view.findViewById(R.id.tvClearShopList_FS);
-        mGoToBack       = (ImageView)_view.findViewById(R.id.btnVolver_FC);
+        mGoToBack       = (ImageView)_view.findViewById(R.id.btnVolver_FS);
     }
 
     private void initShopList(){
@@ -70,7 +70,7 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
             case R.id.tvClearShopList_FS:
                 clearShopList();
                 break;
-            case R.id.btnVolver_FC:
+            case R.id.btnVolver_FS:
                 getActivity().onBackPressed();
                 break;
         }

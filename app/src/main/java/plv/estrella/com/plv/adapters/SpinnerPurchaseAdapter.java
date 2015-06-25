@@ -54,7 +54,7 @@ public class SpinnerPurchaseAdapter extends BaseAdapter {
         }else
             holder = (ViewHolder) convertView.getTag();
 
-        holder.nameShop.setText(shops.get(position).getShopName());
+        holder.nameShop.setText(shops.get(position).getName());
 
         return convertView;
 

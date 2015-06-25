@@ -18,7 +18,6 @@ import com.cristaliza.mvc.models.estrella.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.SpinnerPurchaseAdapter;
 import plv.estrella.com.plv.database.DBManager;
@@ -33,13 +32,11 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
 public class CustomSpinnerDialog extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     private Activity mCallingActivity;
-    private ArrayList<Item> items;
     private int selected;
 
     private List<Shop> shopList, subList;
     private LinearLayout spinnerLayout;
     private Spinner spinner;
-    private SpinnerPurchaseAdapter spinnerPurchaseAdapter;
     private TextView positiveButton, negativeButton;
     private EditText shopName;
     private Item mCurrentItem;
@@ -56,7 +53,7 @@ public class CustomSpinnerDialog extends Fragment implements AdapterView.OnItemS
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        mCallingActivity = (MainActivity) activity;
+        mCallingActivity = activity;
         if (getArguments() != null) {
             mCurrentItem = ((ItemSerializable) getArguments().getSerializable(Constants.ITEM)).getItem();
             getArguments().remove(Constants.SHOP);
@@ -77,8 +74,7 @@ public class CustomSpinnerDialog extends Fragment implements AdapterView.OnItemS
     }
 
     private void initSpinner(){
-        spinnerPurchaseAdapter = new SpinnerPurchaseAdapter(mCallingActivity, subList);
-        spinner.setAdapter(spinnerPurchaseAdapter);
+        spinner.setAdapter(new SpinnerPurchaseAdapter(mCallingActivity, subList));
     }
 
     private void findViews(final View _view) {
@@ -126,7 +122,7 @@ public class CustomSpinnerDialog extends Fragment implements AdapterView.OnItemS
                 shopList.get(selected).getId();
                 DBManager.addItem(mCurrentItem, 2, subList.get(selected));
                 FragmentReplacer.popSupBackStack(getActivity());
-                Toast.makeText(mCallingActivity, "Item add to shop_id= " + String.valueOf(subList.get(selected).getId()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mCallingActivity, mCallingActivity.getString(R.string.add_item_to_shop) + String.valueOf(subList.get(selected).getId()), Toast.LENGTH_SHORT).show();
 
             }
         } else if (!shopName.getText().toString().isEmpty()) {
@@ -136,7 +132,7 @@ public class CustomSpinnerDialog extends Fragment implements AdapterView.OnItemS
             addProduct();
             FragmentReplacer.popSupBackStack(getActivity());
         } else {
-            Toast.makeText(mCallingActivity, "enter shop", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mCallingActivity, mCallingActivity.getString(R.string.enter_shop), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -162,7 +158,7 @@ public class CustomSpinnerDialog extends Fragment implements AdapterView.OnItemS
                 subList = shopList.subList(0, shopList.size() - 1);
             }
 
-            subList.add(new Shop("Create new shop"));
+            subList.add(new Shop(mCallingActivity.getString(R.string.create_new_shop)));
             return null;
         }
 
