@@ -1,12 +1,9 @@
 package plv.estrella.com.plv.untils;
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cristaliza.mvc.events.Event;
@@ -20,12 +17,11 @@ import java.util.List;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
-import plv.estrella.com.plv.adapters.MenuAdapter;
 import plv.estrella.com.plv.adapters.MenuAdapterV2;
 import plv.estrella.com.plv.fragments.ColumnaFragment;
 import plv.estrella.com.plv.fragments.MainMenuFragment;
 import plv.estrella.com.plv.fragments.PLVFragment;
-import plv.estrella.com.plv.fragments.SubMenuFragment;
+import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 
@@ -83,6 +79,7 @@ public class SlidingMenuManagerV2 {
         listMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                JumpFragmentHelper jumper;
                 switch (adapter.getItemViewType(position)){
                     case Constants.TYPE_INICIO:
                         FragmentReplacer.replaceFragmentWithoutBackStack(
@@ -91,34 +88,44 @@ public class SlidingMenuManagerV2 {
                         );
                         break;
                     case Constants.TYPE_SPV:
+                        jumper = new JumpFragmentHelper();
+                        jumper.setParamToSubmenu(Constants.MENU_COLUMNAS,new ItemSerializable(mMenuItemList.get(0)));
                         FragmentReplacer.replaceFragmentWithoutBackStack(
                                 activity,
-                                new JumpFragmentHelper().newInstance(Constants.MENU_COLUMNAS,new ItemSerializable(mMenuItemList.get(0)))
+                                jumper
                         );
                         break;
                     case Constants.TYPE_SPV_PADDING:
                         FragmentReplacer.replaceFragmentWithoutBackStack(
                                 activity,
-                                new ColumnaFragment().newInstance(new ItemSerializable(mListColumnas.get(position - 2)))
+                                ColumnaFragment.newInstance(new ItemSerializable(mListColumnas.get(position - 2)))
                         );
                         break;
                     case Constants.TYPE_PLV:
+                        jumper = new JumpFragmentHelper();
+                        jumper.setParamToSubmenu(Constants.MENU_PLV,new ItemSerializable(mMenuItemList.get(1)));
                         FragmentReplacer.replaceFragmentWithoutBackStack(
                                 activity,
-                                new JumpFragmentHelper().newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)))
+                                jumper
                         );
                         break;
                     case Constants.TYPE_PLV_PADDING:
                         FragmentReplacer.replaceFragmentWithoutBackStack(
                                 activity,
-                                new PLVFragment().newInstance(new ItemSerializable(mListPLV.get(position - 13)))
+                                PLVFragment.newInstance(new ItemSerializable(mListPLV.get(position - 13)))
                         );
                         break;
                     case Constants.TYPE_ENVIOS:
-//                        FragmentReplacer.replaceFragmentWithoutBackStack(activity,);
+                        FragmentReplacer.replaceFragmentWithoutBackStack(
+                                activity,
+                                new ShopsFragment()
+                        );
                         break;
                     case Constants.TYPE_PEDIDOS:
-//                        FragmentReplacer.replaceFragmentWithoutBackStack(activity,);
+                        FragmentReplacer.replaceFragmentWithoutBackStack(
+                                activity,
+                                new ShopsFragment()
+                        );
                         break;
                 }
                 menu.toggle();

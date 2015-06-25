@@ -20,7 +20,11 @@ import plv.estrella.com.plv.models.ItemSerializable;
  */
 public class JumpFragmentHelper extends Fragment {
 
+    private static final int JUMP_SUBMENU = 2;
+
     private MainActivity mActivity;
+    private int openMenu;
+    private ItemSerializable itemSerializable;
 
     public static JumpFragmentHelper newInstance(final int _open, final ItemSerializable _item){
         JumpFragmentHelper fragment = new JumpFragmentHelper();
@@ -31,6 +35,11 @@ public class JumpFragmentHelper extends Fragment {
         return fragment;
     }
 
+    public void setParamToSubmenu(final int _open, final ItemSerializable _item){
+        openMenu = _open;
+        itemSerializable = _item;
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -39,13 +48,13 @@ public class JumpFragmentHelper extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        int openMenu = 0;
-        ItemSerializable item  = null;
-        if(getArguments() != null){
-            openMenu = getArguments().getInt(Constants.OPEN_MENU);
-            item = (ItemSerializable) getArguments().getSerializable(Constants.PARAM_ITEM);
-        }
-        FragmentReplacer.replaceCurrentFragment(mActivity,new SubMenuFragment().newInstance(openMenu, item));
+//        int openMenu = 0;
+//        ItemSerializable item  = null;
+//        if(getArguments() != null){
+//            openMenu = getArguments().getInt(Constants.OPEN_MENU);
+//            item = (ItemSerializable) getArguments().getSerializable(Constants.PARAM_ITEM);
+//        }
+        FragmentReplacer.replaceCurrentFragment(mActivity,new SubMenuFragment().newInstance(openMenu, itemSerializable));
         return null;
     }
 }
