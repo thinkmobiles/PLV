@@ -3,7 +3,6 @@ package plv.estrella.com.plv.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,8 +118,7 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
                 gvSubMenuContainer.setNumColumns(4);
                 break;
         }
-        final SubMenuAdapter adapter = new SubMenuAdapter(mCallingActivity, mSubMenuItemList, TYPE_SUBMENU);
-        gvSubMenuContainer.setAdapter(adapter);
+        gvSubMenuContainer.setAdapter(new SubMenuAdapter(mCallingActivity, mSubMenuItemList, TYPE_SUBMENU));
         gvSubMenuContainer.setOnItemClickListener(this);
     }
 
@@ -130,7 +128,7 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
             case 0:
                 FragmentReplacer.replaceFragmentWithStack(
                         mCallingActivity,
-                        new ColumnaFragment().newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
+                        ColumnaFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
                 );
                 break;
             case 1:

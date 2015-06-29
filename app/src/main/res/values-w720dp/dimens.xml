@@ -21,7 +21,7 @@
     - <!-- Sliding Menu-->
     <dimen name="slidingmenu_shadow_width">5dp</dimen>
     <dimen name="menu_width">300dp</dimen>
-    <dimen name="menu_height">25dp</dimen>
+    <dimen name="menu_height">30dp</dimen>
     <dimen name="menu_margin_top">20dp</dimen>
     <dimen name="menu_padding_left">5dp</dimen>
     <dimen name="menu_text_size">13sp</dimen>

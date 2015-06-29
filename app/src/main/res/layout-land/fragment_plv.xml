@@ -2,17 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:padding="10dp">
+    android:padding="@dimen/default_padding">
 
 
     <RelativeLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/arrow_width"
         android:layout_height="match_parent"
         android:id="@+id/rlPrev"
         android:layout_alignParentLeft="true">
 
         <ImageView
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ivPrev"
 
@@ -20,23 +20,31 @@
             android:layout_centerInParent="true" />
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/ivLable"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/btn_circle_save"
-        android:layout_marginLeft="20dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/llk">
+
+        <ImageView
+            android:layout_width="@dimen/lable_width"
+            android:layout_height="@dimen/lable_height"
+            android:id="@+id/ivLable"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:src="@drawable/btn_circle_save"
+            android:layout_marginLeft="@dimen/container_margin_left_right"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/arrow_width"
         android:layout_height="match_parent"
         android:id="@+id/rlNext"
         android:layout_alignParentRight="true">
 
         <ImageView
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ivNext"
 
@@ -50,8 +58,8 @@
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/rlPrev"
         android:layout_toLeftOf="@+id/rlNext"
-        android:layout_below="@+id/ivLable"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/llk">
 
         <HorizontalScrollView
             android:layout_width="match_parent"

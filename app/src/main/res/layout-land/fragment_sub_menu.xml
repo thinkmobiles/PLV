@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_vertical">
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/glSubMenuContainer_FSM"
-        android:layout_margin="50dp"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp">
+        android:layout_margin="@dimen/gridview_margin"
+        android:horizontalSpacing="@dimen/space_cell"
+        android:verticalSpacing="@dimen/space_cell">
 
     </GridView>
 </LinearLayout>

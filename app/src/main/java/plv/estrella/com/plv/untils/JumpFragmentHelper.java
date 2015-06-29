@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
+import plv.estrella.com.plv.fragments.ColumnaFragment;
 import plv.estrella.com.plv.fragments.ItemPagerFragment;
+import plv.estrella.com.plv.fragments.MainMenuFragment;
+import plv.estrella.com.plv.fragments.PLVFragment;
+import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.fragments.SubMenuFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
@@ -20,24 +24,39 @@ import plv.estrella.com.plv.models.ItemSerializable;
  */
 public class JumpFragmentHelper extends Fragment {
 
-    private static final int JUMP_SUBMENU = 2;
+    private static final int JUMP_MAINMENU  = 0;
+    private static final int JUMP_SUBMENU   = 2;
+    private static final int JUMP_SPV       = 4;
+    private static final int JUMP_PLV       = 6;
+    private static final int JUMP_SHOP      = 8;
 
     private MainActivity mActivity;
-    private int openMenu;
+    private int openItemMenu;
+    private int typeItem;
     private ItemSerializable itemSerializable;
 
-    public static JumpFragmentHelper newInstance(final int _open, final ItemSerializable _item){
-        JumpFragmentHelper fragment = new JumpFragmentHelper();
-        Bundle attr = new Bundle();
-        attr.putInt(Constants.OPEN_MENU, _open);
-        attr.putSerializable(Constants.ITEM, _item);
-        fragment.setArguments(attr);
-        return fragment;
+    public void setParamToMainmenu(){
+        typeItem = JUMP_MAINMENU;
     }
 
     public void setParamToSubmenu(final int _open, final ItemSerializable _item){
-        openMenu = _open;
+        openItemMenu = _open;
         itemSerializable = _item;
+        typeItem = JUMP_SUBMENU;
+    }
+
+    public void setParamToColumna(final ItemSerializable _item){
+        itemSerializable = _item;
+        typeItem = JUMP_SPV;
+    }
+
+    public void setParamToPLV(final ItemSerializable _item){
+        itemSerializable = _item;
+        typeItem = JUMP_PLV;
+    }
+
+    public void setParamToShop(){
+        typeItem = JUMP_SHOP;
     }
 
     @Override
@@ -48,13 +67,23 @@ public class JumpFragmentHelper extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        int openMenu = 0;
-//        ItemSerializable item  = null;
-//        if(getArguments() != null){
-//            openMenu = getArguments().getInt(Constants.OPEN_MENU);
-//            item = (ItemSerializable) getArguments().getSerializable(Constants.PARAM_ITEM);
-//        }
-        FragmentReplacer.replaceCurrentFragment(mActivity,new SubMenuFragment().newInstance(openMenu, itemSerializable));
+        switch (typeItem){
+            case JUMP_MAINMENU:
+                FragmentReplacer.replaceCurrentFragment(mActivity, new MainMenuFragment());
+                break;
+            case JUMP_SUBMENU:
+                FragmentReplacer.replaceCurrentFragment(mActivity, SubMenuFragment.newInstance(openItemMenu, itemSerializable));
+                break;
+            case JUMP_SPV:
+                FragmentReplacer.replaceCurrentFragment(mActivity, ColumnaFragment.newInstance(itemSerializable));
+                break;
+            case JUMP_PLV:
+                FragmentReplacer.replaceCurrentFragment(mActivity, PLVFragment.newInstance(itemSerializable));
+                break;
+            case JUMP_SHOP:
+                FragmentReplacer.replaceCurrentFragment(mActivity, new ShopsFragment());
+                break;
+        }
         return null;
     }
 }

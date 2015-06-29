@@ -1,6 +1,7 @@
 package plv.estrella.com.plv.untils;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -79,55 +80,31 @@ public class SlidingMenuManagerV2 {
         listMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                JumpFragmentHelper jumper;
+                JumpFragmentHelper jumper = new JumpFragmentHelper();
                 switch (adapter.getItemViewType(position)){
                     case Constants.TYPE_INICIO:
-                        FragmentReplacer.replaceFragmentWithoutBackStack(
-                                activity,
-                                new MainMenuFragment()
-                        );
+                        jumper.setParamToMainmenu();
                         break;
                     case Constants.TYPE_SPV:
-                        jumper = new JumpFragmentHelper();
-                        jumper.setParamToSubmenu(Constants.MENU_COLUMNAS,new ItemSerializable(mMenuItemList.get(0)));
-                        FragmentReplacer.replaceFragmentWithoutBackStack(
-                                activity,
-                                jumper
-                        );
+                        jumper.setParamToSubmenu(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0)));
                         break;
                     case Constants.TYPE_SPV_PADDING:
-                        FragmentReplacer.replaceFragmentWithoutBackStack(
-                                activity,
-                                ColumnaFragment.newInstance(new ItemSerializable(mListColumnas.get(position - 2)))
-                        );
+                        jumper.setParamToColumna(new ItemSerializable(mListColumnas.get(position - 2)));
                         break;
                     case Constants.TYPE_PLV:
-                        jumper = new JumpFragmentHelper();
-                        jumper.setParamToSubmenu(Constants.MENU_PLV,new ItemSerializable(mMenuItemList.get(1)));
-                        FragmentReplacer.replaceFragmentWithoutBackStack(
-                                activity,
-                                jumper
-                        );
+                        jumper.setParamToSubmenu(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)));
                         break;
                     case Constants.TYPE_PLV_PADDING:
-                        FragmentReplacer.replaceFragmentWithoutBackStack(
-                                activity,
-                                PLVFragment.newInstance(new ItemSerializable(mListPLV.get(position - 13)))
-                        );
+                        jumper.setParamToPLV(new ItemSerializable(mListPLV.get(position - 11)));
                         break;
                     case Constants.TYPE_ENVIOS:
-                        FragmentReplacer.replaceFragmentWithoutBackStack(
-                                activity,
-                                new ShopsFragment()
-                        );
+                        jumper.setParamToShop();
                         break;
                     case Constants.TYPE_PEDIDOS:
-                        FragmentReplacer.replaceFragmentWithoutBackStack(
-                                activity,
-                                new ShopsFragment()
-                        );
+                        jumper.setParamToShop();
                         break;
                 }
+                FragmentReplacer.replaceFragmentWithoutBackStack(activity, jumper);
                 menu.toggle();
             }
         });

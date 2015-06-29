@@ -9,6 +9,9 @@
     <dimen name="action_bar_title_txt">28dp</dimen>
     <dimen name="action_bar_menu_icon_margin">15dp</dimen>
 
+    <dimen name="default_padding">10dp</dimen>
+    <dimen name="default_margin">4dp</dimen>
+
     - <!-- Start menu-->
     <dimen name="menu_item_size_txt">26dp</dimen>
     <dimen name="menu_item_height">40dp</dimen>
@@ -17,13 +20,29 @@
     <dimen name="beverage_description_size">156dp</dimen>
     <dimen name="beverage_item_w">80dp</dimen>
 
+    <!-- sub-menu-->
+    <dimen name="space_cell">5dp</dimen>
+    <dimen name="gridview_margin">20dp</dimen>
+
     <!-- Sliding Menu-->
     <dimen name="slidingmenu_shadow_width">5dp</dimen>
     <dimen name="menu_width">300dp</dimen>
-    <dimen name="menu_height">30dp</dimen>
+    <dimen name="menu_height">35dp</dimen>
     <dimen name="menu_margin_top">45dp</dimen>
     <dimen name="menu_padding_left">5dp</dimen>
     <dimen name="menu_text_size">16sp</dimen>
+
+    <!-- fragment columna-->
+    <dimen name="size_text_galeria">15sp</dimen>
+    <dimen name="size_text_name_columna">22sp</dimen>
+    <dimen name="container_margin_top_bottom">10dp</dimen>
+    <dimen name="container_margin_left_right">30dp</dimen>
+    <dimen name="galeria_margin_bottom">5dp</dimen>
+
+    <!-- fragment PLV-->
+    <dimen name="lable_width">130dp</dimen>
+    <dimen name="lable_height">100dp</dimen>
+    <dimen name="arrow_width">40dp</dimen>
 
 
 </resources>

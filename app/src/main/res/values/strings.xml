@@ -54,4 +54,7 @@
 
     <string name="create_new_shop">Create new shop</string>
     <string name="send_mail">Send email...</string>
+
+    <string name="zero">0</string>
+
 </resources>

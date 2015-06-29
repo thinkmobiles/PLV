@@ -25,11 +25,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/container_margin_top_bottom"
+            android:layout_marginLeft="@dimen/container_margin_left_right"
+            android:layout_marginTop="@dimen/container_margin_top_bottom"
             android:layout_weight="1"
-            android:paddingRight="10dp">
+            android:paddingRight="@dimen/default_padding">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
                 android:src="@drawable/btn_volver"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="false"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="@dimen/default_margin"
                 android:layout_gravity="center_vertical"
                 android:layout_alignTop="@+id/ivAddEnvio_FC"
                 android:layout_alignBottom="@+id/ivAddEnvio_FC" />
@@ -59,7 +59,7 @@
                 android:layout_alignBottom="@+id/tvCount_FC"
                 android:layout_toLeftOf="@+id/tvCount_FC"
                 android:src="@drawable/btn_less"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="@dimen/default_margin" />
 
             <ImageView
                 android:id="@+id/ivMore_FC"
@@ -68,7 +68,7 @@
                 android:layout_alignParentTop="false"
                 android:layout_toLeftOf="@+id/tvCount_FC"
                 android:src="@drawable/btn_more"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="@dimen/default_margin" />
 
             <ImageView
                 android:id="@+id/ivAddCarrita_FC"
@@ -91,8 +91,8 @@
                 android:layout_toLeftOf="@+id/ivAddCarrita_FC"
                 android:background="@drawable/bg_count_products"
                 android:gravity="center"
-                android:text="0"
-                android:layout_marginRight="10dp" />
+                android:text="@string/zero"
+                android:layout_marginRight="@dimen/default_margin" />
 
 
         </RelativeLayout>
@@ -100,16 +100,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/container_margin_top_bottom"
+            android:layout_marginRight="@dimen/container_margin_left_right"
+            android:layout_marginTop="@dimen/container_margin_top_bottom"
             android:layout_weight="3"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="@dimen/galeria_margin_bottom"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
@@ -119,23 +119,23 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="@dimen/default_margin"
                     android:text="@string/galeria"
-                    android:textSize="25sp"
+                    android:textSize="@dimen/size_text_galeria"
                     android:textColor="@android:color/white" />
 
                 <ImageView
                     android:id="@+id/ivPhotoGal1_FC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_margin="@dimen/default_margin"
                     android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/ivPhotoGal2_FC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_margin="@dimen/default_margin"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -144,9 +144,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="@dimen/default_margin"
                 android:text="@string/columna"
-                android:textSize="35sp"
+                android:textSize="@dimen/size_text_name_columna"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
@@ -155,12 +155,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginBottom="10dp"
-                android:text="New Text"
                 android:textAllCaps="true"
-                android:textSize="35sp"
+                android:textSize="@dimen/size_text_name_columna"
                 android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="hnfvhn" />
 
         </LinearLayout>
 

@@ -64,7 +64,7 @@ public class MenuAdapterV2 extends ArrayAdapter {
         if(list.get(position).equals(Constants.ITEM_ENVIOS)){
             return Constants.TYPE_ENVIOS;
         }
-        if(position < 12){
+        if(position < 11){
             return Constants.TYPE_SPV_PADDING;
         } else {
             return Constants.TYPE_PLV_PADDING;

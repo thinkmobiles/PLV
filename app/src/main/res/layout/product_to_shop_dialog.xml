@@ -60,8 +60,8 @@
                 <ImageView
                     android:id="@+id/iv_all_ItemShop_PSD"
                     android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/d_arrow"
+                    android:layout_height="40dp"
+                    android:src="@drawable/arrow_down"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true" />
 
