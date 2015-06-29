@@ -66,7 +66,7 @@ public class CustomSpinnerDialog extends Fragment implements AdapterView.OnItemS
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View inflaterView = inflater.inflate(R.layout.custom_dialog_spinner, container, false);
+        final View inflaterView = inflater.inflate(R.layout.dialog_custom_spinner, container, false);
         findViews(inflaterView);
         setListeners();
         addProduct();

@@ -49,4 +49,8 @@ public class DBItem extends SugarRecord<DBItem> {
     public int getNumber(){
         return itemNumber;
     }
+
+    public void setNumber(int _number){
+        itemNumber = _number;
+    }
 }

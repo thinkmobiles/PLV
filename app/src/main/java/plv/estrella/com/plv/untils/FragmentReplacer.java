@@ -57,9 +57,10 @@ public abstract class FragmentReplacer {
 
     public static final void replaceCurrentFragment(final FragmentActivity _activity,
                                                     final Fragment _fragment) {
-        popSupBackStack(_activity);
+        clearBackStack(_activity);
         _activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, _fragment)
+                .addToBackStack(null)
                 .commit();
 
     }

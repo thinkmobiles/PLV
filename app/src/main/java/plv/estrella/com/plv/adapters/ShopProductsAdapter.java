@@ -58,8 +58,7 @@ public class ShopProductsAdapter extends BaseAdapter implements View.OnClickList
         final ViewHolder holder;
 
         if (_convertView == null){
-            final LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            _convertView = inflater.inflate(R.layout.item_product, _parent, false);
+            _convertView = LayoutInflater.from(mContext).inflate(R.layout.item_product_envio, _parent, false);
             holder = getHolder(_convertView, _position);
 
         }else {

@@ -104,7 +104,7 @@ public class SlidingMenuManagerV2 {
                         jumper.setParamToShop();
                         break;
                 }
-                FragmentReplacer.replaceFragmentWithoutBackStack(activity, jumper);
+                FragmentReplacer.replaceFragmentWithStack(activity, jumper);
                 menu.toggle();
             }
         });

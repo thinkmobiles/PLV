@@ -14,6 +14,7 @@ import android.widget.TextView;
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.ShopProductsAdapter;
+import plv.estrella.com.plv.adapters.ShopproductAdapter;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.global.Constants;
 
@@ -27,7 +28,8 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
     private TextView tvClearList, tvShopName;
     private ListView lvProductContainer;
     private ImageView mGoToBack;
-    private ShopProductsAdapter mAdapter;
+//    private ShopProductsAdapter mAdapter;
+    private ShopproductAdapter mAdapter;
 
 
     public static ShopProductsFragment newInstance(final Shop _shop) {
@@ -93,7 +95,7 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
     }
 
     private void initProductList(){
-        mAdapter = new ShopProductsAdapter(mCallingActivity, mShop);
+        mAdapter = new ShopproductAdapter(mCallingActivity, mShop);
         lvProductContainer.setAdapter(mAdapter);
     }
 

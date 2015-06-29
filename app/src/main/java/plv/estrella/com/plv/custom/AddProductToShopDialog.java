@@ -27,7 +27,6 @@ import plv.estrella.com.plv.adapters.SpinnerPurchaseAdapter;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.fragments.ColumnaFragment;
-import plv.estrella.com.plv.fragments.PLVFragment;
 import plv.estrella.com.plv.fragments.ProductPagerFragment;
 import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.global.Constants;
@@ -94,7 +93,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View inflaterView = inflater.inflate(R.layout.product_to_shop_dialog, container, false);
+        final View inflaterView = inflater.inflate(R.layout.dialog_product_to_shop, container, false);
 
         findViews(inflaterView);
         setListeners();
