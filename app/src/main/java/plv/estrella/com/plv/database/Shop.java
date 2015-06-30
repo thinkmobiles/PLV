@@ -9,16 +9,22 @@ import java.io.Serializable;
  */
 public class Shop extends SugarRecord<Shop> implements Serializable {
 
-    private String mName;
+    private String name;
+    private int type;
 
     public Shop() {
     }
 
-    public Shop(String _name) {
-        mName = _name;
+    public Shop(String _name, int _type) {
+        name = _name;
+        type = _type;
     }
 
     public String getName() {
-        return mName;
+        return name;
+    }
+
+    public int getType() {
+        return type;
     }
 }

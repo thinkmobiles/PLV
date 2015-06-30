@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cristaliza.mvc.events.Event;
@@ -19,23 +18,23 @@ import java.util.List;
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.adapters.MenuAdapter;
-import plv.estrella.com.plv.fragments.ColumnaFragment;
-import plv.estrella.com.plv.fragments.MainMenuFragment;
-import plv.estrella.com.plv.fragments.PLVFragment;
-import plv.estrella.com.plv.fragments.SubMenuFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 
-public class SlidingMenuManager implements View.OnClickListener {
+/**
+ * Created by samson on 22.06.2015.
+ */
+public class SlidingMenuManager {
 
     private SlidingMenu menu;
     private MainActivity activity;
     private EventListener mMenuListener;
     private List<Item> mMenuItemList;
 
-    private ListView listColumnas, listPLV;
-    private TextView tvInicio, tvColumnas, tvPLV, tvEnvios, tvPedidos;
+    private ListView listMenu;
     private List<Item> mListColumnas, mListPLV;
+    private ArrayList<String> mTitleList;
+    private MenuAdapter adapter;
 
     public void initMenu(Activity _activity) {
 
@@ -59,58 +58,48 @@ public class SlidingMenuManager implements View.OnClickListener {
         menu.setBehindWidth(getDisplayWidth());
         menu.setFadeDegree(0.33f);
         menu.attachToActivity(_activity, SlidingMenu.SLIDING_WINDOW);
-        menu.setMenu(R.layout.menu);
+        menu.setMenu(R.layout.menu_v2);
         menu.setSlidingEnabled(true);
     }
 
     private void findUI2() {
-        tvInicio        = (TextView) menu.findViewById(R.id.tvInicio);
-        tvColumnas      = (TextView) menu.findViewById(R.id.tvColumnas);
-        tvPLV           = (TextView) menu.findViewById(R.id.tvPLV);
-        tvEnvios        = (TextView) menu.findViewById(R.id.tvEnvios);
-        tvPedidos       = (TextView) menu.findViewById(R.id.tvPedidos);
-        listPLV         = (ListView) menu.findViewById(R.id.lvPLV);
-        listColumnas    = (ListView) menu.findViewById(R.id.lvColumnas);
+        listMenu = (ListView) menu.findViewById(R.id.lvMenu);
     }
 
     private void setAdapters() {
-        ArrayList<String> list = new ArrayList<>();
-        for (Item item : mListColumnas) {
-            list.add(item.getName());
-        }
-        listColumnas.setAdapter(new MenuAdapter(list, activity));
-        list = new ArrayList<>();
-            for (Item item : mListPLV) {
-                list.add(item.getName());
-            }
-            listPLV.setAdapter(new MenuAdapter(list, activity));
-        }
+        adapter = new MenuAdapter(activity, R.id.tvMenuItem,mTitleList);
+        listMenu.setAdapter(adapter);
+    }
 
     private void setListeners() {
-        tvInicio.setOnClickListener(this);
-        tvColumnas.setOnClickListener(this);
-        tvPLV.setOnClickListener(this);
-        tvEnvios.setOnClickListener(this);
-        tvPedidos.setOnClickListener(this);
-
-        listColumnas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentReplacer.replaceFragmentWithStack(
-                        activity,
-                        new ColumnaFragment().newInstance(new ItemSerializable(mListColumnas.get(position)))
-                );
-                menu.toggle();
-            }
-        });
-
-        listPLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentReplacer.replaceFragmentWithStack(
-                        activity,
-                        new PLVFragment().newInstance(new ItemSerializable(mListPLV.get(position)))
-                );
+                JumpFragmentHelper jumper = new JumpFragmentHelper();
+                switch (adapter.getItemViewType(position)){
+                    case Constants.TYPE_INICIO:
+                        jumper.setParamToMainmenu();
+                        break;
+                    case Constants.TYPE_SPV:
+                        jumper.setParamToSubmenu(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0)));
+                        break;
+                    case Constants.TYPE_SPV_PADDING:
+                        jumper.setParamToColumna(new ItemSerializable(mListColumnas.get(position - 2)));
+                        break;
+                    case Constants.TYPE_PLV:
+                        jumper.setParamToSubmenu(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)));
+                        break;
+                    case Constants.TYPE_PLV_PADDING:
+                        jumper.setParamToPLV(new ItemSerializable(mListPLV.get(position - 11)));
+                        break;
+                    case Constants.TYPE_ENVIOS:
+                        jumper.setParamToShop();
+                        break;
+                    case Constants.TYPE_PEDIDOS:
+                        jumper.setParamToShop();
+                        break;
+                }
+                FragmentReplacer.replaceFragmentWithStack(activity, jumper);
                 menu.toggle();
             }
         });
@@ -150,18 +139,28 @@ public class SlidingMenuManager implements View.OnClickListener {
     int c = 0;
 
     private void createMenu() {
+        mTitleList = new ArrayList<>();
         mMenuItemList = ApiManager.getFirstList();
 
+        mTitleList.add(Constants.ITEM_INICIO);
+        mTitleList.add(Constants.ITEM_COLUMNAS);
         ApiManager.getSecondLevel(mMenuListener, mMenuItemList.get(0));
+        mTitleList.add(Constants.ITEM_PLV);
         ++c;
         ApiManager.getSecondLevel(mMenuListener, mMenuItemList.get(1));
+        mTitleList.add(Constants.ITEM_ENVIOS);
+        mTitleList.add(Constants.ITEM_PEDIDOS);
     }
 
     private void createSubMenu() {
+        List<Item> list = ApiManager.getSecondList();
         if (c == 0) {
-            mListColumnas = ApiManager.getSecondList();
+            mListColumnas = list;
         } else {
-            mListPLV = ApiManager.getSecondList();
+            mListPLV = list;
+        }
+        for(Item item : list){
+            mTitleList.add(item.getName());
         }
     }
 
@@ -169,32 +168,4 @@ public class SlidingMenuManager implements View.OnClickListener {
         return activity.getWindowManager().getDefaultDisplay().getWidth() / 3;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.tvInicio:
-                FragmentReplacer.clearBackStack(activity);
-                FragmentReplacer.replaceFragmentWithStack(activity, new MainMenuFragment());
-                break;
-            case R.id.tvColumnas:
-                FragmentReplacer.clearBackStack(activity);
-                FragmentReplacer.replaceFragmentWithStack(
-                        activity,
-                        new SubMenuFragment().newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0)))
-                );
-                break;
-            case R.id.tvPLV:
-                FragmentReplacer.clearBackStack(activity);
-                FragmentReplacer.replaceFragmentWithStack(
-                        activity,
-                        new SubMenuFragment().newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)))
-                );
-                break;
-            case R.id.tvEnvios:
-                break;
-            case R.id.tvPedidos:
-                break;
-        }
-        menu.toggle();
-    }
 }

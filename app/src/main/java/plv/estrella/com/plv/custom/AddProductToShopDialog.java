@@ -218,7 +218,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
 
                 isSelectChek = false;
             } else {
-                Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString());
+                Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialog);
                 spinnerLayout.setVisibility(View.VISIBLE);
                 fillShopList();
 

@@ -1,9 +1,7 @@
 package plv.estrella.com.plv;
 
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,14 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-
 import plv.estrella.com.plv.fragments.MainMenuFragment;
-import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 import plv.estrella.com.plv.untils.SlidingMenuManager;
-import plv.estrella.com.plv.untils.SlidingMenuManagerV2;
 
 
 public class MainActivity extends FragmentActivity {
@@ -29,7 +23,7 @@ public class MainActivity extends FragmentActivity {
     private TextView mTitle;
     private ImageView logo;
     private double doubleBackToExitPressedOnce;
-    private SlidingMenuManagerV2 menuManager;
+    private SlidingMenuManager menuManager;
 
     private boolean isOpen = false;
 
@@ -44,7 +38,7 @@ public class MainActivity extends FragmentActivity {
         setBackground();
         startMainMenu();
 
-        menuManager = new SlidingMenuManagerV2();
+        menuManager = new SlidingMenuManager();
         menuManager.initMenu(this);
 
     }
