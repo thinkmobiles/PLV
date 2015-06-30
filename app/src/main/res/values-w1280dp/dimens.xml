@@ -18,7 +18,7 @@
 
     <!-- sub-menu-->
     <dimen name="space_cell">10dp</dimen>
-    <dimen name="gridview_margin">80dp</dimen>
+    <dimen name="gridview_margin">77dp</dimen>
 
     <!--shop product fragment -->
     <dimen name="product_item_image_size">50dp</dimen>

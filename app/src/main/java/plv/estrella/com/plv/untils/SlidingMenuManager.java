@@ -58,7 +58,7 @@ public class SlidingMenuManager {
         menu.setBehindWidth(getDisplayWidth());
         menu.setFadeDegree(0.33f);
         menu.attachToActivity(_activity, SlidingMenu.SLIDING_WINDOW);
-        menu.setMenu(R.layout.menu_v2);
+        menu.setMenu(R.layout.menu);
         menu.setSlidingEnabled(true);
     }
 
@@ -93,10 +93,10 @@ public class SlidingMenuManager {
                         jumper.setParamToPLV(new ItemSerializable(mListPLV.get(position - 11)));
                         break;
                     case Constants.TYPE_ENVIOS:
-                        jumper.setParamToShop();
+                        jumper.setParamToShop(Constants.TYPE_SHOPS_ENVIOS);
                         break;
                     case Constants.TYPE_PEDIDOS:
-                        jumper.setParamToShop();
+                        jumper.setParamToShop(Constants.TYPE_SHOPS_PEDIDOS);
                         break;
                 }
                 FragmentReplacer.replaceFragmentWithStack(activity, jumper);

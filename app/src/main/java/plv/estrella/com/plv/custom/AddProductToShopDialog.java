@@ -41,7 +41,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     private MainActivity mCallingActivity;
     private int selected;
 
-    private List<Shop> shopList, subList;
+    private List<Shop> subList;
     private LinearLayout spinnerLayout;
     private Spinner spinner;
     private TextView tvAccept, tvCancel, tvTitle;
@@ -51,8 +51,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     private ImageView allShop;
     private boolean isSelectChek, questionCheck=false;
     private boolean isShowListShop = false;
-    private int typeDialog;
-    private int typeShop;
+    private int typeDialogShop;
     private int numProducts;
     private ColumnaFragment mFragmentBackC;
     private ProductPagerFragment mFragmentBackP;
@@ -68,16 +67,14 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
 
     public void show(MainActivity _mActivity, int _typeDialog, ColumnaFragment _fragment, int _numProducts){
         mFragmentBackC = _fragment;
-        typeDialog = _typeDialog;
-        typeShop = _typeDialog;
+        typeDialogShop = _typeDialog;
         numProducts = _numProducts;
         FragmentReplacer.addFragment(_mActivity, this);
     }
 
     public void show(MainActivity _mActivity, int _typeDialog, ProductPagerFragment _fragment, int _numProducts){
         mFragmentBackP = _fragment;
-        typeDialog = _typeDialog;
-        typeShop = _typeDialog;
+        typeDialogShop = _typeDialog;
         numProducts = _numProducts;
         FragmentReplacer.addFragment(_mActivity, this);
     }
@@ -143,11 +140,11 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     }
 
     private void initTypeDialog(){
-        if(typeDialog == Constants.TYPE_DIALOG_ADDED) {
+        if(typeDialogShop == Constants.TYPE_DIALOG_ADDED) {
             questionCheck = true;
             setVisible();
         } else {
-            if(typeDialog == Constants.TYPE_DIALOG_ADD_CARRITA){
+            if(typeDialogShop == Constants.TYPE_DIALOG_ADD_CARRITA){
                 tvTitle.setText(mCallingActivity.getString(R.string.anadir_pedido));
             }
 
@@ -213,12 +210,12 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
                 DBManager.addItem(
                         mCurrentItem,
                         numProducts,
-                        shopList.get(selected)
+                        subList.get(selected)
                 );
 
                 isSelectChek = false;
             } else {
-                Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialog);
+                Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialogShop);
                 spinnerLayout.setVisibility(View.VISIBLE);
                 fillShopList();
 
@@ -261,9 +258,13 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     }
 
     public void fillShopList(){
-        shopList = new ArrayList<>();
         subList = new ArrayList<>();
-        shopList = DBManager.getShops();
+        List<Shop> shops = DBManager.getShops();
+        ArrayList<Shop> shopList = new ArrayList<>();
+        for(Shop shop :shops){
+            if(shop.getType() == typeDialogShop)
+                shopList.add(shop);
+        }
         if (!shopList.isEmpty()) {
             Shop lastElement = shopList.get(shopList.size() - 1);
             shopList.add(0, lastElement);

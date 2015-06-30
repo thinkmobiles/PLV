@@ -1,45 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/lvMenu"
     android:paddingLeft="25dp"
     android:background="@color/menu_background_black">
 
-    <TextView
-        style="@style/TitleItemSlideMenu"
-        android:text="@string/title_inicio"
-        android:id="@+id/tvInicio" />
-
-    <TextView
-        style="@style/TitleItemSlideMenu"
-        android:background="@drawable/line_top"
-        android:text="@string/columnas"
-        android:id="@+id/tvColumnas" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvColumnas" />
-
-    <TextView
-        style="@style/TitleItemSlideMenu"
-        android:background="@drawable/line_top"
-        android:text="@string/plv"
-        android:id="@+id/tvPLV" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvPLV" />
-
-    <TextView
-        style="@style/TitleItemSlideMenu"
-        android:background="@drawable/line_top"
-        android:text="@string/title_envios"
-        android:id="@+id/tvEnvios" />
-
-    <TextView
-        style="@style/TitleItemSlideMenu"
-        android:text="pedidos"
-        android:id="@+id/tvPedidos" />
-</LinearLayout>
+</ListView>

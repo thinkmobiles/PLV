@@ -21,13 +21,13 @@ import plv.estrella.com.plv.untils.BitmapCreator;
 /**
  * Created by vasia on 27.05.2015.
  */
-public class ShopProductsAdapter extends BaseAdapter implements View.OnClickListener {
+public class ShopProductsEAdapter extends BaseAdapter implements View.OnClickListener {
 
     private ArrayList<DBItem> mProducts;
     private Shop mShop;
     private Context mContext;
 
-    public ShopProductsAdapter(Context _context, Shop _shop) {
+    public ShopProductsEAdapter(Context _context, Shop _shop) {
         mShop = _shop;
         getProductsList();
         mContext = _context;

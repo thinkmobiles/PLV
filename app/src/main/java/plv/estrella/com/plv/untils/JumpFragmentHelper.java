@@ -33,6 +33,7 @@ public class JumpFragmentHelper extends Fragment {
     private MainActivity mActivity;
     private int openItemMenu;
     private int typeItem;
+    private int typeShop;
     private ItemSerializable itemSerializable;
 
     public void setParamToMainmenu(){
@@ -55,8 +56,9 @@ public class JumpFragmentHelper extends Fragment {
         typeItem = JUMP_PLV;
     }
 
-    public void setParamToShop(){
+    public void setParamToShop(int _typeShop){
         typeItem = JUMP_SHOP;
+        typeShop = _typeShop;
     }
 
     @Override
@@ -81,7 +83,7 @@ public class JumpFragmentHelper extends Fragment {
                 FragmentReplacer.replaceCurrentFragment(mActivity, PLVFragment.newInstance(itemSerializable));
                 break;
             case JUMP_SHOP:
-                FragmentReplacer.replaceCurrentFragment(mActivity, new ShopsFragment());
+                FragmentReplacer.replaceCurrentFragment(mActivity, ShopsFragment.newInstance(typeShop));
                 break;
         }
         return null;

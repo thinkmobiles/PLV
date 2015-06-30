@@ -15,6 +15,8 @@ import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.custom.CustomDialog;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
+import plv.estrella.com.plv.fragments.ShopProductsFragment;
+import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
  * Created by vasia on 27.05.2015.
@@ -23,14 +25,20 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
 
     private ArrayList<Shop> mShops;
     private MainActivity mActivity;
+    private int typeShops;
 
-    public ShopListAdapter(MainActivity _mainActivity, List<Shop> _shops) {
+    public ShopListAdapter(MainActivity _mainActivity, List<Shop> _shops, int _typeShop) {
         mActivity = _mainActivity;
+        typeShops = _typeShop;
         setShops(_shops);
     }
 
     public void setShops(List<Shop> _shops){
-        mShops = (ArrayList<Shop>) _shops;
+        mShops = new ArrayList<>();
+        for(Shop shop : _shops){
+            if(shop.getType() == typeShops)
+                mShops.add(shop);
+        }
     }
 
     public ArrayList<Shop> getShops(){
@@ -102,7 +110,6 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
                 see(position);
                 break;
             case R.id.ivDelete_IS:
-//                deleteShop(position);
                 startDeleteDialog(position);
                 break;
         }
@@ -113,7 +120,7 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
     }
 
     private void see(int _position){
-
+        FragmentReplacer.replaceFragmentWithStack(mActivity, ShopProductsFragment.newInstance(mShops.get(_position)));
     }
 
     private void startDeleteDialog(final int _position){

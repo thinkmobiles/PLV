@@ -13,23 +13,23 @@ import android.widget.TextView;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
-import plv.estrella.com.plv.adapters.ShopProductsAdapter;
-import plv.estrella.com.plv.adapters.ShopproductAdapter;
+import plv.estrella.com.plv.adapters.ShopProductsEAdapter;
+import plv.estrella.com.plv.adapters.ShopProductsPAdapter;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.global.Constants;
 
 /**
  * Created by vasia on 27.05.2015.
  */
-public class ShopProductsFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class ShopProductsFragment extends Fragment implements View.OnClickListener {
 
     private MainActivity mCallingActivity;
     private Shop mShop;
-    private TextView tvClearList, tvShopName;
+    private TextView tvClearList, tvFichaListado, tvCantidad, tvEnviar;
     private ListView lvProductContainer;
     private ImageView mGoToBack;
-//    private ShopProductsAdapter mAdapter;
-    private ShopproductAdapter mAdapter;
+    private ShopProductsEAdapter mAdapterE;
+    private ShopProductsPAdapter mAdapterP;
 
 
     public static ShopProductsFragment newInstance(final Shop _shop) {
@@ -62,14 +62,21 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
 
     private void findViews(final View _view){
         tvClearList          = (TextView) _view.findViewById(R.id.tvClearProductList_FSP);
-        tvShopName           = (TextView) _view.findViewById(R.id.tvShopName_FSP);
+        tvFichaListado       = (TextView) _view.findViewById(R.id.tvShopName_FSP);
+        tvEnviar             = (TextView) _view.findViewById(R.id.tvEnviar);
+        tvCantidad           = (TextView) _view.findViewById(R.id.tvCantidad);
         lvProductContainer   = (ListView) _view.findViewById(R.id.lvProductContainer_FSP);
         mGoToBack            = (ImageView)_view.findViewById(R.id.btnVolver_FSP);
+
+        if(Constants.TYPE_SHOPS_PEDIDOS == mShop.getType()){
+            tvCantidad.setVisibility(View.VISIBLE);
+            tvFichaListado.setText(mCallingActivity.getString(R.string.listado));
+        }
     }
 
     private void setListeners(){
         tvClearList.setOnClickListener(this);
-        lvProductContainer.setOnItemClickListener(this);
+        tvEnviar.setOnClickListener(this);
         mGoToBack.setOnClickListener(this);
     }
 
@@ -82,25 +89,34 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
             case R.id.btnVolver_FSP:
                 getActivity().onBackPressed();
                 break;
+            case R.id.tvEnviar:
+                if(mShop.getType() == Constants.TYPE_SHOPS_PEDIDOS){
+                    mAdapterP.checkCorrectNumbers();
+                }
+                break;
         }
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
     private void clearProductList(){
-        mAdapter.deleteAllProduct();
+        if(mShop.getType() == Constants.TYPE_SHOPS_ENVIOS){
+            mAdapterE.deleteAllProduct();
+        } else {
+            mAdapterP.deleteAllProduct();
+        }
     }
 
     private void initProductList(){
-        mAdapter = new ShopproductAdapter(mCallingActivity, mShop);
-        lvProductContainer.setAdapter(mAdapter);
+        if(mShop.getType() == Constants.TYPE_SHOPS_ENVIOS){
+            mAdapterE = new ShopProductsEAdapter(mCallingActivity, mShop);
+            lvProductContainer.setAdapter(mAdapterE);
+        } else {
+            mAdapterP = new ShopProductsPAdapter(mCallingActivity, mShop);
+            lvProductContainer.setAdapter(mAdapterP);
+        }
     }
 
     private void setShopTitle(){
-        tvShopName.setText(mShop.getName());
+        mCallingActivity.setTitle(mShop.getName());
     }
 
 }

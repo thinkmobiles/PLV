@@ -41,11 +41,11 @@
         android:text="0"
         android:id="@+id/tvCount_PP"
         android:background="@drawable/bg_count_products"
-        android:layout_toLeftOf="@+id/ivDelete_PP"
-        android:layout_marginRight="100dp"
         android:gravity="center"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/default_margin" />
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_toLeftOf="@+id/tvMessage_PP" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -54,4 +54,15 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/btn_circle_delete"
         android:layout_centerVertical="true" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:text="@string/alert_message"
+        android:textColor="@android:color/holo_red_light"
+        android:id="@+id/tvMessage_PP"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:gravity="fill_vertical"
+        android:visibility="invisible" />
 </RelativeLayout>

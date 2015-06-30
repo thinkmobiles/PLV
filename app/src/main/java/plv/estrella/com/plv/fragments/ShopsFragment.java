@@ -64,7 +64,7 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
     }
 
     private void initShopList(){
-        mAdapter = new ShopListAdapter(mCallingActivity, DBManager.getShops());
+        mAdapter = new ShopListAdapter(mCallingActivity, DBManager.getShops(), typeShops);
         lvShopContainer.setAdapter(mAdapter);
     }
 
@@ -88,7 +88,6 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int _position, long id) {
-        Log.e("type", mAdapter.getShops().get(_position).getType() + "");
         FragmentReplacer.replaceFragmentWithStack(mCallingActivity, ShopProductsFragment.newInstance(mAdapter.getShops().get(_position)));
     }
 

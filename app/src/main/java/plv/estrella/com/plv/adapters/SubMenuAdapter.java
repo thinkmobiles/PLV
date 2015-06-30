@@ -2,6 +2,7 @@ package plv.estrella.com.plv.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -72,10 +73,7 @@ public class SubMenuAdapter extends BaseAdapter {
 
         }else
             holder = (ViewHolder) convertView.getTag();
-        if (mItems.get(_position).getIcon() != null && !mItems.get(_position).getIcon().equals(""))
-            holder.ivMenuImage.setImageDrawable(BitmapCreator.getDrawable(mItems.get(_position).getIcon()));
-        else
-            holder.ivMenuImage.setImageResource(R.mipmap.ic_launcher);
+        holder.ivMenuImage.setImageBitmap(BitmapCreator.getBitmap(mItems.get(_position).getIcon()));
         return convertView;
     }
 

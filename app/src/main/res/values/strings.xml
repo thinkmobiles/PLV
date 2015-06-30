@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">PLV</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
     <string name="title_inicio">INICIO</string>
     <string name="title_envios">ENVIOS PENDIENTES</string>
     <string name="download">Download..</string>
@@ -17,7 +14,11 @@
     <string name="borrar_lista">BORRAR LISTA</string>
     <string name="vaciar">VACIAR</string>
     <string name="locales">LOCALES</string>
-    <string name="fichas">FICHAS</string>
+    <string name="fichas">FICHA</string>
+    <string name="enviar">ENVIAR</string>
+    <string name="listado">LISTADO DE PRODUCTOS</string>
+    <string name="cantidad">CANTIDAD</string>
+    <string name="alert_message">Este producto no se enviara si no anades al menos 1 item</string>
 
     <string name="cancelar">CANCELAR</string>
     <string name="accept">ACEPTAR</string>

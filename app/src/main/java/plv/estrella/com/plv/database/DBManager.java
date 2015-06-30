@@ -17,6 +17,11 @@ public  class DBManager {
     }
 
     public static final void addItem(final Item _item, int _number, final Shop _shop){
+        final List<DBItem> items = getDBItems(_shop);
+        for(DBItem dbItem : items){
+            if(dbItem.getItem().getId().equals(_item.getId()))
+                return;
+        }
         final DBItem dbItem = new DBItem(_item, _number, _shop);
         dbItem.save();
     }
