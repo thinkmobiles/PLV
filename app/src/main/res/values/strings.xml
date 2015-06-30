@@ -24,7 +24,7 @@
     <string name="accept">ACEPTAR</string>
 
     <!-- Dialogs-->
-    <string name="anadir_ficha">ANADIR FICHA A:</string>
+    <string name="anadir_ficha">AÑADIR FICHA A:</string>
     <string name="anadir_pedido">ANADIR PEDIDO A:</string>
     <string name="want_continue">ESTA FICHA HA SIDO AÑADIDA</string>
     <string name="locales_shopping">LOCALES</string>

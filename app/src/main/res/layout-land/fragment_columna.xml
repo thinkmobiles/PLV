@@ -129,14 +129,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/default_margin"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="#335428" />
 
                 <ImageView
                     android:id="@+id/ivPhotoGal2_FC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/default_margin"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="#335428" />
             </LinearLayout>
 
             <TextView

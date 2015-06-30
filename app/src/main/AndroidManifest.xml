@@ -39,6 +39,9 @@
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="landscape">
         </activity>
+        <activity android:name=".GaleryActivity"
+            android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>

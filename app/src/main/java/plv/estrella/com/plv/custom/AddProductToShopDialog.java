@@ -51,7 +51,8 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     private ImageView allShop;
     private boolean isSelectChek, questionCheck=false;
     private boolean isShowListShop = false;
-    private int typeDialogShop;
+    private int typeDialog;
+    private int typeShop;
     private int numProducts;
     private ColumnaFragment mFragmentBackC;
     private ProductPagerFragment mFragmentBackP;
@@ -67,14 +68,14 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
 
     public void show(MainActivity _mActivity, int _typeDialog, ColumnaFragment _fragment, int _numProducts){
         mFragmentBackC = _fragment;
-        typeDialogShop = _typeDialog;
+        typeDialog = _typeDialog;
         numProducts = _numProducts;
         FragmentReplacer.addFragment(_mActivity, this);
     }
 
     public void show(MainActivity _mActivity, int _typeDialog, ProductPagerFragment _fragment, int _numProducts){
         mFragmentBackP = _fragment;
-        typeDialogShop = _typeDialog;
+        typeDialog = _typeDialog;
         numProducts = _numProducts;
         FragmentReplacer.addFragment(_mActivity, this);
     }
@@ -140,11 +141,11 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     }
 
     private void initTypeDialog(){
-        if(typeDialogShop == Constants.TYPE_DIALOG_ADDED) {
+        if(typeDialog == Constants.TYPE_DIALOG_ADDED) {
             questionCheck = true;
             setVisible();
         } else {
-            if(typeDialogShop == Constants.TYPE_DIALOG_ADD_CARRITA){
+            if(typeDialog == Constants.TYPE_DIALOG_ADD_CARRITA){
                 tvTitle.setText(mCallingActivity.getString(R.string.anadir_pedido));
             }
 
@@ -169,7 +170,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
             case R.id.tvCancel_PSD:
                 if (questionCheck){
                     FragmentReplacer.popSupBackStack(getActivity());
-                    FragmentReplacer.replaceFragmentWithStack(getActivity(), new ShopsFragment());
+                    FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopsFragment.newInstance(typeDialog));
                     questionCheck = false;
                 } else {
                     FragmentReplacer.popSupBackStack(getActivity());
@@ -215,7 +216,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
 
                 isSelectChek = false;
             } else {
-                Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialogShop);
+                Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialog);
                 spinnerLayout.setVisibility(View.VISIBLE);
                 fillShopList();
 
@@ -262,7 +263,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
         List<Shop> shops = DBManager.getShops();
         ArrayList<Shop> shopList = new ArrayList<>();
         for(Shop shop :shops){
-            if(shop.getType() == typeDialogShop)
+            if(shop.getType() == typeDialog)
                 shopList.add(shop);
         }
         if (!shopList.isEmpty()) {
