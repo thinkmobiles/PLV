@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/default_padding"
     android:background="#ffff">
 
     <view
@@ -34,46 +35,8 @@
             android:id="@+id/ivAddEnvio_P"
             android:src="@drawable/btn_add_envio"
             android:layout_alignParentLeft="true"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="@dimen/btn_enviar_margin_right" />
     </RelativeLayout>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ivCarrita_P"
-        android:src="@drawable/btn_cart"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/default_margin" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ivMore_P"
-        android:src="@drawable/btn_more"
-        android:layout_alignParentLeft="false"
-        android:layout_toLeftOf="@+id/tvCount_P"
-        android:layout_above="@+id/ivLess_P" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ivLess_P"
-        android:src="@drawable/btn_less"
-        android:layout_alignParentLeft="false"
-        android:layout_toLeftOf="@+id/tvCount_P"
-        android:layout_alignBottom="@+id/tvCount_P" />
-
-    <TextView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="0"
-        android:id="@+id/tvCount_P"
-        android:gravity="center"
-        android:background="@drawable/bg_count_products"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/ivCarrita_P"
-        android:layout_alignParentBottom="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -92,5 +55,51 @@
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_margin="15dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivCarrita_P"
+            android:src="@drawable/btn_cart"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/default_margin" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivMore_P"
+            android:src="@drawable/btn_more"
+            android:layout_alignParentLeft="false"
+            android:layout_toLeftOf="@+id/tvCount_P"
+            android:layout_above="@+id/ivLess_P" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivLess_P"
+            android:src="@drawable/btn_less"
+            android:layout_alignParentLeft="false"
+            android:layout_toLeftOf="@+id/tvCount_P"
+            android:layout_alignBottom="@+id/tvCount_P" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="0"
+            android:id="@+id/tvCount_P"
+            android:gravity="center"
+            android:background="@drawable/bg_count_products"
+            android:layout_marginRight="@dimen/btn_enviar_margin_right"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/ivCarrita_P"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 
 </RelativeLayout>

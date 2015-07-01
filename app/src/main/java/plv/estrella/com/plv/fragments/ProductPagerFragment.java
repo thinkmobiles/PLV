@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.cristaliza.mvc.events.Event;
 import com.cristaliza.mvc.models.estrella.AppModel;
 import com.cristaliza.mvc.models.estrella.Item;
+import com.cristaliza.mvc.models.estrella.Product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -44,6 +46,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     private com.cristaliza.mvc.events.EventListener eventListener;
     private int[] massivCounters;
     private List<Item> mListProducts;
+    private Product mProduct;
 
     public static ProductPagerFragment newInstance(ItemSerializable _item, int _position) {
         ProductPagerFragment fragment = new ProductPagerFragment();
@@ -106,10 +109,9 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         massivCounters = new int[mListProducts.size()];
         ArrayList<Fragment> fragments = new ArrayList<>();
         for(int i = 0; i < mListProducts.size(); ++i){
+            ApiManager.getProducts(eventListener, mListProducts.get(i));
             massivCounters[i] = 0;
-            ItemPagerFragment fragment = new ItemPagerFragment();
-            fragment.setData(mListProducts.get(i));
-            fragments.add(fragment);
+            fragments.add(ItemPagerFragment.newInstance(mProduct));
         }
         mPager.setAdapter(new ProductPagerAdapter(getChildFragmentManager(), fragments));
         mPager.setCurrentItem(targetPos);
@@ -126,6 +128,9 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
                         break;
                     case AppModel.ChangeEvent.THIRD_LEVEL_CHANGED_ID:
                         setAdapter();
+                        break;
+                    case AppModel.ChangeEvent.PRODUCTS_CHANGED_ID:
+                        mProduct = ApiManager.getProductsList().get(0);
                         break;
                 }
             }

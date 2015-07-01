@@ -59,8 +59,7 @@
         android:layout_toRightOf="@+id/rlPrev"
         android:layout_toLeftOf="@+id/rlNext"
         android:gravity="center_horizontal"
-        android:layout_below="@+id/llk"
-        android:background="#882230">
+        android:layout_below="@+id/llk">
 
         <HorizontalScrollView
             android:layout_width="wrap_content"

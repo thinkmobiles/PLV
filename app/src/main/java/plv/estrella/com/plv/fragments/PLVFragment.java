@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.cristaliza.mvc.events.Event;
 import com.cristaliza.mvc.events.EventListener;
 import com.cristaliza.mvc.models.estrella.AppModel;
 import com.cristaliza.mvc.models.estrella.Item;
+import com.cristaliza.mvc.models.estrella.Product;
 
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     private LinearLayout llContProd;
     private EventListener mMenuListener;
     private List<Item> mListProducts;
+    private Product mProduct;
     private MainActivity mCallingActivity;
     private Item mCurrentItem;
 
@@ -99,32 +102,35 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
                     case AppModel.ChangeEvent.THIRD_LEVEL_CHANGED_ID:
                         fillHorizontalList();
                         break;
+                    case AppModel.ChangeEvent.PRODUCTS_CHANGED_ID:
+                        mProduct = ApiManager.getProductsList().get(0);
+                        break;
                 }
             }
         };
     }
 
+
+
     private void fillHorizontalList() {
         mListProducts = ApiManager.getThirdList();
 
-        clearList();
+        for(int i = 0; i < mListProducts.size(); ++i){
+            ApiManager.getProducts(mMenuListener, mListProducts.get(i));
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(500, ViewGroup.LayoutParams.MATCH_PARENT);
-        params.setMargins(30, 10, 30, 10);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(500, ViewGroup.LayoutParams.MATCH_PARENT);
+            params.setMargins(30, 10, 30, 10);
 
-        if (mListProducts != null){
-            for(int i = 0; i < mListProducts.size(); ++i) {
-//            for(int i = 0; i < 3; ++i) {
-                View view = LayoutInflater.from(mCallingActivity).inflate(R.layout.item_product_horizontal_list, null);
+            View view = LayoutInflater.from(mCallingActivity).inflate(R.layout.item_product_horizontal_list, null);
+            view.setLayoutParams(params);
 
-                ImageView imageView = (ImageView) view.findViewById(R.id.ivIconProd);
-                view.setLayoutParams(params);
+            ImageView imageView = (ImageView) view.findViewById(R.id.ivIconProd);
 
-                imageView.setImageBitmap(BitmapCreator.getBitmap(mListProducts.get(i).getIcon()));
+//            imageView.setImageBitmap(BitmapCreator.getBitmap(mProduct.getImage()));
 
-                view.setOnClickListener(getClickListener(i));
-                llContProd.addView(view);
-            }
+            view.setOnClickListener(getClickListener(i));
+            llContProd.addView(view);
+
         }
     }
 
