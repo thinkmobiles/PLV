@@ -4,13 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.cristaliza.mvc.events.Event;
+import com.cristaliza.mvc.events.EventListener;
+import com.cristaliza.mvc.models.estrella.AppModel;
 import com.cristaliza.mvc.models.estrella.Item;
+import com.cristaliza.mvc.models.estrella.Product;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
@@ -18,6 +28,7 @@ import plv.estrella.com.plv.custom.AddProductToShopDialog;
 import plv.estrella.com.plv.custom.CustomDialog;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
+import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 
@@ -27,9 +38,11 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
 public class ColumnaFragment extends Fragment implements View.OnClickListener {
 
     private MainActivity mCallingActivity;
-    private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mProdAward, mPhotoGal1, mPhotoGal2, mBackground;
+    private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mPhotoGal1, mPhotoGal2, mBackground;
     private TextView mCounter, mNameColumna;
+    private LinearLayout lowCont, highCont;
     private Item mCurrentItem;
+    private EventListener eventListener;
     private int counterValue = 0;
     private int typeDialogEnvio = Constants.TYPE_DIALOG_ADD_ENVIOS;
 
@@ -57,7 +70,9 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
 
         findUI(view);
         setListeners();
-        fillData();
+
+        makeListener();
+        ApiManager.getThirdLevel(eventListener, mCurrentItem);
 
         return view;
     }
@@ -69,11 +84,12 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mLess           = (ImageView) _view.findViewById(R.id.ivLess_FC);
         mPhotoGal1      = (ImageView) _view.findViewById(R.id.ivPhotoGal1_FC);
         mPhotoGal2      = (ImageView) _view.findViewById(R.id.ivPhotoGal2_FC);
-        mProdAward      = (ImageView) _view.findViewById(R.id.ivColumnaAward_FC);
         mBackground     = (ImageView) _view.findViewById(R.id.ivBackground_FC);
         mGoToBack       = (ImageView) _view.findViewById(R.id.btnVolver_FC);
         mCounter        = (TextView) _view.findViewById(R.id.tvCount_FC);
         mNameColumna    = (TextView) _view.findViewById(R.id.tvNameColumna);
+        lowCont         = (LinearLayout) _view.findViewById(R.id.llContLow);
+        highCont        = (LinearLayout) _view.findViewById(R.id.llContHigh);
 
         mCallingActivity.setBackground();
     }
@@ -88,13 +104,50 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mGoToBack.setOnClickListener(this);
     }
 
-    private void fillData(){
-        mCallingActivity.setTitle(mCurrentItem.getName());
-        mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
+    private void makeListener(){
+        eventListener = new EventListener() {
+            @Override
+            public void onEvent(Event event) {
+                switch (event.getId()){
+                    case AppModel.ChangeEvent.ON_EXECUTE_ERROR_ID:
+                        Toast.makeText(getActivity(), event.getType() + "error", Toast.LENGTH_SHORT).show();
+                        break;
+                    case AppModel.ChangeEvent.THIRD_LEVEL_CHANGED_ID:
+                        ApiManager.getProducts(eventListener, ApiManager.getThirdList().get(0));
+                        break;
+                    case AppModel.ChangeEvent.PRODUCTS_CHANGED_ID:
+                        fillData();
+                        break;
+                }
+            }
+        };
+    }
 
-        mNameColumna.setText(mCurrentItem.getName());
-        mBackground.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.getBackgroundImage()));
-//        mProdAward.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.getPrizes().get(0)));
+    private void fillData(){
+        Product mProduct = ApiManager.getProductsList().get(0);
+
+        mCallingActivity.setTitle(mProduct.getName());
+
+        mNameColumna.setText(mProduct.getName());
+        mBackground.setImageBitmap(BitmapCreator.getBitmap(mProduct.getBackgroundImage()));
+        List<String> families = mProduct.getFamilyImages();
+        boolean inLow = true;
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(5, 5, 5, 5);
+        for(int i = 0; i < families.size(); ++i){
+            ImageView imageView = new ImageView(mCallingActivity);
+            imageView.setLayoutParams(params);
+
+            imageView.setImageBitmap(BitmapCreator.getBitmap(families.get(i)));
+
+            if(inLow){
+                lowCont.addView(imageView);
+                inLow = false;
+            } else {
+                highCont.addView(imageView);
+                inLow = true;
+            }
+        }
 //        mPhotoGal1.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.));
 //        mPhotoGal2.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.));
         mCounter.setText(String.valueOf(counterValue));
@@ -131,7 +184,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     private void clickBtnCarrita(){
         if(counterValue == 0){
             final CustomDialog dialog = new CustomDialog.Builder()
-                    .setMessage("0 producto")
+                    .setMessage(mCallingActivity.getString(R.string.no_productos))
                     .setPositiveButton(mCallingActivity.getString(R.string.button_accept), null)
                     .create();
             dialog.show(mCallingActivity);
