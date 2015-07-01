@@ -17,6 +17,7 @@ import plv.estrella.com.plv.adapters.ShopProductsEAdapter;
 import plv.estrella.com.plv.adapters.ShopProductsPAdapter;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.global.Constants;
+import plv.estrella.com.plv.untils.PDFSender;
 
 /**
  * Created by vasia on 27.05.2015.
@@ -91,8 +92,10 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.tvEnviar:
                 if(mShop.getType() == Constants.TYPE_SHOPS_PEDIDOS){
-                    mAdapterP.checkCorrectNumbers();
-                }
+                    if(mAdapterP.checkCorrectNumbers())
+                        PDFSender.sendShopPDFs(mCallingActivity, mAdapterP.getListProducts());
+                } else
+                    PDFSender.sendShopPDFs(mCallingActivity, mAdapterE.getListProducts());
                 break;
         }
     }

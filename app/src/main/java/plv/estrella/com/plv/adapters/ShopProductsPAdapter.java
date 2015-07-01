@@ -149,14 +149,17 @@ public class ShopProductsPAdapter extends BaseAdapter implements View.OnClickLis
         notifyDataSetChanged();
     }
 
-    public void checkCorrectNumbers(){
+    public boolean checkCorrectNumbers(){
+        boolean isCorrect = true;
         for(int i = 0; i < mProducts.size(); ++i){
-            if(mProducts.get(i).getNumber() == 0)
+            if(mProducts.get(i).getNumber() == 0) {
+                isCorrect = false;
                 isCorrects[i] = false;
-            else
+            } else
                 isCorrects[i] = true;
         }
         notifyDataSetChanged();
+        return isCorrect;
     }
 
     class ViewHolder{

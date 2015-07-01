@@ -46,6 +46,10 @@ public class DBItem extends SugarRecord<DBItem> {
         return shop;
     }
 
+    public String getPdf() {
+        return pdf;
+    }
+
     public int getNumber(){
         return itemNumber;
     }

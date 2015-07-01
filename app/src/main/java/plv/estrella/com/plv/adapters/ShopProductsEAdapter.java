@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.cristaliza.mvc.models.estrella.Item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.database.DBItem;
@@ -33,7 +34,11 @@ public class ShopProductsEAdapter extends BaseAdapter implements View.OnClickLis
         mContext = _context;
     }
 
-    public void getProductsList(){
+    public List<DBItem> getListProducts(){
+        return mProducts;
+    }
+
+    private void getProductsList(){
 
         mProducts = (ArrayList<DBItem>) DBManager.getDBItems(mShop);
     }

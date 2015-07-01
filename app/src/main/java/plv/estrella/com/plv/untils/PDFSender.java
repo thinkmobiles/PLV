@@ -12,6 +12,7 @@ import java.util.List;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.database.DBItem;
 import plv.estrella.com.plv.database.DBManager;
+import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.global.Constants;
 
 /**
@@ -19,26 +20,35 @@ import plv.estrella.com.plv.global.Constants;
  */
 public class PDFSender {
 
-//    public static void sendShopPDFs (Activity activity, long pos){
-//        // ItemDAO i = new ItemDAO(activity);
-//        List<DBItem> items = DBManager.get(pos);
-//        ArrayList<Uri> uris =new ArrayList<>();
-//        //  List<Item> items = i.getItems(String.valueOf(pos));
-//
-//        for (int k=0; k<items.size(); k++){
+    public static void sendShopPDFs (Activity activity, List<DBItem> items){
+        ArrayList<Uri> uris = new ArrayList<>();
+
+//        for (int k = 0; k < items.size(); ++k){
 //            File file = new File(ApiManager.getPath() + items.get(k).getPdf());
 //            if (!file.exists() || !file.canRead()) {
 //                Toast.makeText(activity, activity.getString(R.string.attachment_error), Toast.LENGTH_SHORT).show();
 //                return;
 //            }
 //            uris.add(Uri.fromFile(file));
-//
 //        }
-//
-//        Intent mailer = new Intent(Intent.ACTION_SEND_MULTIPLE);
-//        mailer.setType(Constants.TYPE_MESSAGE);
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"samson1513@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.mail_topic_envio));
+//        intent.setType("application/pdf");
+//        intent.putExtra(Intent.EXTRA_STREAM, uris);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_TEXT, activity.getString(R.string.mail_message_envio));
+        try {
+            activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.send_mail)));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(activity, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+
+//        Intent mailer = new Intent(Intent.ACTION_SEND);
+//        mailer.setType("plain/text");
 //        mailer.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 //        activity.startActivity(Intent.createChooser(mailer, activity.getString(R.string.send_mail)));
-//    }
+    }
 
 }
