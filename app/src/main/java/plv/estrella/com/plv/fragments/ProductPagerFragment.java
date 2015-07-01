@@ -155,7 +155,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.ivAddEnvio_P:
                 AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, this, massivCounters[targetPos]);
+                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, this, 1);
                 break;
         }
     }

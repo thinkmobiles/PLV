@@ -19,7 +19,7 @@ import plv.estrella.com.plv.untils.SlidingMenuManager;
 public class MainActivity extends FragmentActivity {
 
     private ImageButton menuBtn;
-    private LinearLayout mBackgroundLayout;
+    private LinearLayout mBackgroundLayout, header, footer;
     private TextView mTitle;
     private ImageView logo;
     private double doubleBackToExitPressedOnce;
@@ -44,15 +44,17 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void findUI() {
-        menuBtn = (ImageButton) findViewById(R.id.ibMenu);
-        mTitle = (TextView) findViewById(R.id.tvMenuTitle);
-        logo = (ImageView) findViewById(R.id.tvLogoTitle);
-        mBackgroundLayout = (LinearLayout) findViewById(R.id.llAppContainer);
+        menuBtn             = (ImageButton) findViewById(R.id.ibMenu);
+        mTitle              = (TextView) findViewById(R.id.tvMenuTitle);
+        logo                = (ImageView) findViewById(R.id.tvLogoTitle);
+        mBackgroundLayout   = (LinearLayout) findViewById(R.id.llAppContainer);
+        header              = (LinearLayout) findViewById(R.id.llHeader);
+        footer              = (LinearLayout) findViewById(R.id.llFooter);
 
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isOpen){
+                if (isOpen) {
                     menuManager.toggle();
                     isOpen = false;
                 } else {
@@ -81,6 +83,16 @@ public class MainActivity extends FragmentActivity {
 
     public void setEnableSlideMenu(boolean isEnable){
         menuManager.enableMenu(isEnable);
+    }
+
+    public void setFullScreenSetting(boolean isFull){
+        if(isFull){
+            header.setVisibility(View.GONE);
+            footer.setVisibility(View.GONE);
+        } else {
+            header.setVisibility(View.VISIBLE);
+            footer.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

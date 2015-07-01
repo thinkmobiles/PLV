@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.cristaliza.mvc.models.estrella.Item;
 
-import plv.estrella.com.plv.GaleryActivity;
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.custom.AddProductToShopDialog;
@@ -20,6 +19,7 @@ import plv.estrella.com.plv.custom.CustomDialog;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.BitmapCreator;
+import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
  * Created by vasia on 26.05.2015.
@@ -152,6 +152,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     }
 
     private void clickPhotoGaleria(int pos){
-
+        FragmentReplacer.replaceFragmentWithStack(mCallingActivity, new GaleriaFragment());
     }
 }

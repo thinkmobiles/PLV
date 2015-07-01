@@ -64,6 +64,14 @@
         android:id="@+id/rlDevider"
         android:layout_below="@+id/rlHead"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/bg_envios" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,6 +87,9 @@
         android:layout_gravity="right"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:gravity="center" />
+        android:layout_marginRight="@dimen/btn_enviar_margin_right"
+        android:layout_marginBottom="@dimen/btn_enviar_margin_bottom"
+        android:gravity="center"
+        android:background="@drawable/bg_btn_enviar" />
 
 </RelativeLayout>

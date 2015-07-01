@@ -4,6 +4,7 @@
     <color name="menu_background_black">#ff000000</color>
     <color name="black_translucent">#80000000</color>
     <color name="background_color_gray">#666666</color>
+    <color name="bg_gray_light">#ffddddee</color>
 
 
     <color name="purple_light">#a276eb</color>

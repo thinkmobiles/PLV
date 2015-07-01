@@ -15,6 +15,7 @@
         android:id="@+id/tvProductName_IP"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/ivProductPhoto_IP"
+        android:textAllCaps="true"
         android:singleLine="true"
         android:layout_toLeftOf="@+id/ivDeleteProduct_IP"
         android:layout_toStartOf="@+id/ivDeleteProduct_IP" />

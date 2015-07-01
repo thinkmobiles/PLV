@@ -7,15 +7,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.custom.CustomDialog;
+import plv.estrella.com.plv.database.DBItem;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.fragments.ShopProductsFragment;
+import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
@@ -116,7 +120,15 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
     }
 
     private void send(int _position){
-
+        if(Constants.TYPE_SHOPS_PEDIDOS == typeShops){
+            if(checkCorrect(_position)){
+                Toast.makeText(mActivity, "send",Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mActivity, "0 products",Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(mActivity, "send",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void see(int _position){
@@ -142,6 +154,15 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
         setShops(DBManager.getShops());
         notifyDataSetChanged();
 
+    }
+
+    private boolean checkCorrect(int _pos){
+        List<DBItem> items = DBManager.getDBItems(mShops.get(_pos));
+        for(DBItem item : items){
+            if(item.getNumber() == 0)
+                return false;
+        }
+        return true;
     }
 
     class ViewHolder{

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.database.DBItem;
@@ -32,7 +33,11 @@ public class ShopProductsPAdapter extends BaseAdapter implements View.OnClickLis
         mContext = _context;
     }
 
-    public void getProductsList(){
+    public List<DBItem> getListProducts(){
+        return mProducts;
+    }
+
+    private void getProductsList(){
         mProducts = (ArrayList<DBItem>) DBManager.getDBItems(mShop);
         isCorrects = new boolean[mProducts.size()];
         for(int i = 0; i < isCorrects.length; ++i)

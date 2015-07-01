@@ -61,6 +61,17 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
         lvShopContainer = (ListView) _view.findViewById(R.id.lvShopContainer_FS);
         tvClearShopList = (TextView) _view.findViewById(R.id.tvClearShopList_FS);
         mGoToBack       = (ImageView)_view.findViewById(R.id.btnVolver_FS);
+
+        mCallingActivity.setBackground();
+        setTitle();
+    }
+
+    private void setTitle(){
+        if(typeShops == Constants.TYPE_SHOPS_ENVIOS){
+            mCallingActivity.setTitle(mCallingActivity.getString(R.string.shops_envios));
+        } else {
+            mCallingActivity.setTitle(mCallingActivity.getString(R.string.shops_pedidos));
+        }
     }
 
     private void initShopList(){

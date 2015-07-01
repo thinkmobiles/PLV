@@ -15,6 +15,7 @@
         android:layout_marginBottom="@dimen/default_margin"
         android:layout_toLeftOf="@+id/ivDelete_IS"
         android:layout_toStartOf="@+id/ivDelete_IS"
+        android:textAllCaps="true"
         android:singleLine="true" />
 
     <ImageView

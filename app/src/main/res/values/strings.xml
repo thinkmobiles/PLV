@@ -12,6 +12,8 @@
 
     <!-- fragment shop product-->
     <string name="borrar_lista">BORRAR LISTA</string>
+    <string name="shops_envios">ENVIOS</string>
+    <string name="shops_pedidos">PEDIDOS</string>
     <string name="vaciar">VACIAR</string>
     <string name="locales">LOCALES</string>
     <string name="fichas">FICHA</string>
@@ -34,6 +36,7 @@
     <string name="button_cancel">CANCELAR</string>
     <string name="button_accept">ACEPTAR</string>
     <string name="ver_envio">VER ENVÍO</string>
+    <string name="ver_pedido">VER PEDIDO</string>
     <string name="continuar">CONTINUAR</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
