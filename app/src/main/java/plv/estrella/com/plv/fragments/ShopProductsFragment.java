@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -93,9 +92,9 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
             case R.id.tvEnviar:
                 if(mShop.getType() == Constants.TYPE_SHOPS_PEDIDOS){
                     if(mAdapterP.checkCorrectNumbers())
-                        PDFSender.sendShopPDFs(mCallingActivity, mAdapterP.getListProducts());
+                        PDFSender.sendShopPDFsFromPedido(mCallingActivity, mAdapterP.getListProducts());
                 } else
-                    PDFSender.sendShopPDFs(mCallingActivity, mAdapterE.getListProducts());
+                    PDFSender.sendShopPDFsFromEnvio(mCallingActivity, mAdapterE.getListProducts());
                 break;
         }
     }

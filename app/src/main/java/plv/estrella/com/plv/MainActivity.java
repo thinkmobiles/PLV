@@ -18,7 +18,7 @@ import plv.estrella.com.plv.untils.SlidingMenuManager;
 
 public class MainActivity extends FragmentActivity {
 
-    private ImageButton menuBtn;
+    private ImageView menuBtn;
     private LinearLayout mBackgroundLayout, header, footer;
     private TextView mTitle;
     private ImageView logo;
@@ -44,7 +44,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void findUI() {
-        menuBtn             = (ImageButton) findViewById(R.id.ibMenu);
+        menuBtn             = (ImageView) findViewById(R.id.ivMenu);
         mTitle              = (TextView) findViewById(R.id.tvMenuTitle);
         logo                = (ImageView) findViewById(R.id.tvLogoTitle);
         mBackgroundLayout   = (LinearLayout) findViewById(R.id.llAppContainer);

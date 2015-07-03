@@ -38,6 +38,10 @@ public class SplashScreen extends Activity {
         mProgressView = (CircleProgress) findViewById(R.id.progress);
 
         if (isHasContent()) {
+            makeDownloadListener();
+            ApiManager.init(this);
+            Log.e("listener","get lvl");
+            ApiManager.getFirstLevel(downloadListener);
 //            if(hasNewContent()){
 //                makeDownloadListener();
 //                updateContent();
@@ -92,7 +96,7 @@ public class SplashScreen extends Activity {
     }
 
     private void openMainActivity() {
-        startActivity(new Intent(SplashScreen.this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         mProgressView.stopAnim();
         finish();
     }
@@ -109,7 +113,7 @@ public class SplashScreen extends Activity {
         downloadListener = new EventListener() {
             @Override
             public void onEvent(Event event) {
-                Log.d("tag", "e = " + event);
+                Log.e("tag", "e = " + event.getId());
                 switch (event.getId()) {
                     case AppModel.ChangeEvent.ON_EXECUTE_ERROR_ID:
                         Toast.makeText(getBaseContext(), event.getType() + " error", Toast.LENGTH_LONG).show();
@@ -127,19 +131,27 @@ public class SplashScreen extends Activity {
 //                        }));
 
                         break;
+                    case AppModel.ChangeEvent.FIRST_LEVEL_CHANGED_ID:
+                        Log.e("listener","first lvl");
+                        ApiManager.getLastUpdateServer(downloadListener);
+                        break;
                     case AppModel.ChangeEvent.LAST_UPDATE_CHANGED_ID:
 //                        todo Last Update
-                        runOnUiThread (new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
-                                ProgressDialogWorker.dismissDialog();
-                                ApiManager.setOfflineMode();
-                                openMainActivity();
-                                String date  = ApiManager.getDateUpdate();
-                                Log.d("tag", "update date" + date);
-                            }
-                        }));
+
+                        Log.e("listener","update");
+                        Log.e("date",ApiManager.getDateUpdate());
+
+//                        runOnUiThread(new Thread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
+//                                ProgressDialogWorker.dismissDialog();
+//                                ApiManager.setOfflineMode();
+//                                openMainActivity();
+//                                String date = ApiManager.getDateUpdate();
+//                                Log.d("tag", "update date" + date);
+//                            }
+//                        }));
                         break;
                 }
             }

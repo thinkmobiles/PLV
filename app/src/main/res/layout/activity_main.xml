@@ -19,12 +19,12 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageButton
-                android:id="@+id/ibMenu"
+            <ImageView
+                android:id="@+id/ivMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/btn_menu"
-                android:layout_marginLeft="@dimen/action_bar_menu_icon_margin"
+                android:layout_marginLeft="@dimen/action_bar_menu_icon_margin_left"
                 android:layout_marginRight="@dimen/action_bar_menu_icon_margin"
                 />
 

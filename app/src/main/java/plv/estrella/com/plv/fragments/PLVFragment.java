@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,7 +125,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
 
             ImageView imageView = (ImageView) view.findViewById(R.id.ivIconProd);
 
-//            imageView.setImageBitmap(BitmapCreator.getBitmap(mProduct.getImage()));
+            imageView.setImageBitmap(BitmapCreator.getBitmapStrongCompressed(mProduct.getImage()));
 
             view.setOnClickListener(getClickListener(i));
             llContProd.addView(view);
@@ -134,14 +133,8 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void clearList() {
-        if (llContProd.getChildCount() != 0) {
-            llContProd.removeAllViewsInLayout();
-        }
-    }
-
     private void setData() {
-        ivLable.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.getIcon()));
+        ivLable.setImageBitmap(BitmapCreator.getBitmapCompressed(mCurrentItem.getIcon()));
         mCallingActivity.setTitle(mCurrentItem.getName());
 
         setVisibilityArrows();
@@ -160,7 +153,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 FragmentReplacer.replaceFragmentWithStack(
                         mCallingActivity,
-                        new ProductPagerFragment().newInstance(new ItemSerializable(mCurrentItem), pos)
+                        ProductPagerFragment.newInstance(new ItemSerializable(mCurrentItem), pos)
                 );
             }
         };

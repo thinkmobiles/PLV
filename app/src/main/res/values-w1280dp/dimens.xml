@@ -4,6 +4,13 @@
     <!-- drawable-->
     <dimen name="side_counter_products">100px</dimen>
 
+    <!--Main Activity-->
+    <dimen name="action_bar_title_height">85dp</dimen>
+    <dimen name="action_bar_bottom_margin">30dp</dimen>
+    <dimen name="action_bar_title_txt">28dp</dimen>
+    <dimen name="action_bar_menu_icon_margin">30dp</dimen>
+    <dimen name="action_bar_menu_icon_margin_left">50dp</dimen>
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_circle_view_size">200dp</dimen>
@@ -22,6 +29,7 @@
 
     <!--shop product fragment -->
     <dimen name="product_item_image_size">50dp</dimen>
+    <dimen name="shop_default_magin">15dp</dimen>
 
     <dimen name="custom_dialog_message_text_size">30sp</dimen>
     <dimen name="dialog_big_margin">100dp</dimen>

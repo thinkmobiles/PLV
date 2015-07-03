@@ -11,6 +11,18 @@ public abstract class BitmapCreator {
         return BitmapFactory.decodeFile(ApiManager.getPath() + _path);
     }
 
+    public static final Bitmap getBitmapCompressed(String _path) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 2;
+        return BitmapFactory.decodeFile(ApiManager.getPath() + _path, options);
+    }
+
+    public static final Bitmap getBitmapStrongCompressed(String _path) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 3;
+        return BitmapFactory.decodeFile(ApiManager.getPath() + _path, options);
+    }
+
     public static String getAbsolutePath(String _path){
         return ApiManager.getPath() + _path;
     }

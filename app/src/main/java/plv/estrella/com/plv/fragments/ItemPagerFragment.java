@@ -50,16 +50,31 @@ public class ItemPagerFragment extends Fragment {
         return view;
     }
 
-    private void findViews(View v){
-        ivIconSolo = (ImageView) v.findViewById(R.id.ivIconSolo);
-        tvDescrSolo = (TextView) v.findViewById(R.id.tvDescrSolo);
+    @Override
+    public void onResume() {
+        super.onResume();
         setData();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        clearData();
+    }
+
+    private void findViews(View v){
+        ivIconSolo = (ImageView) v.findViewById(R.id.ivIconSolo);
+        tvDescrSolo = (TextView) v.findViewById(R.id.tvDescrSolo);
+    }
+
     private void setData(){
-//        ivIconSolo.setImageBitmap(BitmapCreator.getBitmap(product.getImage()));
+        ivIconSolo.setImageBitmap(BitmapCreator.getBitmap(product.getImage()));
         if(product.getPackaging() != null)
             tvDescrSolo.setText(Html.fromHtml(product.getPackaging().get(0)));
+    }
+
+    private void clearData(){
+        ivIconSolo.setImageBitmap(null);
     }
 
 }

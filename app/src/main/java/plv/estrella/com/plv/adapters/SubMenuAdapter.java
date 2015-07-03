@@ -1,18 +1,12 @@
 package plv.estrella.com.plv.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.cristaliza.mvc.models.estrella.Item;
@@ -73,7 +67,7 @@ public class SubMenuAdapter extends BaseAdapter {
 
         }else
             holder = (ViewHolder) convertView.getTag();
-        holder.ivMenuImage.setImageBitmap(BitmapCreator.getBitmap(mItems.get(_position).getIcon()));
+        holder.ivMenuImage.setImageBitmap(BitmapCreator.getBitmapCompressed(mItems.get(_position).getIcon()));
         return convertView;
     }
 
