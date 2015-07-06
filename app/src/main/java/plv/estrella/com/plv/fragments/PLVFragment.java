@@ -84,8 +84,6 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
         ivLable = (ImageView) v.findViewById(R.id.ivLable);
         hsvList = (HorizontalScrollView) v.findViewById(R.id.hsvListProducts);
         llContProd = (LinearLayout) v.findViewById(R.id.llContProd);
-
-        mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
     }
 
     private void setListeners() {
@@ -128,7 +126,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
 
             ImageView imageView = (ImageView) view.findViewById(R.id.ivIconProd);
 
-            imageView.setImageBitmap(BitmapCreator.getBitmapStrongCompressed(mProduct.getImage()));
+            imageView.setImageBitmap(BitmapCreator.compressImage(mProduct.getImage()));
 
             view.setOnClickListener(getClickListener(i));
             llContProd.addView(view);
@@ -137,8 +135,9 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setData() {
-        ivLable.setImageBitmap(BitmapCreator.getBitmapCompressed(mCurrentItem.getIcon()));
+        ivLable.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.getIcon()));
         mCallingActivity.setTitle(mCurrentItem.getName());
+        mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
 
         setVisibilityArrows();
     }

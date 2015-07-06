@@ -1,10 +1,15 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:id="@+id/llAppContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainBg"
+        android:scaleType="fitXY" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -12,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/action_bar_title_height"
         android:gravity="center_vertical"
-        >
+        android:layout_alignParentTop="true">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_weight="2"
@@ -57,7 +62,9 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_below="@+id/llHeader"
+        android:layout_above="@+id/llFooter">
 
     </FrameLayout>
 
@@ -65,6 +72,7 @@
         android:orientation="vertical"
         android:id="@+id/llFooter"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/default_big_margin"/>
+        android:layout_height="@dimen/default_big_margin"
+        android:layout_alignParentBottom="true" />
 
-</LinearLayout>
+</RelativeLayout>

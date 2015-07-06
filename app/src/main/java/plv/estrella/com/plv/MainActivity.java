@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import plv.estrella.com.plv.fragments.MainMenuFragment;
 import plv.estrella.com.plv.untils.ApiManager;
+import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 import plv.estrella.com.plv.untils.SlidingMenuManager;
 
@@ -19,9 +20,9 @@ import plv.estrella.com.plv.untils.SlidingMenuManager;
 public class MainActivity extends FragmentActivity {
 
     private ImageView menuBtn;
-    private LinearLayout mBackgroundLayout, header, footer;
+    private LinearLayout header, footer;
     private TextView mTitle;
-    private ImageView logo;
+    private ImageView background;
     private double doubleBackToExitPressedOnce;
     private SlidingMenuManager menuManager;
 
@@ -45,9 +46,8 @@ public class MainActivity extends FragmentActivity {
 
     private void findUI() {
         menuBtn             = (ImageView) findViewById(R.id.ivMenu);
+        background          = (ImageView) findViewById(R.id.mainBg);
         mTitle              = (TextView) findViewById(R.id.tvMenuTitle);
-        logo                = (ImageView) findViewById(R.id.tvLogoTitle);
-        mBackgroundLayout   = (LinearLayout) findViewById(R.id.llAppContainer);
         header              = (LinearLayout) findViewById(R.id.llHeader);
         footer              = (LinearLayout) findViewById(R.id.llFooter);
 
@@ -70,11 +70,11 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void setBackground() {
-        mBackgroundLayout.setBackgroundResource(R.drawable.background);
+        background.setImageBitmap(BitmapCreator.compressBackground(this,R.drawable.background));
     }
 
     public void setBackground(final String _path){
-        mBackgroundLayout.setBackground(Drawable.createFromPath(ApiManager.getPath() + _path));
+        background.setImageBitmap(BitmapCreator.getBitmapCompressed(_path));
     }
 
     public void setTitle(String _title){
