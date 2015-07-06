@@ -56,6 +56,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     private void findUI(final View _view){
         ivColumnas = (ImageView) _view.findViewById(R.id.ivColumnas_FMM);
         ivPLV = (ImageView) _view.findViewById(R.id.ivPLV_FMM);
+
+        mCallingActivity.setBackground();
     }
 
     private void makeListeners() {

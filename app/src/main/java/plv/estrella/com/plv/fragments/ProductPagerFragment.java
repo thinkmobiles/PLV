@@ -105,7 +105,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     private void setAdapter(){
         mListProducts = ApiManager.getThirdList();
         massivCounters = new int[mListProducts.size()];
-        ArrayList<Fragment> fragments = new ArrayList<>();
+        ArrayList<ItemPagerFragment> fragments = new ArrayList<>();
         for(int i = 0; i < mListProducts.size(); ++i){
             ApiManager.getProducts(eventListener, mListProducts.get(i));
             massivCounters[i] = 0;
@@ -181,7 +181,9 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     }
 
     private void decCounter(){
-        tvCount.setText(String.valueOf(((--massivCounters[targetPos] < 0) ? 0 : massivCounters[targetPos])));
+        if(--massivCounters[targetPos] < 0)
+            massivCounters[targetPos] = 0;
+        tvCount.setText(String.valueOf(massivCounters[targetPos]));
     }
 
     private void scrollPrev(){

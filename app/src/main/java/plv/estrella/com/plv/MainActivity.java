@@ -70,7 +70,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void setBackground() {
-        mBackgroundLayout.setBackground(getResources().getDrawable(R.drawable.background));
+        mBackgroundLayout.setBackgroundResource(R.drawable.background);
     }
 
     public void setBackground(final String _path){

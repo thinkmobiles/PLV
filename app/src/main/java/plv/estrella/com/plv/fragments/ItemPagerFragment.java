@@ -68,7 +68,7 @@ public class ItemPagerFragment extends Fragment {
     }
 
     private void setData(){
-        ivIconSolo.setImageBitmap(BitmapCreator.getBitmap(product.getImage()));
+        ivIconSolo.setImageBitmap(BitmapCreator.getBitmapCompressed(product.getImage()));
         if(product.getPackaging() != null)
             tvDescrSolo.setText(Html.fromHtml(product.getPackaging().get(0)));
     }

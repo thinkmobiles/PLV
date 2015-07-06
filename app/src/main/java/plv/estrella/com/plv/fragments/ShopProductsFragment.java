@@ -68,6 +68,8 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
         lvProductContainer   = (ListView) _view.findViewById(R.id.lvProductContainer_FSP);
         mGoToBack            = (ImageView)_view.findViewById(R.id.btnVolver_FSP);
 
+        mCallingActivity.setBackground();
+
         if(Constants.TYPE_SHOPS_PEDIDOS == mShop.getType()){
             tvCantidad.setVisibility(View.VISIBLE);
             tvFichaListado.setText(mCallingActivity.getString(R.string.listado));
