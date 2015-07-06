@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.cristaliza.mvc.events.Event;
@@ -35,8 +33,7 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
  */
 public class PLVFragment extends Fragment implements View.OnClickListener {
 
-    private RelativeLayout rlPrev, rlNext;
-    private ImageView ivLable;
+    private ImageView ivPrev, ivNext, ivLable;
     private HorizontalScrollView hsvList;
     private LinearLayout llContProd;
     private EventListener mMenuListener;
@@ -79,16 +76,16 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     }
 
     private void findViews(View v) {
-        rlPrev = (RelativeLayout) v.findViewById(R.id.rlPrev);
-        rlNext = (RelativeLayout) v.findViewById(R.id.rlNext);
-        ivLable = (ImageView) v.findViewById(R.id.ivLable);
-        hsvList = (HorizontalScrollView) v.findViewById(R.id.hsvListProducts);
-        llContProd = (LinearLayout) v.findViewById(R.id.llContProd);
+        ivPrev      = (ImageView) v.findViewById(R.id.ivPrev);
+        ivNext      = (ImageView) v.findViewById(R.id.ivNext);
+        ivLable     = (ImageView) v.findViewById(R.id.ivLable);
+        hsvList     = (HorizontalScrollView) v.findViewById(R.id.hsvListProducts);
+        llContProd  = (LinearLayout) v.findViewById(R.id.llContProd);
     }
 
     private void setListeners() {
-        rlPrev.setOnClickListener(this);
-        rlNext.setOnClickListener(this);
+        ivPrev.setOnClickListener(this);
+        ivNext.setOnClickListener(this);
     }
 
     private void makeListener() {
@@ -144,8 +141,8 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
 
     private void setVisibilityArrows() {
         if(mListProducts.size() < 4) {
-            rlNext.setVisibility(View.GONE);
-            rlPrev.setVisibility(View.GONE);
+            ivNext.setVisibility(View.GONE);
+            ivPrev.setVisibility(View.GONE);
         }
     }
 
@@ -165,10 +162,10 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.rlPrev:
+            case R.id.ivPrev:
                 hsvList.pageScroll(View.FOCUS_LEFT);
                 break;
-            case R.id.rlNext:
+            case R.id.ivNext:
                 hsvList.pageScroll(View.FOCUS_RIGHT);
                 break;
         }

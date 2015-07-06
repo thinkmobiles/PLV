@@ -5,6 +5,6 @@
         android:height="@dimen/side_counter_products"/>
     <solid android:color="@android:color/white" />
     <stroke
-        android:width="1px"
+        android:width="@dimen/width_border_counter_products"
         android:color="@android:color/black" />
 </shape>

@@ -28,6 +28,12 @@ public abstract class BitmapCreator {
         return BitmapFactory.decodeFile(ApiManager.getPath() + _path);
     }
 
+    public static final Bitmap getBitmapCompressedX2(String _path) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 2;
+        return BitmapFactory.decodeFile(ApiManager.getPath() + _path, options);
+    }
+
     public static final Bitmap getBitmapCompressed(String _path) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 4;
@@ -37,7 +43,7 @@ public abstract class BitmapCreator {
     public static final Bitmap compressBackground(Context _context, int _resId) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 3;
-        return BitmapFactory.decodeResource(_context.getResources(),_resId,options);
+        return BitmapFactory.decodeResource(_context.getResources(), _resId, options);
     }
 
     public static Bitmap compressImage(String filePath) {

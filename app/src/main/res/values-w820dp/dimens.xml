@@ -39,7 +39,6 @@
     <dimen name="galeria_margin_bottom">5dp</dimen>
 
     <!-- fragment PLV-->
-    <dimen name="lable_width">130dp</dimen>
     <dimen name="lable_height">100dp</dimen>
     <dimen name="arrow_width">40dp</dimen>
 

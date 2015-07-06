@@ -9,6 +9,7 @@
 
     <!-- drawable-->
     <dimen name="side_counter_products">50px</dimen>
+    <dimen name="width_border_counter_products">2px</dimen>
     <dimen name="enviar_height">50px</dimen>
     <dimen name="enviar_width">150px</dimen>
 

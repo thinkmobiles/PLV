@@ -36,15 +36,16 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     private MainActivity mCallingActivity;
 
     private ViewPager mPager;
-    private ImageView ivPrev, ivNext, ivCarrita, ivEnvios, ivMore, ivLess, ivCross;
+    private ImageView ivPrev, ivNext, ivCarrita, ivMore, ivLess, ivCross;
     private TextView tvCount;
 
     private Item mCurrentItem;
-    private int targetPos;
-    private com.cristaliza.mvc.events.EventListener eventListener;
-    private int[] massivCounters;
     private List<Item> mListProducts;
     private Product mProduct;
+    private com.cristaliza.mvc.events.EventListener eventListener;
+
+    private int targetPos;
+    private int[] massivCounters;
 
     public static ProductPagerFragment newInstance(ItemSerializable _item, int _position) {
         ProductPagerFragment fragment = new ProductPagerFragment();
@@ -82,7 +83,6 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         ivPrev = (ImageView) v.findViewById(R.id.ivPrev_P);
         ivNext = (ImageView) v.findViewById(R.id.ivNext_P);
         ivCarrita = (ImageView) v.findViewById(R.id.ivCarrita_P);
-        ivEnvios = (ImageView) v.findViewById(R.id.ivAddEnvio_P);
         ivMore = (ImageView) v.findViewById(R.id.ivMore_P);
         ivLess = (ImageView) v.findViewById(R.id.ivLess_P);
         ivCross = (ImageView) v.findViewById(R.id.ivCross_P);
@@ -91,7 +91,6 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     }
 
     private void setListeners(){
-        ivEnvios.setOnClickListener(this);
         ivPrev.setOnClickListener(this);
         ivNext.setOnClickListener(this);
         ivCarrita.setOnClickListener(this);
@@ -156,17 +155,13 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
             case R.id.ivCarrita_P:
                 clickBtnCarrita();
                 break;
-            case R.id.ivAddEnvio_P:
-                AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, this, 1);
-                break;
         }
     }
 
     private void clickBtnCarrita(){
         if(massivCounters[targetPos] == 0){
             final CustomDialog dialog = new CustomDialog.Builder()
-                    .setMessage("0 producto")
+                    .setMessage(mCallingActivity.getString(R.string.no_productos))
                     .setPositiveButton(mCallingActivity.getString(R.string.button_accept), null)
                     .create();
             dialog.show(mCallingActivity);
