@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:paddingLeft="@dimen/fragment_padding_left_right"
+    android:paddingRight="@dimen/fragment_padding_left_right"
+    android:paddingTop="@dimen/fragment_padding_top_bottom"
     android:background="@android:color/white">
 
     <RelativeLayout
@@ -10,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rlHead"
+        android:layout_marginBottom="12dp"
         android:layout_alignParentTop="true">
 
         <TextView
@@ -17,13 +20,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvShopName_FSP"
             android:text="@string/fichas"
+            android:textSize="18dp"
             android:singleLine="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_marginRight="@dimen/action_bar_menu_icon_margin"
+            android:layout_marginRight="20dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -31,9 +34,7 @@
             android:id="@+id/btnVolver_FSP"
             android:src="@drawable/btn_volver"
             android:layout_toRightOf="@id/tvShopName_FSP"
-            android:layout_centerVertical="true"
-            android:paddingTop="@dimen/abc_action_bar_subtitle_bottom_margin_material"
-            android:paddingBottom="@dimen/abc_action_bar_subtitle_bottom_margin_material"/>
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,7 +60,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/shop_height_head_devider"
         android:background="@android:color/black"
         android:id="@+id/rlDevider"
         android:layout_below="@+id/rlHead"/>
@@ -76,8 +77,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lvProductContainer_FSP"
+        android:listSelector="@android:color/transparent"
         android:layout_below="@+id/rlDevider"
-        android:layout_above="@+id/tvEnviar" />
+        android:layout_above="@+id/tvEnviar"
+        android:divider="#000000"
+        android:dividerHeight="1px" />
 
     <TextView
         android:layout_width="100dp"
@@ -87,8 +91,7 @@
         android:layout_gravity="right"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/btn_enviar_margin_right"
-        android:layout_marginBottom="@dimen/btn_enviar_margin_bottom"
+        android:layout_marginBottom="@dimen/default_big_margin"
         android:gravity="center"
         android:background="@drawable/bg_btn_enviar" />
 

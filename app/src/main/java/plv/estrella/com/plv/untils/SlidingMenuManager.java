@@ -165,7 +165,7 @@ public class SlidingMenuManager {
     }
 
     private int getDisplayWidth() {
-        return activity.getWindowManager().getDefaultDisplay().getWidth() / 3;
+        return activity.getWindowManager().getDefaultDisplay().getWidth() * 3 / 10;
     }
 
 }

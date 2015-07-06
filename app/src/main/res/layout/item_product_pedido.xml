@@ -53,6 +53,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/ivDelete_PP"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/shop_default_magin"
+        android:layout_marginBottom="@dimen/shop_default_magin"
+        android:layout_marginLeft="@dimen/shop_default_magin"
         android:src="@drawable/btn_circle_delete"
         android:layout_centerVertical="true" />
 

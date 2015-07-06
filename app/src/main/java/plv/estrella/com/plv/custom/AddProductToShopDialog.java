@@ -28,6 +28,7 @@ import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.fragments.ColumnaFragment;
 import plv.estrella.com.plv.fragments.ProductPagerFragment;
+import plv.estrella.com.plv.fragments.ShopProductsFragment;
 import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
@@ -46,6 +47,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     private Spinner spinner;
     private TextView tvAccept, tvCancel, tvTitle;
     private Item mCurrentItem;
+    private Shop currentShop;
     private FrameLayout flTop, flBottom;
     private AutoCompleteTextView autoCompleteTextView;
     private ImageView allShop;
@@ -173,7 +175,11 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
             case R.id.tvCancel_PSD:
                 if (questionCheck){
                     FragmentReplacer.popSupBackStack(getActivity());
-                    FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopsFragment.newInstance(typeDialog));
+                    if(typeDialog == Constants.TYPE_DIALOG_ADD_CARRITA){
+                        FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopProductsFragment.newInstance(currentShop));
+                    } else {
+                        FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopsFragment.newInstance(typeDialog));
+                    }
                     questionCheck = false;
                 } else {
                     FragmentReplacer.popSupBackStack(getActivity());
@@ -216,7 +222,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
                         numProducts,
                         subList.get(selected)
                 );
-
+                currentShop = subList.get(selected);
                 isSelectChek = false;
             } else {
                 Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialog);
@@ -228,7 +234,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
                         numProducts,
                         shop
                 );
-
+                currentShop = shop;
                 Toast.makeText(mCallingActivity, mCallingActivity.getString(R.string.add_shop_succesfull), Toast.LENGTH_SHORT).show();
                 adapter.notifyDataSetChanged();
                 autoCompleteTextView.showDropDown();

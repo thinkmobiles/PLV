@@ -2,7 +2,7 @@
     <string name="app_name">PLV</string>
 
     <string name="title_inicio">INICIO</string>
-    <string name="title_envios">ENVIOS PENDIENTES</string>
+    <string name="title_envios">ENVÍOS PENDIENTES</string>
     <string name="download">Download..</string>
     <string name="columnas">COLUMNAS</string>
     <string name="columna">COLUMNA</string>
@@ -12,56 +12,52 @@
 
     <!-- fragment shop product-->
     <string name="borrar_lista">BORRAR LISTA</string>
-    <string name="shops_envios">ENVIOS</string>
+    <string name="shops_envios">ENVÍO</string>
     <string name="shops_pedidos">PEDIDOS</string>
     <string name="vaciar">VACIAR</string>
     <string name="locales">LOCALES</string>
     <string name="fichas">FICHA</string>
-    <string name="enviar">ENVIAR</string>
+    <string name="enviar">ENVÍAR</string>
     <string name="listado">LISTADO DE PRODUCTOS</string>
     <string name="cantidad">CANTIDAD</string>
-    <string name="alert_message">Este producto no se enviara si no anades al menos 1 item</string>
+    <string name="alert_message">Este producto no se enviará si no añades al menos 1 item</string>
 
     <string name="cancelar">CANCELAR</string>
     <string name="accept">ACEPTAR</string>
 
     <!-- Dialogs-->
     <string name="anadir_ficha">AÑADIR FICHA A:</string>
-    <string name="anadir_pedido">ANADIR PEDIDO A:</string>
+    <string name="anadir_pedido">AÑADIR PEDIDO A:</string>
     <string name="want_continue">ESTA FICHA HA SIDO AÑADIDA</string>
-    <string name="locales_shopping">LOCALES</string>
-    <string name="guardar_shopping">ENVIAR</string>
-    <string name="no_productos">0 producto</string>
-    <string name="added_item">Item added to cart</string>
+    <string name="no_productos">EL CARRITO ESTÁ VACIO.
+        AÑADE AL MENOS UN 1 PRODUCTO</string>
     <string name="button_cancel">CANCELAR</string>
     <string name="button_accept">ACEPTAR</string>
     <string name="ver_envio">VER ENVÍO</string>
     <string name="ver_pedido">VER PEDIDO</string>
     <string name="continuar">CONTINUAR</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
     <string name="delete_all_products">Delete all products?</string>
     <string name="delete_all_shops">Delete all shops?</string>
 
     <!-- Toasts-->
-    <string name="empty_cart">Cart is empty</string>
-    <string name="enter_shop">Enter shop</string>
+    <string name="enter_shop">Por favor, añade un local</string>
     <string name="added_to_cart">Added to cart</string>
-    <string name="delete_shop">Shop deleted succesfull</string>
-    <string name="delete_item">Item deleted succesfull</string>
+    <string name="delete_shop">Un local eliminado correctamente</string>
+    <string name="delete_item">Item eliminado correctamente</string>
     <string name="delete_all_item">All item deleted succesfull</string>
     <string name="delete_all_shop">All shop deleted succesfull</string>
     <string name="add_shop_succesfull">Shop add succesfull</string>
-    <string name="add_item_to_shop">Item add to shop_id= </string>
     <string name="attachment_error">Attachment Error</string>
-    <string name="error"> error</string>
+    <string name="error">_error</string>
 
     <string name="create_new_shop">Create new shop</string>
     <string name="send_mail">Send email...</string>
-    <string name="mail_topic_envio">Envio de fichas de producto</string>
-    <string name="mail_message_envio">Buenos dias.
-
-    Como hablamos, le envio las fichas de los productos que eligio...</string>
+    <string name="mail_topic_envio">Envío de fichas de producto</string>
+    <string name="mail_message_envio">Buenos días.
+        Como hablamos, le envio las fichas de los productos que eligió...</string>
+    <string name="mail_topic_pedido">Hoja de pedido</string>
+    <string name="mail_message_pedido">Buenos días.
+        Como hablamos, le envío el pedido...</string>
 
     <string name="zero">0</string>
 

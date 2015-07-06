@@ -7,7 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/glSubMenuContainer_FSM"
-        android:layout_margin="@dimen/gridview_margin"
+        android:layout_marginTop="@dimen/fragment_padding_top_bottom"
+        android:layout_marginBottom="@dimen/fragment_padding_top_bottom"
+        android:layout_marginLeft="@dimen/fragment_padding_left_right"
+        android:layout_marginRight="@dimen/fragment_padding_left_right"
         android:horizontalSpacing="@dimen/space_cell"
         android:verticalSpacing="@dimen/space_cell">
 

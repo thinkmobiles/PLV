@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class ItemSerializable implements Serializable {
 
-    private Item mItem;
+    private transient Item mItem;
 
     public ItemSerializable(final Item _item){
         mItem = _item;
