@@ -98,6 +98,9 @@ public class SlidingMenuManager {
                     case Constants.TYPE_PEDIDOS:
                         jumper.setParamToShop(Constants.TYPE_SHOPS_PEDIDOS);
                         break;
+                    case Constants.TYPE_COMPANIA:
+                        jumper.setParamToCompania();
+                        break;
                 }
                 FragmentReplacer.replaceFragmentWithStack(activity, jumper);
                 menu.toggle();
@@ -146,6 +149,7 @@ public class SlidingMenuManager {
         mMenuItemList = ApiManager.getFirstList();
 
         mTitleList.add(Constants.ITEM_INICIO);
+        mTitleList.add(Constants.ITEM_COMPANIA);
         mTitleList.add(Constants.ITEM_COLUMNAS);
         ApiManager.getSecondLevel(mMenuListener, mMenuItemList.get(0));
         mTitleList.add(Constants.ITEM_PLV);

@@ -4,45 +4,24 @@
     android:layout_height="@dimen/item_height">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tvShopName_IS"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/ivDelete_IS"
-        android:textAllCaps="true"
-        android:singleLine="true" />
+        style="@style/NameShop"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/ivSend_IS"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:src="@drawable/btn_circle_send"/>
+        android:src="@drawable/btn_circle_send"
+        style="@style/CircleButton"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/ivSee_IS"
-        android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/ivSend_IS"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:src="@drawable/btn_circle_see"/>
+        android:src="@drawable/btn_circle_see"
+        style="@style/CircleButton"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/ivDelete_IS"
-        android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/ivSee_IS"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:src="@drawable/btn_circle_delete" />
+        android:src="@drawable/btn_circle_delete"
+        style="@style/CircleButton" />
 </RelativeLayout>

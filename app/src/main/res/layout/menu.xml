@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lvMenu"
-    android:paddingLeft="@dimen/default_big_margin"
+    android:paddingLeft="@dimen/menu_padding_left"
     android:background="@color/menu_background_black">
 
 </ListView>

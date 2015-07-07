@@ -11,14 +11,9 @@
         android:layout_centerVertical="true" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:textAllCaps="true"
         android:id="@+id/tvName_PP"
         android:layout_toRightOf="@+id/ivIcon_PP"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:layout_centerVertical="true" />
+        style="@style/NameItem"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -48,15 +43,10 @@
         android:layout_toLeftOf="@+id/tvMessage_PP" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/ivDelete_PP"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginLeft="@dimen/default_margin"
         android:src="@drawable/btn_circle_delete"
-        android:layout_centerVertical="true" />
+        style="@style/CircleButton"/>
 
     <TextView
         android:layout_width="@dimen/message_width"

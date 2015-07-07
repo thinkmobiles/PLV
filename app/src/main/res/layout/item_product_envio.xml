@@ -10,26 +10,14 @@
         android:id="@+id/ivProductPhoto_IP" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tvProductName_IP"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/default_margin"
         android:layout_toRightOf="@+id/ivProductPhoto_IP"
-        android:textAllCaps="true"
-        android:singleLine="true"
-        android:layout_toLeftOf="@+id/ivDeleteProduct_IP"
-        android:layout_toStartOf="@+id/ivDeleteProduct_IP" />
+        style="@style/NameItem"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/ivDeleteProduct_IP"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:src="@drawable/btn_circle_delete" />
+        android:src="@drawable/btn_circle_delete"
+        style="@style/CircleButton"/>
 </RelativeLayout>

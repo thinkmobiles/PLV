@@ -8,6 +8,7 @@
     <string name="columna">COLUMNA</string>
     <string name="galeria">GALERÍA</string>
     <string name="plv">PLV</string>
+    <string name="compania">COMPAÑÍA</string>
 
     <!-- fragment shop product-->
     <string name="borrar_lista">BORRAR LISTA</string>
@@ -31,6 +32,9 @@
     <string name="ver_envio">VER ENVÍO</string>
     <string name="ver_pedido">VER PEDIDO</string>
     <string name="continuar">CONTINUAR</string>
+    <string name="ok">OK</string>
+    <string name="check_connection">Compruebe la conexin a Internet por favor</string>
+    <string name="want_update">Quiere descargar nuevo contenido ahora?</string>
 
     <!-- Toasts-->
     <string name="enter_shop">Por favor, añade un local</string>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cristaliza.mvc.events.Event;
@@ -30,6 +31,7 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
 public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
     private ImageView ivColumnas, ivPLV;
+    private TextView tvCompania;
     private MainActivity mCallingActivity;
     private EventListener mMenuListener;
     private List<Item> mMenuItemList;
@@ -53,8 +55,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     }
 
     private void findUI(final View _view){
-        ivColumnas = (ImageView) _view.findViewById(R.id.ivColumnas_FMM);
-        ivPLV = (ImageView) _view.findViewById(R.id.ivPLV_FMM);
+        ivColumnas  = (ImageView) _view.findViewById(R.id.ivColumnas_FMM);
+        ivPLV       = (ImageView) _view.findViewById(R.id.ivPLV_FMM);
+        tvCompania  = (TextView) _view.findViewById(R.id.tvCompania);
 
         mCallingActivity.setBackground();
         mCallingActivity.setTitle("");
@@ -86,24 +89,32 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     private void setListeners(){
         ivColumnas.setOnClickListener(this);
         ivPLV.setOnClickListener(this);
+        tvCompania.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        int subMenuOpen = 0;
-        int position = 0;
         switch (v.getId()){
             case R.id.ivColumnas_FMM:
+                FragmentReplacer.replaceFragmentWithStack(
+                        mCallingActivity,
+                        SubMenuFragment.newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0)))
+                );
                 break;
             case R.id.ivPLV_FMM:
-                subMenuOpen = Constants.MENU_PLV;
-                position = 1;
+                FragmentReplacer.replaceFragmentWithStack(
+                        mCallingActivity,
+                        SubMenuFragment.newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)))
+                );
+                break;
+            case R.id.tvCompania:
+                FragmentReplacer.replaceFragmentWithStack(
+                        mCallingActivity,
+                        new CompaniaFragment()
+                );
                 break;
         }
 
-        FragmentReplacer.replaceFragmentWithStack(
-                mCallingActivity,
-                SubMenuFragment.newInstance(subMenuOpen, new ItemSerializable(mMenuItemList.get(position)))
-        );
+
     }
 }

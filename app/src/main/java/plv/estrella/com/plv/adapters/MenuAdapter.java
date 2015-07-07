@@ -44,13 +44,16 @@ public class MenuAdapter extends ArrayAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 7;
+        return 8;
     }
 
     @Override
     public int getItemViewType(int position) {
         if(list.get(position).equals(Constants.ITEM_INICIO)){
             return Constants.TYPE_INICIO;
+        }
+        if(list.get(position).equals(Constants.ITEM_COMPANIA)){
+            return Constants.TYPE_COMPANIA;
         }
         if(list.get(position).equals(Constants.ITEM_PEDIDOS)){
             return Constants.TYPE_PEDIDOS;
@@ -64,7 +67,7 @@ public class MenuAdapter extends ArrayAdapter {
         if(list.get(position).equals(Constants.ITEM_ENVIOS)){
             return Constants.TYPE_ENVIOS;
         }
-        if(position < 11){
+        if(position < 12){
             return Constants.TYPE_SPV_PADDING;
         } else {
             return Constants.TYPE_PLV_PADDING;
@@ -83,6 +86,7 @@ public class MenuAdapter extends ArrayAdapter {
                 case Constants.TYPE_SPV:
                 case Constants.TYPE_PLV:
                 case Constants.TYPE_ENVIOS:
+                case Constants.TYPE_COMPANIA:
                     convertView = LayoutInflater.from(mContext).inflate(R.layout.item_menu_u,null);
                     break;
                 default:

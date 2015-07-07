@@ -34,12 +34,35 @@
     -
 
     <style name="ItemTitle">
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">@dimen/dialog_title_text_size</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentLeft">true</item>
-        <item name="android:layout_margin">10dp</item>
     </style>
+
+    <!-- Shops-->
+    <style name="CircleButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginTop">@dimen/default_margin</item>
+        <item name="android:layout_marginBottom">@dimen/default_margin</item>
+        <item name="android:layout_marginLeft">@dimen/default_margin</item>
+    </style>
+    <style name="NameItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_marginLeft">@dimen/default_margin</item>
+    </style>
+    <style name="NameShop" parent="NameItem">
+        <item name="android:layout_marginLeft">0dp</item>
+    </style>
+
+
 
 </resources>

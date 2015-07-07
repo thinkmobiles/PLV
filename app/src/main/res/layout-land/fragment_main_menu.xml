@@ -1,46 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:paddingTop="@dimen/default_big_margin"
+    android:gravity="center">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1">
-
-        <ImageView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/ivColumnas_FMM"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:src="@drawable/index_spv"
-            android:layout_marginLeft="@dimen/main_menu_big_margin"
-            android:layout_marginTop="@dimen/main_menu_big_margin"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/contMenu"
+            android:layout_alignRight="@+id/contMenu"
             android:layout_marginBottom="@dimen/main_menu_big_margin"
-            android:layout_marginRight="@dimen/main_menu_central_margin" />
-    </FrameLayout>
+            android:id="@+id/contHeader"
+            android:layout_alignParentTop="true">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:layout_height="1px"/>
 
-        <ImageView
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvCompania"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="23dp"
+                android:paddingBottom="23dp"
+                android:gravity="center_horizontal"
+                android:text="@string/compania"
+                android:textColor="@android:color/white"
+                android:textSize="26dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:layout_height="1px"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/ivPLV_FMM"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:src="@drawable/index_plv"
-            android:layout_marginLeft="@dimen/main_menu_central_margin"
-            android:layout_marginTop="@dimen/main_menu_big_margin"
-            android:layout_marginRight="@dimen/main_menu_big_margin"
-            android:layout_marginBottom="@dimen/main_menu_big_margin" />
-    </FrameLayout>
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:id="@+id/contMenu"
+            android:layout_below="@+id/contHeader">
+
+
+                <ImageView
+                    android:id="@+id/ivColumnas_FMM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/main_menu_big_margin"
+                    android:src="@drawable/index_spv"
+                    android:scaleType="fitEnd" />
+
+
+                <ImageView
+                    android:id="@+id/ivPLV_FMM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/main_menu_big_margin"
+                    android:src="@drawable/index_plv"
+                    android:scaleType="fitStart" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
 </LinearLayout>

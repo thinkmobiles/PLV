@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.fragments.ColumnaFragment;
+import plv.estrella.com.plv.fragments.CompaniaFragment;
 import plv.estrella.com.plv.fragments.ItemPagerFragment;
 import plv.estrella.com.plv.fragments.MainMenuFragment;
 import plv.estrella.com.plv.fragments.PLVFragment;
@@ -29,6 +30,7 @@ public class JumpFragmentHelper extends Fragment {
     private static final int JUMP_SPV       = 4;
     private static final int JUMP_PLV       = 6;
     private static final int JUMP_SHOP      = 8;
+    private static final int JUMP_COMPANIA  = 10;
 
     private MainActivity mActivity;
     private int openItemMenu;
@@ -61,6 +63,10 @@ public class JumpFragmentHelper extends Fragment {
         typeShop = _typeShop;
     }
 
+    public void setParamToCompania(){
+        typeItem = JUMP_COMPANIA;
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -84,6 +90,9 @@ public class JumpFragmentHelper extends Fragment {
                 break;
             case JUMP_SHOP:
                 FragmentReplacer.replaceCurrentFragment(mActivity, ShopsFragment.newInstance(typeShop));
+                break;
+            case JUMP_COMPANIA:
+                FragmentReplacer.replaceCurrentFragment(mActivity, new CompaniaFragment());
                 break;
         }
         return null;
