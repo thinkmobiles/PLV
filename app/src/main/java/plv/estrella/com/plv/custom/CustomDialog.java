@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import java.io.Serializable;
@@ -21,7 +20,7 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
  */
 public class CustomDialog extends Fragment implements View.OnClickListener {
 
-    private Button btnPositive, btnNegative;
+    private TextView btnPositive, btnNegative;
     private TextView tvMessage;
     private DialogParams mParams;
     private FrameLayout flEmptyField1, flEmptyField2, flBackground;
@@ -49,8 +48,8 @@ public class CustomDialog extends Fragment implements View.OnClickListener {
     }
 
     private void findViews(final View _view){
-        btnPositive    = (Button) _view.findViewById(R.id.btnPositive_DC);
-        btnNegative    = (Button) _view.findViewById(R.id.btnNegative_DC);
+        btnPositive    = (TextView) _view.findViewById(R.id.btnPositive_DC);
+        btnNegative    = (TextView) _view.findViewById(R.id.btnNegative_DC);
         tvMessage      = (TextView) _view.findViewById(R.id.tvMessage_DC);
         flEmptyField1  = (FrameLayout) _view.findViewById(R.id.flEmptyField1_DC);
         flEmptyField2  = (FrameLayout) _view.findViewById(R.id.flEmptyField2_DC);

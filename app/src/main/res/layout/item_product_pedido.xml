@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="@dimen/item_height">
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/item_image_size"
+        android:layout_height="@dimen/item_image_size"
         android:id="@+id/ivIcon_PP"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true" />
@@ -17,7 +17,7 @@
         android:textAllCaps="true"
         android:id="@+id/tvName_PP"
         android:layout_toRightOf="@+id/ivIcon_PP"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="@dimen/default_margin"
         android:layout_centerVertical="true" />
 
     <ImageView
@@ -39,7 +39,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:id="@+id/tvCount_PP"
         android:background="@drawable/bg_count_products"
         android:gravity="center"
@@ -53,20 +52,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/ivDelete_PP"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/shop_default_magin"
-        android:layout_marginBottom="@dimen/shop_default_magin"
-        android:layout_marginLeft="@dimen/shop_default_magin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
         android:src="@drawable/btn_circle_delete"
         android:layout_centerVertical="true" />
 
     <TextView
-        android:layout_width="300dp"
+        android:layout_width="@dimen/message_width"
         android:layout_height="match_parent"
         android:text="@string/alert_message"
         android:textColor="@android:color/holo_red_light"
         android:id="@+id/tvMessage_PP"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="@dimen/default_big_margin"
         android:gravity="fill_vertical"
         android:visibility="invisible" />
 </RelativeLayout>

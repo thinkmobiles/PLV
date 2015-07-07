@@ -25,8 +25,7 @@
     <string name="anadir_ficha">AÑADIR FICHA A:</string>
     <string name="anadir_pedido">AÑADIR PEDIDO A:</string>
     <string name="want_continue">ESTA FICHA HA SIDO AÑADIDA</string>
-    <string name="no_productos">EL CARRITO ESTÁ VACIO.
-        AÑADE AL MENOS UN 1 PRODUCTO</string>
+    <string name="no_productos">EL CARRITO ESTÁ VACIO.\nAÑADE AL MENOS UN 1 PRODUCTO</string>
     <string name="button_cancel">CANCELAR</string>
     <string name="button_accept">ACEPTAR</string>
     <string name="ver_envio">VER ENVÍO</string>

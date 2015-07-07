@@ -9,8 +9,8 @@
     <plv.estrella.com.plv.custom.circleprogress.CircleProgress
         android:layout_gravity="center"
         android:id="@+id/progress"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/side_progress_bar"
+        android:layout_height="@dimen/side_progress_bar"
         android:visibility="gone"
         />
 

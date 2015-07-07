@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- drawable-->
-    <dimen name="side_counter_products">100px</dimen>
+    <!--&lt;!&ndash; drawable&ndash;&gt;-->
+    <!--<dimen name="side_counter_products">100px</dimen>-->
 
-    <!--Main Activity-->
-    <dimen name="action_bar_title_height">85dp</dimen>
-    <dimen name="action_bar_bottom_margin">30dp</dimen>
-    <dimen name="action_bar_title_txt">28dp</dimen>
-    <dimen name="action_bar_menu_icon_margin">30dp</dimen>
-    <dimen name="action_bar_menu_icon_margin_left">50dp</dimen>
+    <!--&lt;!&ndash;Main Activity&ndash;&gt;-->
+    <!--<dimen name="action_bar_title_height">85dp</dimen>-->
+    <!--<dimen name="action_bar_bottom_margin">30dp</dimen>-->
+    <!--<dimen name="action_bar_title_txt">28dp</dimen>-->
+    <!--<dimen name="action_bar_menu_icon_margin">30dp</dimen>-->
+    <!--<dimen name="action_bar_menu_icon_margin_left">50dp</dimen>-->
 
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="default_circle_view_size">200dp</dimen>
-    <dimen name="slidingmenu_shadow_width">5dp</dimen>
+    <!--<dimen name="activity_horizontal_margin">16dp</dimen>-->
+    <!--<dimen name="activity_vertical_margin">16dp</dimen>-->
+    <!--<dimen name="default_circle_view_size">200dp</dimen>-->
+    <!--<dimen name="slidingmenu_shadow_width">5dp</dimen>-->
 
-    <dimen name="default_padding">10dp</dimen>
+    <!--<dimen name="default_padding">10dp</dimen>-->
 
-    <!-- main menu-->
-    <dimen name="main_menu_big_margin">60dp</dimen>
-    <dimen name="main_menu_central_margin">30dp</dimen>
+    <!--&lt;!&ndash; main menu&ndash;&gt;-->
+    <!--<dimen name="main_menu_big_margin">60dp</dimen>-->
+    <!--<dimen name="main_menu_central_margin">30dp</dimen>-->
 
-    <!-- sub-menu-->
-    <dimen name="space_cell">10dp</dimen>
-    <dimen name="gridview_margin">77dp</dimen>
+    <!--&lt;!&ndash; sub-menu&ndash;&gt;-->
+    <!--<dimen name="space_cell">10dp</dimen>-->
+    <!--<dimen name="gridview_margin">77dp</dimen>-->
 
-    <!--shop product fragment -->
-    <dimen name="product_item_image_size">50dp</dimen>
-    <dimen name="shop_default_magin">15dp</dimen>
+    <!--&lt;!&ndash;shop product fragment &ndash;&gt;-->
+    <!--<dimen name="product_item_image_size">50dp</dimen>-->
+    <!--<dimen name="shop_default_magin">15dp</dimen>-->
 
-    <dimen name="custom_dialog_message_text_size">30sp</dimen>
-    <dimen name="dialog_big_margin">100dp</dimen>
-    <dimen name="dialog_button_width">200dp</dimen>
-    <dimen name="dialog_title_text_size">24sp</dimen>
-    <dimen name="dialog_button_text_size">22sp</dimen>
-    <dimen name="down_arrow">25dp</dimen>
+    <!--<dimen name="custom_dialog_message_text_size">30sp</dimen>-->
+    <!--<dimen name="dialog_big_margin">100dp</dimen>-->
+    <!--<dimen name="dialog_button_width">200dp</dimen>-->
+    <!--<dimen name="dialog_title_text_size">24sp</dimen>-->
+    <!--<dimen name="dialog_button_text_size">22sp</dimen>-->
+    <!--<dimen name="down_arrow">25dp</dimen>-->
 
-    <!-- fragment columna-->
-    <dimen name="size_text_galeria">25sp</dimen>
-    <dimen name="size_text_name_columna">35sp</dimen>
-    <dimen name="container_margin_top_bottom">20dp</dimen>
-    <dimen name="container_margin_left_right">40dp</dimen>
-    <dimen name="galeria_margin_bottom">20dp</dimen>
+    <!--&lt;!&ndash; fragment columna&ndash;&gt;-->
+    <!--<dimen name="size_text_galeria">25sp</dimen>-->
+    <!--<dimen name="size_text_name_columna">35sp</dimen>-->
+    <!--<dimen name="container_margin_top_bottom">20dp</dimen>-->
+    <!--<dimen name="container_margin_left_right">40dp</dimen>-->
+    <!--<dimen name="galeria_margin_bottom">20dp</dimen>-->
 
-    <!-- fragment PLV-->
-    <dimen name="lable_height">150dp</dimen>
-    <dimen name="arrow_width">70dp</dimen>
+    <!--&lt;!&ndash; fragment PLV&ndash;&gt;-->
+    <!--<dimen name="lable_height">150dp</dimen>-->
+    <!--<dimen name="arrow_width">70dp</dimen>-->
 
 
 </resources>

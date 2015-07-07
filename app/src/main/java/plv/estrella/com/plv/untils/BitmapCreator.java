@@ -24,25 +24,25 @@ import java.io.IOException;
 
 public abstract class BitmapCreator {
 
-    public static final Bitmap getBitmap(String _path) {
+    public static Bitmap getBitmap(String _path) {
         return BitmapFactory.decodeFile(ApiManager.getPath() + _path);
     }
 
-    public static final Bitmap getBitmapCompressedX2(String _path) {
+    public static Bitmap getBitmapCompressedX2(String _path) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 2;
         return BitmapFactory.decodeFile(ApiManager.getPath() + _path, options);
     }
 
-    public static final Bitmap getBitmapCompressed(String _path) {
+    public static Bitmap getBitmapCompressed(String _path) {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize = 4;
+        options.inSampleSize = 5;
         return BitmapFactory.decodeFile(ApiManager.getPath() + _path, options);
     }
 
-    public static final Bitmap compressBackground(Context _context, int _resId) {
+    public static Bitmap compressBackground(Context _context, int _resId) {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize = 3;
+        options.inSampleSize = 4;
         return BitmapFactory.decodeResource(_context.getResources(), _resId, options);
     }
 

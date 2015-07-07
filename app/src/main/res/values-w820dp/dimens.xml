@@ -1,46 +1,46 @@
 <resources>
 
-    <!-- drawable-->
-    <dimen name="side_counter_products">100px</dimen>
+    <!--&lt;!&ndash; drawable&ndash;&gt;-->
+    <!--<dimen name="side_counter_products">100px</dimen>-->
 
-    <!-- Main Activity-->
-    <dimen name="action_bar_title_height">64dp</dimen>
-    <dimen name="action_bar_bottom_margin">32dp</dimen>
-    <dimen name="action_bar_title_txt">28dp</dimen>
-    <dimen name="action_bar_menu_icon_margin">15dp</dimen>
+    <!--&lt;!&ndash; Main Activity&ndash;&gt;-->
+    <!--<dimen name="action_bar_title_height">64dp</dimen>-->
+    <!--<dimen name="action_bar_bottom_margin">32dp</dimen>-->
+    <!--<dimen name="action_bar_title_txt">28dp</dimen>-->
+    <!--<dimen name="action_bar_menu_icon_margin">15dp</dimen>-->
 
-    <dimen name="default_padding">10dp</dimen>
+    <!--<dimen name="default_padding">10dp</dimen>-->
 
-    - <!-- Start menu-->
-    <dimen name="menu_item_size_txt">26dp</dimen>
-    <dimen name="menu_item_height">40dp</dimen>
-    <dimen name="beverage_title_min_size">40dp</dimen>
-    <dimen name="beverage_title_max_size">60dp</dimen>
-    <dimen name="beverage_description_size">156dp</dimen>
-    <dimen name="beverage_item_w">80dp</dimen>
+    <!--&lt;!&ndash; Start menu&ndash;&gt;-->
+    <!--<dimen name="menu_item_size_txt">26dp</dimen>-->
+    <!--<dimen name="menu_item_height">40dp</dimen>-->
+    <!--<dimen name="beverage_title_min_size">40dp</dimen>-->
+    <!--<dimen name="beverage_title_max_size">60dp</dimen>-->
+    <!--<dimen name="beverage_description_size">156dp</dimen>-->
+    <!--<dimen name="beverage_item_w">80dp</dimen>-->
 
-    <!-- sub-menu-->
-    <dimen name="space_cell">5dp</dimen>
-    <dimen name="gridview_margin">20dp</dimen>
+    <!--&lt;!&ndash; sub-menu&ndash;&gt;-->
+    <!--<dimen name="space_cell">5dp</dimen>-->
+    <!--<dimen name="gridview_margin">20dp</dimen>-->
 
-    <!-- Sliding Menu-->
-    <dimen name="slidingmenu_shadow_width">5dp</dimen>
-    <dimen name="menu_width">300dp</dimen>
-    <dimen name="menu_height">35dp</dimen>
-    <dimen name="menu_margin_top">45dp</dimen>
-    <dimen name="menu_padding_left">5dp</dimen>
-    <dimen name="menu_text_size">16sp</dimen>
+    <!--&lt;!&ndash; Sliding Menu&ndash;&gt;-->
+    <!--<dimen name="slidingmenu_shadow_width">5dp</dimen>-->
+    <!--<dimen name="menu_width">300dp</dimen>-->
+    <!--<dimen name="menu_height">35dp</dimen>-->
+    <!--<dimen name="menu_margin_top">45dp</dimen>-->
+    <!--<dimen name="menu_padding_left">5dp</dimen>-->
+    <!--<dimen name="menu_text_size">16sp</dimen>-->
 
-    <!-- fragment columna-->
-    <dimen name="size_text_galeria">15sp</dimen>
-    <dimen name="size_text_name_columna">22sp</dimen>
-    <dimen name="container_margin_top_bottom">10dp</dimen>
-    <dimen name="container_margin_left_right">30dp</dimen>
-    <dimen name="galeria_margin_bottom">5dp</dimen>
+    <!--&lt;!&ndash; fragment columna&ndash;&gt;-->
+    <!--<dimen name="size_text_galeria">15sp</dimen>-->
+    <!--<dimen name="size_text_name_columna">22sp</dimen>-->
+    <!--<dimen name="container_margin_top_bottom">10dp</dimen>-->
+    <!--<dimen name="container_margin_left_right">30dp</dimen>-->
+    <!--<dimen name="galeria_margin_bottom">5dp</dimen>-->
 
-    <!-- fragment PLV-->
-    <dimen name="lable_height">100dp</dimen>
-    <dimen name="arrow_width">40dp</dimen>
+    <!--&lt;!&ndash; fragment PLV&ndash;&gt;-->
+    <!--<dimen name="lable_height">100dp</dimen>-->
+    <!--<dimen name="arrow_width">40dp</dimen>-->
 
 
 </resources>

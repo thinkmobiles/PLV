@@ -56,7 +56,7 @@ public class SlidingMenuManager {
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
         menu.setShadowWidthRes(R.dimen.slidingmenu_shadow_width);
         menu.setBehindWidth(getDisplayWidth());
-        menu.setFadeDegree(0.33f);
+        menu.setFadeDegree(0.3f);
         menu.attachToActivity(_activity, SlidingMenu.SLIDING_WINDOW);
         menu.setMenu(R.layout.menu);
         menu.setSlidingEnabled(true);
@@ -131,6 +131,9 @@ public class SlidingMenuManager {
                     case AppModel.ChangeEvent.SECOND_LEVEL_CHANGED_ID:
                         createSubMenu();
                         break;
+                    case AppModel.ChangeEvent.THIRD_LEVEL_CHANGED_ID:
+                        mTitleList.add(ApiManager.getThirdList().get(0).getName());
+                        break;
                 }
             }
         };
@@ -156,11 +159,14 @@ public class SlidingMenuManager {
         List<Item> list = ApiManager.getSecondList();
         if (c == 0) {
             mListColumnas = list;
+            for(Item item : list){
+                ApiManager.getThirdLevel(mMenuListener, item);
+            }
         } else {
             mListPLV = list;
-        }
-        for(Item item : list){
-            mTitleList.add(item.getName());
+            for(Item item : list){
+                mTitleList.add(item.getName());
+            }
         }
     }
 

@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/btn_menu"
-                android:layout_marginLeft="@dimen/action_bar_menu_icon_margin_left"
+                android:layout_marginLeft="@dimen/fragment_padding_left_right"
                 android:layout_marginRight="@dimen/action_bar_menu_icon_margin"
                 />
 
@@ -62,7 +62,6 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_below="@+id/llHeader"
         android:layout_above="@+id/llFooter">
 

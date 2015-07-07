@@ -1,10 +1,8 @@
 package plv.estrella.com.plv.fragments;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import com.cristaliza.mvc.models.estrella.AppModel;
 import com.cristaliza.mvc.models.estrella.Item;
 import com.cristaliza.mvc.models.estrella.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import plv.estrella.com.plv.MainActivity;
@@ -44,7 +41,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     private Item mCurrentItem;
     private EventListener eventListener;
     private int counterValue = 0;
-    private int typeDialogEnvio = Constants.TYPE_DIALOG_ADD_ENVIOS;
 
     public static ColumnaFragment newInstance(ItemSerializable _item){
         ColumnaFragment fragment = new ColumnaFragment();

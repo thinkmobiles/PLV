@@ -16,8 +16,6 @@
         android:id="@+id/ivInfoPlus"
         android:src="@drawable/btn_moreinfo"
         android:layout_below="@+id/ivIconProd"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp" />
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

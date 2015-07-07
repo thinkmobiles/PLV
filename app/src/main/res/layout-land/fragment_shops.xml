@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/fragment_padding_left_right"
     android:paddingRight="@dimen/fragment_padding_left_right"
@@ -70,7 +71,7 @@
         android:listSelector="@android:color/transparent"
         android:id="@+id/lvShopContainer_FS"
         android:layout_below="@+id/flDev"
-        android:divider="#000000"
-        android:dividerHeight="1px"
+        android:divider="@android:color/black"
+        android:dividerHeight="@dimen/shop_height_list_devider"
         android:drawSelectorOnTop="false" />
 </RelativeLayout>

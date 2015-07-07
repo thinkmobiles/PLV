@@ -7,16 +7,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvDescrSolo"
         android:layout_alignParentTop="true"
-        android:layout_margin="25dp"/>
+        android:layout_margin="@dimen/default_big_margin"/>
 
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="@dimen/side_item_pager"
+        android:layout_height="@dimen/side_item_pager"
         android:id="@+id/ivIconSolo"
         android:layout_gravity="center_vertical"
         android:src="@drawable/ic_launcher"
         android:layout_alignParentBottom="false"
-        android:layout_marginBottom="20dp"
         android:layout_centerInParent="true" />
 
 </RelativeLayout>

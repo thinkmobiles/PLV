@@ -8,17 +8,19 @@
     <dimen name="action_bar_menu_icon_margin">30dp</dimen>
 
     <!-- drawable-->
-    <dimen name="side_counter_products">50px</dimen>
+    <dimen name="side_counter_products">100px</dimen>
     <dimen name="width_border_counter_products">2px</dimen>
-    <dimen name="enviar_height">50px</dimen>
-    <dimen name="enviar_width">150px</dimen>
+    <dimen name="enviar_height">100px</dimen>
+    <dimen name="enviar_width">250px</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_circle_view_size">200dp</dimen>
     <dimen name="slidingmenu_shadow_width">5dp</dimen>
 
-    <dimen name="default_padding">10dp</dimen>
+    <dimen name="side_progress_bar">250dp</dimen>
+
+    <dimen name="default_padding">8dp</dimen>
     <dimen name="default_margin">15dp</dimen>
     <dimen name="default_big_margin">30dp</dimen>
 
@@ -33,13 +35,12 @@
 
 
     <!--shop product fragment -->
-    <dimen name="product_item_image_size">50dp</dimen>
-    <dimen name="btn_enviar_margin_right">20dp</dimen>
-    <dimen name="btn_enviar_margin_bottom">15dp</dimen>
-    <dimen name="shop_fragment_padding_left_right">55dp</dimen>
-    <dimen name="shop_fragment_padding_top">30dp</dimen>
-    <dimen name="shop_default_magin">15dp</dimen>
+    <dimen name="item_image_size">50dp</dimen>
+    <dimen name="item_height">70dp</dimen>
     <dimen name="shop_height_head_devider">5dp</dimen>
+    <dimen name="shop_height_list_devider">1dp</dimen>
+    <dimen name="shop_header_margin">12dp</dimen>
+    <dimen name="message_width">300dp</dimen>
 
     <dimen name="custom_dialog_message_text_size">30sp</dimen>
     <dimen name="dialog_big_margin">100dp</dimen>
@@ -58,8 +59,14 @@
     <!-- fragment PLV-->
     <dimen name="lable_width">200dp</dimen>
     <dimen name="lable_height">150dp</dimen>
-    <dimen name="arrow_width">70dp</dimen>
+    <dimen name="side_item_pager">350dp</dimen>
 
+    <!-- Sliding Menu-->
+    <dimen name="menu_height">35dp</dimen>
+    <dimen name="menu_margin_top">20dp</dimen>
+    <dimen name="menu_padding_left">5dp</dimen>
+    <dimen name="menu_text_size">18dp</dimen>
+    <dimen name="menu_big_padding_left">30dp</dimen>
 
 
 

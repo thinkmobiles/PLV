@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/fragment_padding_left_right"
     android:paddingTop="@dimen/fragment_padding_top_bottom"
     android:paddingBottom="@dimen/fragment_padding_top_bottom"
-    android:background="#ffff">
+    android:background="@color/bg_white">
 
     <view
         android:layout_width="wrap_content"
@@ -48,8 +48,8 @@
             android:layout_alignBottom="@+id/tvCount_P"/>
 
         <TextView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="0"
             android:id="@+id/tvCount_P"
             android:gravity="center"
@@ -77,7 +77,7 @@
         android:src="@drawable/btn_prev"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:padding="5dp" />
+        android:padding="@dimen/default_padding" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -86,6 +86,6 @@
         android:src="@drawable/btn_next"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:padding="5dp" />
+        android:padding="@dimen/default_padding" />
 
 </RelativeLayout>

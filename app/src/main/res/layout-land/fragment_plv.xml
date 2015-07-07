@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:padding="5dp"
+        android:padding="@dimen/default_padding"
         android:src="@drawable/btn_prev" />
 
         <ImageView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:padding="5dp"
+        android:padding="@dimen/default_padding"
         android:src="@drawable/btn_next" />
 
     <LinearLayout
