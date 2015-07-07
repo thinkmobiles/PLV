@@ -74,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@android:drawable/btn_dropdown"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/abc_button_padding_horizontal_material"
                 android:spinnerMode="dropdown"

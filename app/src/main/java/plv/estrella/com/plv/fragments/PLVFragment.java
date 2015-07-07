@@ -147,7 +147,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     }
 
     private View.OnClickListener getClickListener(final int pos){
-        View.OnClickListener listener = new View.OnClickListener() {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentReplacer.replaceFragmentWithStack(
@@ -156,7 +156,6 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
                 );
             }
         };
-        return listener;
     }
 
     @Override

@@ -49,7 +49,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         makeListeners();
         ApiManager.getFirstLevel(mMenuListener);
         setListeners();
-        mCallingActivity.setTitle("");
         return view;
     }
 
@@ -58,6 +57,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         ivPLV = (ImageView) _view.findViewById(R.id.ivPLV_FMM);
 
         mCallingActivity.setBackground();
+        mCallingActivity.setTitle("");
     }
 
     private void makeListeners() {
@@ -71,9 +71,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
                     case AppModel.ChangeEvent.FIRST_LEVEL_CHANGED_ID:
                         createMenu();
                         break;
-                    case AppModel.ChangeEvent.SECOND_LEVEL_CHANGED_ID:
-
-                        break;
                 }
             }
         };
@@ -81,6 +78,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
     private void createMenu(){
         mMenuItemList = ApiManager.getFirstList();
+
+        ivColumnas.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(0).getIcon()));
+        ivPLV.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(1).getIcon()));
     }
 
     private void setListeners(){
@@ -94,8 +94,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         int position = 0;
         switch (v.getId()){
             case R.id.ivColumnas_FMM:
-                subMenuOpen = Constants.MENU_COLUMNAS;
-                position = 0;
                 break;
             case R.id.ivPLV_FMM:
                 subMenuOpen = Constants.MENU_PLV;

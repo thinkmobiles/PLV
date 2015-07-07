@@ -8,7 +8,6 @@
     <string name="columna">COLUMNA</string>
     <string name="galeria">GALERÍA</string>
     <string name="plv">PLV</string>
-    <string name="click_back">Please click BACK again to exit</string>
 
     <!-- fragment shop product-->
     <string name="borrar_lista">BORRAR LISTA</string>
@@ -22,9 +21,6 @@
     <string name="cantidad">CANTIDAD</string>
     <string name="alert_message">Este producto no se enviará si no añades al menos 1 item</string>
 
-    <string name="cancelar">CANCELAR</string>
-    <string name="accept">ACEPTAR</string>
-
     <!-- Dialogs-->
     <string name="anadir_ficha">AÑADIR FICHA A:</string>
     <string name="anadir_pedido">AÑADIR PEDIDO A:</string>
@@ -36,8 +32,6 @@
     <string name="ver_envio">VER ENVÍO</string>
     <string name="ver_pedido">VER PEDIDO</string>
     <string name="continuar">CONTINUAR</string>
-    <string name="delete_all_products">Delete all products?</string>
-    <string name="delete_all_shops">Delete all shops?</string>
 
     <!-- Toasts-->
     <string name="enter_shop">Por favor, añade un local</string>
@@ -49,8 +43,8 @@
     <string name="add_shop_succesfull">Shop add succesfull</string>
     <string name="attachment_error">Attachment Error</string>
     <string name="error">_error</string>
+    <string name="click_back">Please click BACK again to exit</string>
 
-    <string name="create_new_shop">Create new shop</string>
     <string name="send_mail">Send email...</string>
     <string name="mail_topic_envio">Envío de fichas de producto</string>
     <string name="mail_message_envio">Buenos días.

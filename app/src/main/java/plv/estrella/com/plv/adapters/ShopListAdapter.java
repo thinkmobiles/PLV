@@ -21,6 +21,7 @@ import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.fragments.ShopProductsFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.PDFSender;
 
 /**
  * Created by vasia on 27.05.2015.
@@ -122,12 +123,12 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
     private void send(int _position){
         if(Constants.TYPE_SHOPS_PEDIDOS == typeShops){
             if(checkCorrect(_position)){
-                Toast.makeText(mActivity, "send",Toast.LENGTH_SHORT).show();
+                PDFSender.sendShopPDFsFromPedido(mActivity, DBManager.getDBItems(mShops.get(_position)));
             } else {
-                Toast.makeText(mActivity, "0 products",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, mActivity.getString(R.string.no_productos),Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(mActivity, "send",Toast.LENGTH_SHORT).show();
+            PDFSender.sendShopPDFsFromEnvio(mActivity, DBManager.getDBItems(mShops.get(_position)));
         }
     }
 
@@ -137,14 +138,14 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
 
     private void startDeleteDialog(final int _position){
         final CustomDialog dialog = new CustomDialog.Builder()
-                .setPositiveButton("Ok", new View.OnClickListener() {
+                .setPositiveButton(mActivity.getString(R.string.button_accept), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         deleteShop(_position);
                     }
                 })
-                .setNegativeButton("cancel", null)
-                .setMessage("Remove shop?")
+                .setNegativeButton(mActivity.getString(R.string.button_cancel), null)
+                .setMessage(mActivity.getString(R.string.delete_shop))
                 .create();
         dialog.show(mActivity);
     }

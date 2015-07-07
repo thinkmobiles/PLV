@@ -167,7 +167,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
             dialog.show(mCallingActivity);
         } else {
             AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, this, massivCounters[targetPos]);
+                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, massivCounters[targetPos]);
         }
     }
 

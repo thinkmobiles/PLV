@@ -13,6 +13,7 @@ import com.cristaliza.mvc.models.estrella.Item;
 import java.util.List;
 
 import plv.estrella.com.plv.R;
+import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.BitmapCreator;
 
 
@@ -31,7 +32,7 @@ public class SubMenuAdapter extends BaseAdapter {
 
         int height = getDisplayWidth() / 6;
         int width = height;
-        if(_type == 1){
+        if(_type == Constants.MENU_PLV){
             width = getDisplayWidth() / 5;
         }
 

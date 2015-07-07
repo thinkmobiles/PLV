@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 import plv.estrella.com.plv.custom.circleprogress.CircleProgress;
 import plv.estrella.com.plv.untils.ApiManager;
+import plv.estrella.com.plv.untils.Network;
 import plv.estrella.com.plv.untils.ProgressDialogWorker;
 import plv.estrella.com.plv.untils.SharedPreferencesManager;
 

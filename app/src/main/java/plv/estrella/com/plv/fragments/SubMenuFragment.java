@@ -30,8 +30,6 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
  */
 public class SubMenuFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    private int TYPE_SUBMENU;
-
     private MainActivity mCallingActivity;
     private GridView gvSubMenuContainer;
     private int mMenuOpen;
@@ -111,27 +109,25 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
         switch (mMenuOpen){
             case Constants.MENU_COLUMNAS:
                 gvSubMenuContainer.setNumColumns(5);
-                TYPE_SUBMENU = 0;
                 break;
             case Constants.MENU_PLV:
-                TYPE_SUBMENU = 1;
                 gvSubMenuContainer.setNumColumns(4);
                 break;
         }
-        gvSubMenuContainer.setAdapter(new SubMenuAdapter(mCallingActivity, mSubMenuItemList, TYPE_SUBMENU));
+        gvSubMenuContainer.setAdapter(new SubMenuAdapter(mCallingActivity, mSubMenuItemList, mMenuOpen));
         gvSubMenuContainer.setOnItemClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (TYPE_SUBMENU){
-            case 0:
+        switch (mMenuOpen){
+            case Constants.MENU_COLUMNAS:
                 FragmentReplacer.replaceFragmentWithStack(
                         mCallingActivity,
                         ColumnaFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
                 );
                 break;
-            case 1:
+            case Constants.MENU_PLV:
                 FragmentReplacer.replaceFragmentWithStack(
                         mCallingActivity,
                         PLVFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))

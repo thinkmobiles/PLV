@@ -161,7 +161,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.ivAddEnvio_FC:
                 AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, this, 1);
+                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                 break;
             case R.id.ivMore_FC:
                 incCounter();
@@ -190,7 +190,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
             dialog.show(mCallingActivity);
         } else {
             AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, this, counterValue);
+                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, counterValue);
         }
     }
 

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by samson on 01.07.15.
  */
 public class ProductSerializable implements Serializable {
-    Product product;
+    private transient Product product;
 
     public ProductSerializable(){
 
