@@ -14,6 +14,8 @@ public abstract class Constants {
     public static final String PARAM_POSITION   = "position";
     public static final String PARAM_TYPE       = "position";
 
+    public static final String YOUTUBE_VIDEO_ID = "YOUTUBE_VIDEO_ID";
+
     //Types of items of slidemenu
     public static final int TYPE_COMPANIA       = -1;
     public static final int TYPE_INICIO         = 0;
@@ -40,4 +42,8 @@ public abstract class Constants {
     //types of shop
     public static final int TYPE_SHOPS_ENVIOS      = 0;
     public static final int TYPE_SHOPS_PEDIDOS     = 1;
+
+    //----------------------------Image---------------------------------------
+    public static final String URL_YOUTUBE_IMG = "http://img.youtube.com/vi/";
+    public static final String URL_YOUTUBE_IMG_INDEX = "/0.jpg";
 }

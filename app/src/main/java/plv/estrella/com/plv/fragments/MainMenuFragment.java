@@ -82,8 +82,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     private void createMenu(){
         mMenuItemList = ApiManager.getFirstList();
 
-        ivColumnas.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(0).getIcon()));
-        ivPLV.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(1).getIcon()));
+        ivColumnas.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(1).getIcon()));
+        ivPLV.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(2).getIcon()));
     }
 
     private void setListeners(){
@@ -98,19 +98,19 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
             case R.id.ivColumnas_FMM:
                 FragmentReplacer.replaceFragmentWithStack(
                         mCallingActivity,
-                        SubMenuFragment.newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0)))
+                        SubMenuFragment.newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(1)))
                 );
                 break;
             case R.id.ivPLV_FMM:
                 FragmentReplacer.replaceFragmentWithStack(
                         mCallingActivity,
-                        SubMenuFragment.newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)))
+                        SubMenuFragment.newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(2)))
                 );
                 break;
             case R.id.tvCompania:
                 FragmentReplacer.replaceFragmentWithStack(
                         mCallingActivity,
-                        new CompaniaFragment()
+                        CompaniaFragment.newInstance(new ItemSerializable(mMenuItemList.get(0)))
                 );
                 break;
         }

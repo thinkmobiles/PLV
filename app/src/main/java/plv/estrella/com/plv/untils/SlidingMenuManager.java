@@ -81,16 +81,16 @@ public class SlidingMenuManager {
                         jumper.setParamToMainmenu();
                         break;
                     case Constants.TYPE_SPV:
-                        jumper.setParamToSubmenu(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(0)));
+                        jumper.setParamToSubmenu(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(1)));
                         break;
                     case Constants.TYPE_SPV_PADDING:
-                        jumper.setParamToColumna(new ItemSerializable(mListColumnas.get(position - 2)));
+                        jumper.setParamToColumna(new ItemSerializable(mListColumnas.get(position - 3)));
                         break;
                     case Constants.TYPE_PLV:
-                        jumper.setParamToSubmenu(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(1)));
+                        jumper.setParamToSubmenu(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(2)));
                         break;
                     case Constants.TYPE_PLV_PADDING:
-                        jumper.setParamToPLV(new ItemSerializable(mListPLV.get(position - 11)));
+                        jumper.setParamToPLV(new ItemSerializable(mListPLV.get(position - 12)));
                         break;
                     case Constants.TYPE_ENVIOS:
                         jumper.setParamToShop(Constants.TYPE_SHOPS_ENVIOS);
@@ -99,7 +99,7 @@ public class SlidingMenuManager {
                         jumper.setParamToShop(Constants.TYPE_SHOPS_PEDIDOS);
                         break;
                     case Constants.TYPE_COMPANIA:
-                        jumper.setParamToCompania();
+                        jumper.setParamToCompania(new ItemSerializable(mMenuItemList.get(0)));
                         break;
                 }
                 FragmentReplacer.replaceFragmentWithStack(activity, jumper);
@@ -125,9 +125,6 @@ public class SlidingMenuManager {
             @Override
             public void onEvent(Event event) {
                 switch (event.getId()) {
-                    case AppModel.ChangeEvent.ON_EXECUTE_ERROR_ID:
-                        Toast.makeText(activity, event.getType() + "error", Toast.LENGTH_SHORT).show();
-                        break;
                     case AppModel.ChangeEvent.FIRST_LEVEL_CHANGED_ID:
                         createMenu();
                         break;
@@ -151,10 +148,10 @@ public class SlidingMenuManager {
         mTitleList.add(Constants.ITEM_INICIO);
         mTitleList.add(Constants.ITEM_COMPANIA);
         mTitleList.add(Constants.ITEM_COLUMNAS);
-        ApiManager.getSecondLevel(mMenuListener, mMenuItemList.get(0));
+        ApiManager.getSecondLevel(mMenuListener, mMenuItemList.get(1));
         mTitleList.add(Constants.ITEM_PLV);
         ++c;
-        ApiManager.getSecondLevel(mMenuListener, mMenuItemList.get(1));
+        ApiManager.getSecondLevel(mMenuListener, mMenuItemList.get(2));
         mTitleList.add(Constants.ITEM_ENVIOS);
         mTitleList.add(Constants.ITEM_PEDIDOS);
     }

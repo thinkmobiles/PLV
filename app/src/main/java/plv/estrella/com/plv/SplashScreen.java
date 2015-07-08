@@ -108,7 +108,6 @@ public class SplashScreen extends Activity {
 
     private void downloadContent() {
         mIsLoadContent = true;
-        ApiManager.init(this);
         ApiManager.downloadContent(downloadListener);
         mProgressView.setVisibility(View.VISIBLE);
         mProgressView.startAnim();
@@ -120,12 +119,14 @@ public class SplashScreen extends Activity {
             public void onEvent(Event event) {
                 Log.e("tag", "e = " + event.getId());
                 switch (event.getId()) {
-                    case AppModel.ChangeEvent.ON_EXECUTE_ERROR_ID:
-                        Toast.makeText(getBaseContext(), event.getType() + " error", Toast.LENGTH_LONG).show();
-                        break;
                     case AppModel.ChangeEvent.DOWNLOAD_ALL_CHANGED_ID:
-                        SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
-                        ApiManager.setOfflineMode();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
+                                openMainActivity();
+                            }
+                        });
                         break;
                     case AppModel.ChangeEvent.LAST_UPDATE_CHANGED_ID:
 
@@ -155,7 +156,6 @@ public class SplashScreen extends Activity {
 
     private boolean hasNewContent() {
         Date currentUpdate = new Date(SharedPreferencesManager.getUpdateDate(getBaseContext()));
-        Log.e("update","call");
 //        ApiManager.setOfflineMode();
 //        ApiManager.getFirstLevel(downloadListener);
         ApiManager.getLastUpdateServer(downloadListener);

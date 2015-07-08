@@ -36,7 +36,7 @@ public abstract class BitmapCreator {
 
     public static Bitmap getBitmapCompressed(String _path) {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inSampleSize = 5;
+        options.inSampleSize = 7;
         return BitmapFactory.decodeFile(ApiManager.getPath() + _path, options);
     }
 
@@ -65,7 +65,7 @@ public abstract class BitmapCreator {
 //      max Height and width values of the compressed image is taken as 816x612
 
         float maxHeight = 512.0f;
-        float maxWidth = 512.0f;
+        float maxWidth = 450.0f;
         float imgRatio = actualWidth / actualHeight;
         float maxRatio = maxWidth / maxHeight;
 

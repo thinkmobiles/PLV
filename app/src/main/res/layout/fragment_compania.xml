@@ -2,81 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="7"
-        android:paddingTop="45dp"
-        android:paddingLeft="75dp"
-        android:paddingRight="50dp"
+        android:paddingTop="@dimen/info_padding_top"
+        android:paddingBottom="@dimen/default_padding"
+        android:paddingLeft="@dimen/info_padding_left"
+        android:paddingRight="@dimen/info_padding_right"
         android:background="@android:color/white">
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ivVolver_FC"
             android:src="@drawable/btn_volver"
+            android:padding="@dimen/default_padding"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="70dp"/>
-
+            android:layout_marginBottom="@dimen/volver_btn_margin"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ivLogo_FC"
             android:src="@drawable/logo"
             android:layout_below="@+id/ivVolver_FC"
-            android:layout_marginBottom="45dp"/>
-
+            android:layout_marginBottom="@dimen/default_big_margin"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
             android:id="@+id/tvDescription_FC"
             android:layout_below="@+id/ivLogo_FC"
-            android:layout_marginBottom="45dp"
-            android:textSize="12sp" />
-
+            android:textSize="@dimen/description_text_size" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/contVideo"
             android:layout_below="@+id/tvDescription_FC">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/name_video_margin"
                 android:text="New Text"
                 android:id="@+id/tvNameVideo_FC"
-                android:textSize="12sp" />
-
+                android:textSize="@dimen/description_text_size" />
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/tvNameVideo_FC"
                 android:id="@+id/rlVideo">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
                     android:id="@+id/ivVideo_FC" />
-
                 <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_width="@dimen/side_btn_play"
+                    android:layout_height="@dimen/side_btn_play"
                     android:id="@+id/ivPlay_FC"
-                    android:src="@drawable/video_play_button"
-                    android:layout_centerInParent="true" />
+                    android:src="@drawable/new12"
+                    android:layout_centerInParent="true"/>
             </RelativeLayout>
-
         </RelativeLayout>
-
     </RelativeLayout>
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imageView3"
-        android:layout_weight="3" />
-
+        android:id="@+id/ivPhotoComp_FC"
+        android:layout_weight="3"
+        android:scaleType="fitXY"/>
 </LinearLayout>

@@ -63,7 +63,8 @@ public class JumpFragmentHelper extends Fragment {
         typeShop = _typeShop;
     }
 
-    public void setParamToCompania(){
+    public void setParamToCompania(final ItemSerializable _item){
+        itemSerializable = _item;
         typeItem = JUMP_COMPANIA;
     }
 
@@ -92,7 +93,7 @@ public class JumpFragmentHelper extends Fragment {
                 FragmentReplacer.replaceCurrentFragment(mActivity, ShopsFragment.newInstance(typeShop));
                 break;
             case JUMP_COMPANIA:
-                FragmentReplacer.replaceCurrentFragment(mActivity, new CompaniaFragment());
+                FragmentReplacer.replaceCurrentFragment(mActivity, CompaniaFragment.newInstance(itemSerializable));
                 break;
         }
         return null;
