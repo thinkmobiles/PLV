@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@drawable/bg_splashscreen">
 
     <plv.estrella.com.plv.custom.circleprogress.CircleProgress
-        android:layout_gravity="center"
         android:id="@+id/progress"
         android:layout_width="@dimen/side_progress_bar"
         android:layout_height="@dimen/side_progress_bar"
         android:visibility="gone"
-        />
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/tvDownloadProcess"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/action_bar_title_txt"
+        android:layout_marginLeft="@dimen/default_big_margin"
+        android:layout_marginRight="@dimen/default_big_margin"
+        android:layout_marginBottom="@dimen/action_bar_title_height"
+        android:textColor="@color/text_grey"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -69,6 +69,7 @@
         android:id="@+id/lvShopContainer_FS"
         android:layout_below="@+id/flDev"
         android:divider="@android:color/black"
+        android:scrollbars="none"
         android:dividerHeight="@dimen/shop_height_list_devider"
         android:drawSelectorOnTop="false" />
 </RelativeLayout>

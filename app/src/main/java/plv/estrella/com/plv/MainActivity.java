@@ -1,16 +1,15 @@
 package plv.estrella.com.plv;
 
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import plv.estrella.com.plv.fragments.MainMenuFragment;
+import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
@@ -68,11 +67,11 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void setBackground() {
-        background.setImageBitmap(BitmapCreator.compressBackground(this,R.drawable.background));
+        background.setImageBitmap(BitmapCreator.compressImageBackground(this, R.drawable.background, 600f));
     }
 
     public void setBackground(final String _path){
-        background.setImageBitmap(BitmapCreator.getBitmapCompressed(_path));
+        background.setImageBitmap(BitmapCreator.tryCompressBitmap(_path, Constants.RATIO_16_9, 600f));
     }
 
     public void setTitle(String _title){

@@ -68,7 +68,7 @@ public class SubMenuAdapter extends BaseAdapter {
 
         }else
             holder = (ViewHolder) convertView.getTag();
-        holder.ivMenuImage.setImageBitmap(BitmapCreator.getBitmapCompressedX2(mItems.get(_position).getIcon()));
+        holder.ivMenuImage.setImageBitmap(BitmapCreator.tryCompressBitmap(mItems.get(_position).getIcon(), Constants.RATIO_4_3, 256f));
         return convertView;
     }
 

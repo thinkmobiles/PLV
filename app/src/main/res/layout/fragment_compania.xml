@@ -1,73 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="7"
-        android:paddingTop="@dimen/info_padding_top"
+        android:background="@android:color/white"
         android:paddingBottom="@dimen/default_padding"
         android:paddingLeft="@dimen/info_padding_left"
         android:paddingRight="@dimen/info_padding_right"
-        android:background="@android:color/white">
+        android:paddingTop="@dimen/info_padding_top">
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/ivVolver_FC"
-            android:src="@drawable/btn_volver"
-            android:padding="@dimen/default_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="@dimen/volver_btn_margin"/>
+            android:layout_marginBottom="@dimen/volver_btn_margin"
+            android:padding="@dimen/default_padding"
+            android:src="@drawable/btn_volver" />
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/ivLogo_FC"
-            android:src="@drawable/logo"
-            android:layout_below="@+id/ivVolver_FC"
-            android:layout_marginBottom="@dimen/default_big_margin"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/tvDescription_FC"
-            android:layout_below="@+id/ivLogo_FC"
-            android:textSize="@dimen/description_text_size" />
-        <RelativeLayout
+            android:layout_below="@+id/ivVolver_FC"
+            android:layout_marginBottom="@dimen/default_big_margin"
+            android:src="@drawable/logo" />
+
+        <ScrollView
+            android:id="@+id/svDescrioption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/contVideo"
+            android:layout_below="@+id/ivLogo_FC"
+            android:fadeScrollbars="false"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical"
+            android:paddingRight="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding">
+        <TextView
+            android:id="@+id/tvDescription_FC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/description_text_size" />
+        </ScrollView>
+
+        <RelativeLayout
             android:id="@+id/contVideo"
-            android:layout_below="@+id/tvDescription_FC">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/default_padding">
+
             <TextView
+                android:id="@+id/tvNameVideo_FC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/name_video_margin"
                 android:text="New Text"
-                android:id="@+id/tvNameVideo_FC"
                 android:textSize="@dimen/description_text_size" />
+
             <RelativeLayout
+                android:id="@+id/rlVideo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvNameVideo_FC"
-                android:id="@+id/rlVideo">
+                android:layout_below="@+id/tvNameVideo_FC">
+
                 <ImageView
+                    android:id="@+id/ivVideo_FC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:id="@+id/ivVideo_FC" />
+                    android:scaleType="fitXY" />
+
                 <ImageView
+                    android:id="@+id/ivPlay_FC"
                     android:layout_width="@dimen/side_btn_play"
                     android:layout_height="@dimen/side_btn_play"
-                    android:id="@+id/ivPlay_FC"
-                    android:src="@drawable/new12"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/new12" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
+
     <ImageView
+        android:id="@+id/ivPhotoComp_FC"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ivPhotoComp_FC"
         android:layout_weight="3"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 </LinearLayout>

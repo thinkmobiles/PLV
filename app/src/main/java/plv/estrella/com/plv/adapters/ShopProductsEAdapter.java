@@ -69,7 +69,7 @@ public class ShopProductsEAdapter extends BaseAdapter implements View.OnClickLis
         }else {
             holder = (ViewHolder) _convertView.getTag();
         }
-        fillData(holder, mProducts.get(_position).getItem());
+        fillData(holder, mProducts.get(_position));
         return _convertView;
     }
 
@@ -84,7 +84,7 @@ public class ShopProductsEAdapter extends BaseAdapter implements View.OnClickLis
         return holder;
     }
 
-    private void fillData(ViewHolder _holder, Item _item){
+    private void fillData(ViewHolder _holder, DBItem _item){
         _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getBitmap(_item.getIcon()));
         _holder.tvProductName.setText(_item.getName());
     }

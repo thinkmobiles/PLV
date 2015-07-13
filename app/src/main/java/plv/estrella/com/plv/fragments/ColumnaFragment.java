@@ -39,6 +39,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     private TextView mCounter, mNameColumna;
     private LinearLayout lowCont, highCont;
     private Item mCurrentItem;
+    private Product mProduct;
     private EventListener eventListener;
     private int counterValue = 0;
 
@@ -120,7 +121,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     }
 
     private void fillData(){
-        Product mProduct = ApiManager.getProductsList().get(0);
+        mProduct = ApiManager.getProductsList().get(0);
 
         mCallingActivity.setTitle(mProduct.getName());
 
@@ -157,7 +158,8 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.ivAddEnvio_FC:
                 AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
+//                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
+                        .show(mCallingActivity, mProduct.getId(), mProduct.getName(), mCurrentItem.getIcon(), Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                 break;
             case R.id.ivMore_FC:
                 incCounter();
@@ -186,7 +188,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
             dialog.show(mCallingActivity);
         } else {
             AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, counterValue);
+                    .show(mCallingActivity, mProduct.getId(), mProduct.getName(), mCurrentItem.getIcon(), Constants.TYPE_DIALOG_ADD_CARRITA, counterValue);
         }
     }
 

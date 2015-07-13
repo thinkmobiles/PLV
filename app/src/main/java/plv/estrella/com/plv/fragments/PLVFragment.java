@@ -1,6 +1,8 @@
 package plv.estrella.com.plv.fragments;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -107,23 +109,26 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
         };
     }
 
-
-
     private void fillHorizontalList() {
         mListProducts = ApiManager.getThirdList();
 
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(500, ViewGroup.LayoutParams.MATCH_PARENT);
+        params.setMargins(30, 10, 30, 10);
+        LoaderImage loaderImage;
         for(int i = 0; i < mListProducts.size(); ++i){
             ApiManager.getProducts(mMenuListener, mListProducts.get(i));
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(500, ViewGroup.LayoutParams.MATCH_PARENT);
-            params.setMargins(30, 10, 30, 10);
 
             View view = LayoutInflater.from(mCallingActivity).inflate(R.layout.item_product_horizontal_list, null);
             view.setLayoutParams(params);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.ivIconProd);
 
-            imageView.setImageBitmap(BitmapCreator.compressImage(mProduct.getImage()));
+            loaderImage = new LoaderImage();
+            loaderImage.imageView = imageView;
+            loaderImage.path = mProduct.getImage();
+            loaderImage.execute();
+
+//            imageView.setImageBitmap(BitmapCreator.tryCompressBitmap(mProduct.getImage(), 1f, 400));
 
             view.setOnClickListener(getClickListener(i));
             llContProd.addView(view);
@@ -132,7 +137,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setData() {
-        ivLable.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.getIcon()));
+        ivLable.setImageBitmap(BitmapCreator.tryCompressBitmap(mCurrentItem.getIcon(), Constants.RATIO_16_9, 400));
         mCallingActivity.setTitle(mCurrentItem.getName());
         mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
 
@@ -167,6 +172,30 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
             case R.id.ivNext:
                 hsvList.pageScroll(View.FOCUS_RIGHT);
                 break;
+        }
+    }
+
+    private static class LoaderImage extends AsyncTask<Void,Void,Void>{
+
+        ImageView imageView;
+        String path;
+
+        private Bitmap bitmap = null;
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            bitmap = BitmapCreator.tryCompressBitmap(path, Constants.RATIO_1_1, 450f);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            imageView.setImageBitmap(bitmap);
+            path = null;
+            imageView = null;
+            bitmap = null;
+            cancel(true);
         }
     }
 }

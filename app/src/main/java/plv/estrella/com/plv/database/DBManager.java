@@ -26,6 +26,16 @@ public  class DBManager {
         dbItem.save();
     }
 
+    public static final void addItem(String _itemId, String _name, String _icon, String _pdf, int _number, final Shop _shop){
+        final List<DBItem> items = getDBItems(_shop);
+        for(DBItem dbItem : items){
+            if(dbItem.getId().equals(_itemId))
+                return;
+        }
+        final DBItem dbItem = new DBItem(_itemId, _name, _icon, _pdf, _number, _shop);
+        dbItem.save();
+    }
+
     public static final void deleteItem(final long _itemId){
         final DBItem dbItem = DBItem.findById(DBItem.class, _itemId);
         dbItem.delete();

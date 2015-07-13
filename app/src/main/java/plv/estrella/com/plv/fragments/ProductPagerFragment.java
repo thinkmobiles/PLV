@@ -42,6 +42,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     private Item mCurrentItem;
     private List<Item> mListProducts;
     private Product mProduct;
+    private ProductPagerAdapter adapter;
     private com.cristaliza.mvc.events.EventListener eventListener;
 
     private int targetPos;
@@ -110,7 +111,8 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
             massivCounters[i] = 0;
             fragments.add(ItemPagerFragment.newInstance(mProduct));
         }
-        mPager.setAdapter(new ProductPagerAdapter(getChildFragmentManager(), fragments));
+        adapter = new ProductPagerAdapter(getChildFragmentManager(), fragments);
+        mPager.setAdapter(adapter);
         mPager.setCurrentItem(targetPos);
         setVisibilityArrows(targetPos);
     }
@@ -166,8 +168,9 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
                     .create();
             dialog.show(mCallingActivity);
         } else {
+            Product product = adapter.getItem(targetPos).getProduct();
             AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                    .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_CARRITA, massivCounters[targetPos]);
+                    .show(mCallingActivity, product.getId(), product.getName(), product.getImage(), Constants.TYPE_DIALOG_ADD_CARRITA, massivCounters[targetPos]);
         }
     }
 

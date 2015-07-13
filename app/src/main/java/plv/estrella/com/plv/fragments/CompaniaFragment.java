@@ -95,9 +95,13 @@ public class CompaniaFragment extends Fragment implements View.OnClickListener {
     }
     private void setData(){
         mCompania = ApiManager.getSecondList().get(0);
-        ivPhotoComp.setImageBitmap(BitmapCreator.getBitmapCompressedX2(mCompania.getBackgroundImage()));
+        ivPhotoComp.setImageBitmap(BitmapCreator.tryCompressBitmap(mCompania.getBackgroundImage(), Constants.RATIO_4_3, 1024f));
         ivLogo.setImageBitmap(BitmapCreator.getBitmap(mCompania.getLogo()));
-        Picasso.with(mCallingActivity).load(Constants.URL_YOUTUBE_IMG + VideoPlayerActivity.getYouTubeImageId(mCompania.getExtraVideos().get(0)) + Constants.URL_YOUTUBE_IMG_INDEX).into(ivVideo);
+        Picasso.with(mCallingActivity)
+                .load(Constants.URL_YOUTUBE_IMG
+                        + VideoPlayerActivity.getYouTubeImageId(mCompania.getExtraVideos().get(0))
+                        + Constants.URL_YOUTUBE_IMG_INDEX)
+                .into(ivVideo);
         tvDescription.setText(Html.fromHtml(mCompania.getDescription()));
         tvNameVideo.setText(mCompania.getExtraVideosDescripton().get(0));
     }

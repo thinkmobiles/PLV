@@ -46,4 +46,9 @@ public abstract class Constants {
     //----------------------------Image---------------------------------------
     public static final String URL_YOUTUBE_IMG = "http://img.youtube.com/vi/";
     public static final String URL_YOUTUBE_IMG_INDEX = "/0.jpg";
+
+    //ratios
+    public static final float RATIO_16_9                = 16f / 9f;
+    public static final float RATIO_4_3                 = 4f / 3f;
+    public static final float RATIO_1_1                 = 1f;
 }

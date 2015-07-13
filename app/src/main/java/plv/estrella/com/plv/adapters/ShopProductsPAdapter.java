@@ -97,8 +97,8 @@ public class ShopProductsPAdapter extends BaseAdapter implements View.OnClickLis
     }
 
     private void fillData(ViewHolder _holder, DBItem _dbItem, int _pos){
-        _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getBitmap(_dbItem.getItem().getIcon()));
-        _holder.tvProductName.setText(_dbItem.getItem().getName());
+        _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getBitmap(_dbItem.getIcon()));
+        _holder.tvProductName.setText(_dbItem.getName());
         _holder.tvCountProduct.setText(String.valueOf(_dbItem.getNumber()));
 
         if(!isCorrects[_pos])
