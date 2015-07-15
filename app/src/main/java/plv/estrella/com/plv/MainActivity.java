@@ -67,11 +67,11 @@ public class MainActivity extends FragmentActivity {
     }
 
     public void setBackground() {
-        background.setImageBitmap(BitmapCreator.compressImageBackground(this, R.drawable.background, 600f));
+        background.setImageBitmap(BitmapCreator.getCompressedBitmap(this, R.drawable.background, 1080f));
     }
 
     public void setBackground(final String _path){
-        background.setImageBitmap(BitmapCreator.tryCompressBitmap(_path, Constants.RATIO_16_9, 600f));
+        background.setImageBitmap(BitmapCreator.getCompressedBitmap(_path, Constants.RATIO_16_9, 600f));
     }
 
     public void setTitle(String _title){

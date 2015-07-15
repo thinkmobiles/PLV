@@ -15,6 +15,7 @@ import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.database.DBItem;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
+import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.BitmapCreator;
 
 /**
@@ -97,7 +98,7 @@ public class ShopProductsPAdapter extends BaseAdapter implements View.OnClickLis
     }
 
     private void fillData(ViewHolder _holder, DBItem _dbItem, int _pos){
-        _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getBitmap(_dbItem.getIcon()));
+        _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getCompressedBitmap(_dbItem.getIcon(), Constants.RATIO_1_1, 256f));
         _holder.tvProductName.setText(_dbItem.getName());
         _holder.tvCountProduct.setText(String.valueOf(_dbItem.getNumber()));
 

@@ -62,13 +62,18 @@
     <dimen name="slidingmenu_shadow_width">5dp</dimen>
 
     <!-- fragment Compania-->
-    <dimen name="info_padding_top">35dp</dimen>
-    <dimen name="info_padding_left">60dp</dimen>
-    <dimen name="info_padding_right">43dp</dimen>
-    <dimen name="side_btn_play">25dp</dimen>
     <dimen name="name_video_margin">3dp</dimen>
     <dimen name="volver_btn_margin">42dp</dimen>
     <dimen name="description_text_size">13sp</dimen>
+    <!-- Compania fragment-->
+    <dimen name="info_padding_left">70dp</dimen>
+    <dimen name="info_padding_right">40dp</dimen>
+    <dimen name="info_padding_top">30dp</dimen>
+    <dimen name="info_padding_bottom">50dp</dimen>
+    <dimen name="info_view_margin_bottom">25dp</dimen>
+    <dimen name="info_text_size">13sp</dimen>
+    <dimen name="info_btn_play_side">25sp</dimen>
+    <dimen name="info_video_height">200dp</dimen>
 
 
 </resources>

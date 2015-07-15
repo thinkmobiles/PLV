@@ -22,6 +22,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import plv.estrella.com.plv.global.Constants;
+
 
 public abstract class BitmapCreator {
 
@@ -29,7 +31,15 @@ public abstract class BitmapCreator {
         return BitmapFactory.decodeFile(ApiManager.getPath() + _path);
     }
 
-    public static Bitmap tryCompressBitmap(String _path, float _ratio, float _width){
+    public static Bitmap getCompressedBitmap(String _path, float _ratio, float _width){
+        return tryCompressBitmap(_width, _ratio, _path, null, 0);
+    }
+
+    public static Bitmap getCompressedBitmap(Context _context, int _resId, float _width){
+        return tryCompressBitmap(_width, Constants.RATIO_4_3, null, _context, _resId);
+    }
+
+    public static Bitmap tryCompressBitmap(float _width, float _ratio, String _path, Context _context, int _resId){
 
         String filePath = ApiManager.getPath() + _path;
 
@@ -37,93 +47,28 @@ public abstract class BitmapCreator {
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        Bitmap bmp = BitmapFactory.decodeFile(filePath, options);
+        Bitmap bmp;
+        if(_context == null) {
+            bmp = BitmapFactory.decodeFile(filePath, options);
+        } else {
+            bmp = BitmapFactory.decodeResource(_context.getResources(), _resId,options);
+        }
 
         int actualHeight = options.outHeight;
         int actualWidth = options.outWidth;
 
         if(options.outHeight == 0)
-            return scaledBitmap;
+            return null;
 
         float maxHeight = _width / _ratio;
-        float maxWidth = _width;
         float imgRatio = actualWidth / actualHeight;
-        float maxRatio = _ratio;
-
-        if (actualHeight > maxHeight || actualWidth > maxWidth) {
-            if (imgRatio < maxRatio) {
-                imgRatio = maxHeight / actualHeight;
-                actualWidth = (int) (imgRatio * actualWidth);
-                actualHeight = (int) maxHeight;
-            } else if (imgRatio > maxRatio) {
-                imgRatio = maxWidth / actualWidth;
-                actualHeight = (int) (imgRatio * actualHeight);
-                actualWidth = (int) maxWidth;
-            } else {
-                actualHeight = (int) maxHeight;
-                actualWidth = (int) maxWidth;
-
-            }
-        }
-
-        options.inSampleSize = calculateInSampleSize(options, actualWidth, actualHeight);
-
-        options.inJustDecodeBounds = false;
-
-        try {
-            bmp = BitmapFactory.decodeFile(filePath, options);
-        } catch (OutOfMemoryError exception) {
-            exception.printStackTrace();
-        }
-        try {
-            scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888);
-        } catch (OutOfMemoryError exception) {
-            exception.printStackTrace();
-            Log.e("compressed bitmap", "OutOfMemoryError");
-        }
-
-        float ratioX = actualWidth / (float) options.outWidth;
-        float ratioY = actualHeight / (float) options.outHeight;
-        float middleX = actualWidth / 2.0f;
-        float middleY = actualHeight / 2.0f;
-
-        Matrix scaleMatrix = new Matrix();
-        scaleMatrix.setScale(ratioX, ratioY, middleX, middleY);
-
-        Canvas canvas = new Canvas(scaledBitmap);
-        canvas.setMatrix(scaleMatrix);
-        canvas.drawBitmap(bmp, middleX - bmp.getWidth() / 2, middleY - bmp.getHeight() / 2, new Paint(Paint.FILTER_BITMAP_FLAG));
-
-        Matrix matrix = new Matrix();
-        scaledBitmap = Bitmap.createScaledBitmap(scaledBitmap, actualWidth, actualHeight, true);
-
-        return scaledBitmap;
-    }
-
-
-    public static Bitmap compressImageBackground(Context _context, int _resId, float _width) {
-
-        Bitmap scaledBitmap = null;
-
-        BitmapFactory.Options options = new BitmapFactory.Options();
-
-        options.inJustDecodeBounds = true;
-        Bitmap bmp = BitmapFactory.decodeResource(_context.getResources(), _resId,options);
-
-        int actualHeight = options.outHeight;
-        int actualWidth = options.outWidth;
-
-        float maxHeight = _width / plv.estrella.com.plv.global.Constants.RATIO_4_3;
-        float imgRatio = actualWidth / actualHeight;
-
-//      width and height values are set maintaining the aspect ratio of the image
 
         if (actualHeight > maxHeight || actualWidth > _width) {
-            if (imgRatio < plv.estrella.com.plv.global.Constants.RATIO_4_3) {
+            if (imgRatio < _ratio) {
                 imgRatio = maxHeight / actualHeight;
                 actualWidth = (int) (imgRatio * actualWidth);
                 actualHeight = (int) maxHeight;
-            } else if (imgRatio > plv.estrella.com.plv.global.Constants.RATIO_4_3) {
+            } else if (imgRatio > _ratio) {
                 imgRatio = _width / actualWidth;
                 actualHeight = (int) (imgRatio * actualHeight);
                 actualWidth = (int) _width;
@@ -138,19 +83,21 @@ public abstract class BitmapCreator {
 
         options.inJustDecodeBounds = false;
 
-        options.inPurgeable = true;
-        options.inInputShareable = true;
-        options.inTempStorage = new byte[16 * 1024];
-
         try {
-            bmp = BitmapFactory.decodeResource(_context.getResources(), _resId,options);
+            if(_context == null) {
+                bmp = BitmapFactory.decodeFile(filePath, options);
+            } else {
+                bmp = BitmapFactory.decodeResource(_context.getResources(), _resId,options);
+            }
         } catch (OutOfMemoryError exception) {
             exception.printStackTrace();
+            Log.e("compressed bitmap", "OutOfMemoryError bmp");
         }
         try {
             scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888);
         } catch (OutOfMemoryError exception) {
             exception.printStackTrace();
+            Log.e("compressed bitmap", "OutOfMemoryError scale");
         }
 
         float ratioX = actualWidth / (float) options.outWidth;
@@ -161,16 +108,24 @@ public abstract class BitmapCreator {
         Matrix scaleMatrix = new Matrix();
         scaleMatrix.setScale(ratioX, ratioY, middleX, middleY);
 
+        if(scaledBitmap == null)
+            return null;
         Canvas canvas = new Canvas(scaledBitmap);
         canvas.setMatrix(scaleMatrix);
-        canvas.drawBitmap(bmp, middleX - bmp.getWidth() / 2, middleY - bmp.getHeight() / 2, new Paint(Paint.FILTER_BITMAP_FLAG));
+        try {
+            canvas.drawBitmap(bmp, middleX - bmp.getWidth() / 2, middleY - bmp.getHeight() / 2, new Paint(Paint.FILTER_BITMAP_FLAG));
+        } catch (NullPointerException e){
+            e.printStackTrace();
+            return null;
+        }
 
-        Matrix matrix = new Matrix();
-        scaledBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0,
-                actualWidth, actualHeight, matrix,
-                true);
-
-        return scaledBitmap;
+        try {
+            return Bitmap.createScaledBitmap(scaledBitmap, actualWidth, actualHeight, true);
+        } catch (OutOfMemoryError error){
+            error.printStackTrace();
+            Log.e("compressed bitmap", "OutOfMemoryError scale");
+            return null;
+        }
 
     }
 

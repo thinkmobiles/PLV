@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +63,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_plv, container, false);
 
         findViews(view);
@@ -128,8 +127,6 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
             loaderImage.path = mProduct.getImage();
             loaderImage.execute();
 
-//            imageView.setImageBitmap(BitmapCreator.tryCompressBitmap(mProduct.getImage(), 1f, 400));
-
             view.setOnClickListener(getClickListener(i));
             llContProd.addView(view);
 
@@ -137,7 +134,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setData() {
-        ivLable.setImageBitmap(BitmapCreator.tryCompressBitmap(mCurrentItem.getIcon(), Constants.RATIO_16_9, 400));
+        ivLable.setImageBitmap(BitmapCreator.getCompressedBitmap(mCurrentItem.getIcon(), Constants.RATIO_16_9, 600));
         mCallingActivity.setTitle(mCurrentItem.getName());
         mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
 
@@ -184,13 +181,17 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
 
         @Override
         protected Void doInBackground(Void... params) {
-            bitmap = BitmapCreator.tryCompressBitmap(path, Constants.RATIO_1_1, 450f);
+            bitmap = BitmapCreator.getCompressedBitmap(path, Constants.RATIO_1_1, 600f);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            if(bitmap == null) {
+                doInBackground();
+                return;
+            }
             imageView.setImageBitmap(bitmap);
             path = null;
             imageView = null;

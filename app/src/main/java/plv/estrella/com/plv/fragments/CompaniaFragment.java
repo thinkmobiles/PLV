@@ -95,8 +95,8 @@ public class CompaniaFragment extends Fragment implements View.OnClickListener {
     }
     private void setData(){
         mCompania = ApiManager.getSecondList().get(0);
-        ivPhotoComp.setImageBitmap(BitmapCreator.tryCompressBitmap(mCompania.getBackgroundImage(), Constants.RATIO_4_3, 1024f));
-        ivLogo.setImageBitmap(BitmapCreator.getBitmap(mCompania.getLogo()));
+        ivPhotoComp.setImageBitmap(BitmapCreator.getCompressedBitmap(mCompania.getBackgroundImage(), Constants.RATIO_4_3, 1024f));
+        ivLogo.setImageBitmap(BitmapCreator.getCompressedBitmap(mCompania.getLogo(), Constants.RATIO_8_1, 560f));
         Picasso.with(mCallingActivity)
                 .load(Constants.URL_YOUTUBE_IMG
                         + VideoPlayerActivity.getYouTubeImageId(mCompania.getExtraVideos().get(0))

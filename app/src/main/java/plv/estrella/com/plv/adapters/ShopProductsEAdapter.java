@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cristaliza.mvc.models.estrella.Item;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +15,7 @@ import plv.estrella.com.plv.R;
 import plv.estrella.com.plv.database.DBItem;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.database.Shop;
+import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.BitmapCreator;
 
 /**
@@ -85,7 +84,7 @@ public class ShopProductsEAdapter extends BaseAdapter implements View.OnClickLis
     }
 
     private void fillData(ViewHolder _holder, DBItem _item){
-        _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getBitmap(_item.getIcon()));
+        _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getCompressedBitmap(_item.getIcon(), Constants.RATIO_1_1, 256f));
         _holder.tvProductName.setText(_item.getName());
     }
 

@@ -126,7 +126,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mCallingActivity.setTitle(mProduct.getName());
 
         mNameColumna.setText(mProduct.getName());
-        mBackground.setImageBitmap(BitmapCreator.getBitmap(mProduct.getBackgroundImage()));
+        mBackground.setImageBitmap(BitmapCreator.getCompressedBitmap(mProduct.getBackgroundImage(), Constants.RATIO_16_9, 1280f));
         List<String> families = mProduct.getFamilyImages();
         boolean inLow = true;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -135,7 +135,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
             ImageView imageView = new ImageView(mCallingActivity);
             imageView.setLayoutParams(params);
 
-            imageView.setImageBitmap(BitmapCreator.getBitmap(families.get(i)));
+            imageView.setImageBitmap(BitmapCreator.getCompressedBitmap(families.get(i), Constants.RATIO_1_1, 150f));
 
             if(inLow){
                 lowCont.addView(imageView);

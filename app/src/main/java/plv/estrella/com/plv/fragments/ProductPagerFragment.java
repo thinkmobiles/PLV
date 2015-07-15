@@ -76,7 +76,6 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
 
         makeListener();
         ApiManager.getThirdLevel(eventListener, mCurrentItem);
-
         return view;
     }
 
@@ -89,6 +88,9 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         ivCross = (ImageView) v.findViewById(R.id.ivCross_P);
         tvCount = (TextView) v.findViewById(R.id.tvCount_P);
         mPager = (ViewPager) v.findViewById(R.id.pagerSolo);
+
+        mCallingActivity.setTitle(mCurrentItem.getName());
+        mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
     }
 
     private void setListeners(){

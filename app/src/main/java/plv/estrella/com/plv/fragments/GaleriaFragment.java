@@ -42,10 +42,15 @@ public class GaleriaFragment extends Fragment {
         ((LinearLayout) view.findViewById(R.id.llPhoto)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallingActivity.setFullScreenSetting(false);
                 mCallingActivity.onBackPressed();
             }
         });
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        mCallingActivity.setFullScreenSetting(false);
+        super.onDestroy();
     }
 }

@@ -21,12 +21,15 @@ public abstract class FragmentReplacer {
     }
 
     public static final int getSupBackStackEntryCount(final FragmentActivity _activity) {
-        int i = _activity.getSupportFragmentManager().getBackStackEntryCount();
         return _activity.getSupportFragmentManager().getBackStackEntryCount();
     }
 
     public static final void clearBackStack(final FragmentActivity _activity){
         _activity.getFragmentManager().popBackStack(null, _activity.getFragmentManager().POP_BACK_STACK_INCLUSIVE);
+    }
+
+    public static final void clearSupBackStack(final FragmentActivity _activity){
+        _activity.getSupportFragmentManager().popBackStack(null, _activity.getFragmentManager().POP_BACK_STACK_INCLUSIVE);
     }
 
 //    public static final void replaceTopNavigationFragment(final FragmentActivity _activity,
@@ -57,12 +60,11 @@ public abstract class FragmentReplacer {
 
     public static final void replaceCurrentFragment(final FragmentActivity _activity,
                                                     final Fragment _fragment) {
-        clearBackStack(_activity);
+        clearSupBackStack(_activity);
         _activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, _fragment)
-                .addToBackStack(null)
+                .addToBackStack(_fragment.getClass().getName())
                 .commit();
-
     }
 //
 //    public static final void replaceFragmentWithAnim(final FragmentActivity _activity,

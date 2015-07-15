@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="7"
-        android:background="@android:color/white"
-        android:paddingBottom="@dimen/default_padding"
+        android:layout_weight="2"
+        android:paddingTop="@dimen/info_padding_top"
+        android:paddingBottom="@dimen/info_padding_bottom"
         android:paddingLeft="@dimen/info_padding_left"
         android:paddingRight="@dimen/info_padding_right"
-        android:paddingTop="@dimen/info_padding_top">
-
+        android:background="@android:color/white">
         <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/ivVolver_FC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/btn_volver"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="@dimen/volver_btn_margin"
-            android:padding="@dimen/default_padding"
-            android:src="@drawable/btn_volver" />
-
+            android:layout_marginBottom="@dimen/info_padding_right"/>
         <ImageView
-            android:id="@+id/ivLogo_FC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/ivLogo_FC"
+            android:src="@drawable/logo"
             android:layout_below="@+id/ivVolver_FC"
-            android:layout_marginBottom="@dimen/default_big_margin"
-            android:src="@drawable/logo" />
-
+            android:layout_marginBottom="@dimen/info_view_margin_bottom"/>
         <ScrollView
             android:id="@+id/svDescrioption"
             android:layout_width="match_parent"
@@ -42,54 +36,48 @@
             android:scrollbars="vertical"
             android:paddingRight="@dimen/default_padding"
             android:paddingTop="@dimen/default_padding">
-        <TextView
-            android:id="@+id/tvDescription_FC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/description_text_size" />
+            <TextView
+                android:id="@+id/tvDescription_FC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/info_text_size" />
         </ScrollView>
-
         <RelativeLayout
             android:id="@+id/contVideo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="@dimen/default_padding">
-
             <TextView
-                android:id="@+id/tvNameVideo_FC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/name_video_margin"
                 android:text="New Text"
-                android:textSize="@dimen/description_text_size" />
-
+                android:id="@+id/tvNameVideo_FC"
+                android:textSize="@dimen/info_text_size" />
             <RelativeLayout
-                android:id="@+id/rlVideo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvNameVideo_FC">
-
+                android:layout_below="@+id/tvNameVideo_FC"
+                android:id="@+id/rlVideo">
                 <ImageView
-                    android:id="@+id/ivVideo_FC"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY" />
-
+                    android:layout_height="@dimen/info_video_height"
+                    android:scaleType="fitXY"
+                    android:id="@+id/ivVideo_FC" />
                 <ImageView
+                    android:layout_width="@dimen/info_btn_play_side"
+                    android:layout_height="@dimen/info_btn_play_side"
                     android:id="@+id/ivPlay_FC"
-                    android:layout_width="@dimen/side_btn_play"
-                    android:layout_height="@dimen/side_btn_play"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/new12" />
+                    android:src="@drawable/new12"
+                    android:layout_centerInParent="true"/>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
-
     <ImageView
-        android:id="@+id/ivPhotoComp_FC"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:scaleType="fitXY" />
+        android:id="@+id/ivPhotoComp_FC"
+        android:layout_weight="1"
+        android:scaleType="fitXY"/>
 </LinearLayout>

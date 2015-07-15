@@ -50,5 +50,7 @@ public abstract class Constants {
     //ratios
     public static final float RATIO_16_9                = 16f / 9f;
     public static final float RATIO_4_3                 = 4f / 3f;
+    public static final float RATIO_3_4                 = 3f / 4f;
     public static final float RATIO_1_1                 = 1f;
+    public static final float RATIO_8_1                 = 8f;
 }
