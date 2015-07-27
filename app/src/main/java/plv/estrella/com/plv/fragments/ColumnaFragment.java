@@ -27,7 +27,6 @@ import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.BitmapCreator;
-import plv.estrella.com.plv.untils.FragmentReplacer;
 
 /**
  * Created by vasia on 26.05.2015.
@@ -35,8 +34,8 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
 public class ColumnaFragment extends Fragment implements View.OnClickListener {
 
     private MainActivity mCallingActivity;
-    private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mPhotoGal1, mPhotoGal2, mBackground;
-    private TextView mCounter, mNameColumna;
+    private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mBackground;
+    private TextView mCounter;
     private LinearLayout lowCont, highCont;
     private Item mCurrentItem;
     private Product mProduct;
@@ -79,12 +78,9 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mAddEnvio       = (ImageView) _view.findViewById(R.id.ivAddEnvio_FC);
         mMore           = (ImageView) _view.findViewById(R.id.ivMore_FC);
         mLess           = (ImageView) _view.findViewById(R.id.ivLess_FC);
-        mPhotoGal1      = (ImageView) _view.findViewById(R.id.ivPhotoGal1_FC);
-        mPhotoGal2      = (ImageView) _view.findViewById(R.id.ivPhotoGal2_FC);
         mBackground     = (ImageView) _view.findViewById(R.id.ivBackground_FC);
         mGoToBack       = (ImageView) _view.findViewById(R.id.btnVolver_FC);
         mCounter        = (TextView) _view.findViewById(R.id.tvCount_FC);
-        mNameColumna    = (TextView) _view.findViewById(R.id.tvNameColumna);
         lowCont         = (LinearLayout) _view.findViewById(R.id.llContLow);
         highCont        = (LinearLayout) _view.findViewById(R.id.llContHigh);
 
@@ -96,8 +92,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mAddEnvio.setOnClickListener(this);
         mMore.setOnClickListener(this);
         mLess.setOnClickListener(this);
-        mPhotoGal1.setOnClickListener(this);
-        mPhotoGal2.setOnClickListener(this);
         mGoToBack.setOnClickListener(this);
     }
 
@@ -125,7 +119,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
 
         mCallingActivity.setTitle(mProduct.getName());
 
-        mNameColumna.setText(mProduct.getName());
         mBackground.setImageBitmap(BitmapCreator.getCompressedBitmap(mProduct.getBackgroundImage(), Constants.RATIO_16_9, 1280f));
         List<String> families = mProduct.getFamilyImages();
         boolean inLow = true;
@@ -145,8 +138,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
                 inLow = true;
             }
         }
-//        mPhotoGal1.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.));
-//        mPhotoGal2.setImageBitmap(BitmapCreator.getBitmap(mCurrentItem.));
         mCounter.setText(String.valueOf(counterValue));
     }
 
@@ -166,12 +157,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.ivLess_FC:
                 decCounter();
-                break;
-            case R.id.ivPhotoGal1_FC:
-                clickPhotoGaleria(1);
-                break;
-            case R.id.ivPhotoGal2_FC:
-                clickPhotoGaleria(2);
                 break;
             case R.id.btnVolver_FC:
                 mCallingActivity.onBackPressed();
@@ -200,9 +185,5 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         if(--counterValue < 0)
             counterValue = 0;
         mCounter.setText(String.valueOf(counterValue));
-    }
-
-    private void clickPhotoGaleria(int pos){
-        FragmentReplacer.replaceFragmentWithStack(mCallingActivity, new GaleriaFragment());
     }
 }

@@ -48,6 +48,7 @@
     <string name="error">_error</string>
     <string name="click_back">Please click BACK again to exit</string>
 
+    <string name="email">ana.pascual@cristaliza.com</string>
     <string name="send_mail">Send email...</string>
     <string name="mail_topic_envio">Envío de fichas de producto</string>
     <string name="mail_message_envio">Buenos días.

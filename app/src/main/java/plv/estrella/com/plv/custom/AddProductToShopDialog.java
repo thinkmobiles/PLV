@@ -183,7 +183,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
             case R.id.flBottom_PSD:
                 FragmentReplacer.popSupBackStack(getActivity());
                 break;
-            case R.id.iv_all_ItemShop_PSD :
+            case R.id.iv_all_ItemShop_PSD:
                 changeDownUpList();
                 break;
         }
@@ -206,8 +206,10 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     private void changeDownUpList(){
         if(isShowListShop){
             autoCompleteTextView.dismissDropDown();
+            allShop.setImageResource(R.drawable.arrow_down);
         }else{
             autoCompleteTextView.showDropDown();
+            allShop.setImageResource(R.drawable.arrow_up);
         }
         isShowListShop = !isShowListShop;
     }
@@ -246,6 +248,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selected = position;
                 isSelectChek=true;
+                allShop.setImageResource(R.drawable.arrow_down);
             }
         });
     }

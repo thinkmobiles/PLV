@@ -33,6 +33,7 @@ public class PDFSender {
 //        }
 
         Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, activity.getString(R.string.email));
         intent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.mail_topic_envio));
 //        intent.setType("application/pdf");
 //        intent.putExtra(Intent.EXTRA_STREAM, uris);
@@ -58,6 +59,7 @@ public class PDFSender {
 //        }
 
         Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, activity.getString(R.string.email));
         intent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.mail_topic_pedido));
 //        intent.setType("application/pdf");
 //        intent.putExtra(Intent.EXTRA_STREAM, uris);

@@ -32,7 +32,9 @@
             android:id="@+id/btnVolver_FSP"
             android:src="@drawable/btn_volver"
             android:layout_toRightOf="@id/tvShopName_FSP"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/tvClearProductList_FSP"
+            android:layout_alignBottom="@+id/tvClearProductList_FSP" />
 
         <TextView
             android:layout_width="wrap_content"

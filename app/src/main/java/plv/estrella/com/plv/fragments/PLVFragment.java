@@ -23,6 +23,7 @@ import java.util.List;
 
 import plv.estrella.com.plv.MainActivity;
 import plv.estrella.com.plv.R;
+import plv.estrella.com.plv.custom.AddProductToShopDialog;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
@@ -34,7 +35,7 @@ import plv.estrella.com.plv.untils.FragmentReplacer;
  */
 public class PLVFragment extends Fragment implements View.OnClickListener {
 
-    private ImageView ivPrev, ivNext, ivLable;
+    private ImageView ivPrev, ivNext, ivLable, ivVolver, ivAddEnvio;
     private HorizontalScrollView hsvList;
     private LinearLayout llContProd;
     private EventListener mMenuListener;
@@ -80,6 +81,8 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
         ivPrev      = (ImageView) v.findViewById(R.id.ivPrev);
         ivNext      = (ImageView) v.findViewById(R.id.ivNext);
         ivLable     = (ImageView) v.findViewById(R.id.ivLable);
+        ivVolver    = (ImageView) v.findViewById(R.id.ivVolver_FP);
+        ivAddEnvio  = (ImageView) v.findViewById(R.id.ivAddEnvios_FP);
         hsvList     = (HorizontalScrollView) v.findViewById(R.id.hsvListProducts);
         llContProd  = (LinearLayout) v.findViewById(R.id.llContProd);
     }
@@ -87,6 +90,8 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     private void setListeners() {
         ivPrev.setOnClickListener(this);
         ivNext.setOnClickListener(this);
+        ivVolver.setOnClickListener(this);
+        ivAddEnvio.setOnClickListener(this);
     }
 
     private void makeListener() {
@@ -168,6 +173,19 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.ivNext:
                 hsvList.pageScroll(View.FOCUS_RIGHT);
+                break;
+            case R.id.ivVolver_FP:
+                mCallingActivity.onBackPressed();
+                break;
+            case R.id.ivAddEnvios_FP:
+                AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
+                        .show(mCallingActivity,
+                                mCurrentItem.getId(),
+                                mCurrentItem.getName(),
+                                mCurrentItem.getIcon(),
+                                Constants.TYPE_DIALOG_ADD_ENVIOS,
+                                1
+                        );
                 break;
         }
     }

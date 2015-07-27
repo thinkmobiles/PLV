@@ -33,6 +33,22 @@
         android:padding="@dimen/default_padding"
         android:src="@drawable/btn_next" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivVolver_FP"
+        android:layout_toRightOf="@+id/ivLable"
+        android:src="@drawable/btn_volverr"
+        android:layout_alignTop="@+id/ivAddEnvios_FP"
+        android:layout_alignBottom="@+id/ivAddEnvios_FP" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivAddEnvios_FP"
+        android:src="@drawable/btn_add_envio"
+        android:layout_alignParentRight="true" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

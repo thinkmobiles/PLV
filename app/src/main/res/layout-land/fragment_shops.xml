@@ -44,7 +44,9 @@
             android:src="@drawable/btn_volver"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/tvLocales_FS"
-            android:layout_toEndOf="@+id/tvLocales_FS"/>
+            android:layout_toEndOf="@+id/tvLocales_FS"
+            android:layout_alignTop="@+id/tvClearShopList_FS"
+            android:layout_alignBottom="@+id/tvClearShopList_FS" />
     </RelativeLayout>
 
     <FrameLayout
