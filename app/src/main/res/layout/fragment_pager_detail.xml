@@ -22,8 +22,8 @@
         android:id="@+id/rlContEnvio">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/btn_width"
+            android:layout_height="@dimen/btn_height"
             android:id="@+id/ivCarrita_P"
             android:src="@drawable/btn_cart"
             android:layout_alignParentBottom="false"
@@ -37,7 +37,7 @@
             android:id="@+id/ivMore_P"
             android:src="@drawable/btn_more"
             android:layout_toLeftOf="@+id/tvCount_P"
-            android:layout_above="@+id/ivLess_P" />
+            android:layout_alignTop="@+id/tvCount_P" />
 
         <ImageView
             android:layout_width="wrap_content"

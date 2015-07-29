@@ -172,7 +172,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         } else {
             Product product = adapter.getItem(targetPos).getProduct();
             AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                    .show(mCallingActivity, product.getId(), product.getName(), product.getImage(), Constants.TYPE_DIALOG_ADD_CARRITA, massivCounters[targetPos]);
+                    .show(mCallingActivity, product.getId(), product.getName(), product.getImage(), product.getEAN(), Constants.TYPE_DIALOG_ADD_CARRITA, massivCounters[targetPos]);
         }
     }
 

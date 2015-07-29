@@ -38,13 +38,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/ivVolver_FP"
         android:layout_toRightOf="@+id/ivLable"
-        android:src="@drawable/btn_volverr"
+        android:src="@drawable/btn_volver"
+        android:layout_marginLeft="@dimen/default_big_margin"
         android:layout_alignTop="@+id/ivAddEnvios_FP"
         android:layout_alignBottom="@+id/ivAddEnvios_FP" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:id="@+id/ivAddEnvios_FP"
         android:src="@drawable/btn_add_envio"
         android:layout_alignParentRight="true" />

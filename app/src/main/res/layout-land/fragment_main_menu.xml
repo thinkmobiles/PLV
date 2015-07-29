@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/default_big_margin"
     android:gravity="center">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"></LinearLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <LinearLayout
             android:orientation="vertical"
@@ -29,8 +36,8 @@
                 android:id="@+id/tvCompania"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="23dp"
-                android:paddingBottom="23dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:gravity="center_horizontal"
                 android:text="@string/compania"
                 android:textColor="@android:color/white"
@@ -58,7 +65,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="@dimen/main_menu_big_margin"
                     android:src="@drawable/index_spv"
-                    android:scaleType="fitEnd" />
+                    android:scaleType="fitStart" />
 
 
                 <ImageView
@@ -72,5 +79,11 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"></LinearLayout>
 
 </LinearLayout>

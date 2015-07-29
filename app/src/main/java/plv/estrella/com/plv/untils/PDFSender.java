@@ -2,7 +2,9 @@ package plv.estrella.com.plv.untils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.text.Html;
 import android.widget.Toast;
 
 import java.io.File;
@@ -33,7 +35,7 @@ public class PDFSender {
 //        }
 
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL, activity.getString(R.string.email));
+//        intent.putExtra(Intent.EXTRA_EMAIL, activity.getString(R.string.email));
         intent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.mail_topic_envio));
 //        intent.setType("application/pdf");
 //        intent.putExtra(Intent.EXTRA_STREAM, uris);
@@ -46,25 +48,41 @@ public class PDFSender {
         }
     }
 
-    public static void sendShopPDFsFromPedido (Activity activity, List<DBItem> items){
-        ArrayList<Uri> uris = new ArrayList<>();
+    public static void sendShopPDFsFromPedido (final Activity activity, List<DBItem> items){
 
-//        for (int k = 0; k < items.size(); ++k){
-//            File file = new File(ApiManager.getPath() + items.get(k).getPdf());
-//            if (!file.exists() || !file.canRead()) {
-//                Toast.makeText(activity, activity.getString(R.string.attachment_error), Toast.LENGTH_SHORT).show();
-//                return;
+        int l = 50, offs;
+        String message = activity.getString(R.string.mail_message_pedido) + "\n";
+        String word;
+        for(DBItem item : items){
+            message += "\n" + item.getEan() + "         " + item.getName() + "                        " + item.getNumber();
+
+//            StringBuilder builder = new StringBuilder();
+//            builder.setLength(l);
+//            for(int i = 0; i < l; ++i)
+//                builder.setCharAt(i, '\t');
+//            if(item.getEan() == null || item.getEan().length() == 0) {
+//                word = "null";
+//                offs = 12;
+//            } else {
+//                word = item.getEan();
+//                offs = 10;
 //            }
-//            uris.add(Uri.fromFile(file));
-//        }
+//            for(int i = 0; i < word.length(); ++i)
+//                builder.setCharAt(i, word.charAt(i));
+//            word = item.getName();
+//            for(int i = 0; i < word.length(); ++i)
+//                builder.setCharAt(i + offs, word.charAt(i));
+//            word = item.getNumber() + "";
+//            for(int i = 0; i < word.length(); ++i)
+//                builder.setCharAt(i + l-3, word.charAt(i));
+//            message += "\n" + builder.toString() + " " + word;
+        }
 
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL, activity.getString(R.string.email));
+//        intent.putExtra(Intent.EXTRA_EMAIL, activity.getString(R.string.email));
         intent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.mail_topic_pedido));
-//        intent.setType("application/pdf");
-//        intent.putExtra(Intent.EXTRA_STREAM, uris);
-        intent.setType("plain/text");
-        intent.putExtra(Intent.EXTRA_TEXT, activity.getString(R.string.mail_message_pedido));
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_TEXT, message);
         try {
             activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.send_mail)));
         } catch (android.content.ActivityNotFoundException ex) {

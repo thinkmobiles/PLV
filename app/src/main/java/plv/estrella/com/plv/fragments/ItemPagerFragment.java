@@ -24,7 +24,7 @@ import plv.estrella.com.plv.untils.BitmapCreator;
 public class ItemPagerFragment extends Fragment {
 
     private ImageView ivIconSolo;
-    private TextView tvDescrSolo;
+    private TextView tvDescrSolo, tvEanSolo;
     private Product product;
 
     public static ItemPagerFragment newInstance(Product _product){
@@ -69,12 +69,13 @@ public class ItemPagerFragment extends Fragment {
     private void findViews(View v){
         ivIconSolo = (ImageView) v.findViewById(R.id.ivIconSolo);
         tvDescrSolo = (TextView) v.findViewById(R.id.tvDescrSolo);
+        tvEanSolo = (TextView) v.findViewById(R.id.tvEanSolo);
     }
 
     private void setData(){
         ivIconSolo.setImageBitmap(BitmapCreator.getCompressedBitmap(product.getImage(), Constants.RATIO_1_1, 512f));
-        if(product.getPackaging() != null)
-            tvDescrSolo.setText(Html.fromHtml(product.getPackaging().get(0)));
+        tvDescrSolo.setText(product.getName());
+        tvEanSolo.setText(product.getEAN());
     }
 
     private void clearData(){

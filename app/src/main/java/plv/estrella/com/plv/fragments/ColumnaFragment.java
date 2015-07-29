@@ -122,13 +122,17 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mBackground.setImageBitmap(BitmapCreator.getCompressedBitmap(mProduct.getBackgroundImage(), Constants.RATIO_16_9, 1280f));
         List<String> families = mProduct.getFamilyImages();
         boolean inLow = true;
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int)mCallingActivity.getResources().getDimension(R.dimen.size_side_family_logo),
+                (int)mCallingActivity.getResources().getDimension(R.dimen.size_side_family_logo)
+        );
         params.setMargins(5, 5, 5, 5);
         for(int i = 0; i < families.size(); ++i){
             ImageView imageView = new ImageView(mCallingActivity);
             imageView.setLayoutParams(params);
 
-            imageView.setImageBitmap(BitmapCreator.getCompressedBitmap(families.get(i), Constants.RATIO_1_1, 150f));
+            imageView.setImageBitmap(BitmapCreator.getCompressedBitmap(families.get(i), Constants.RATIO_1_1, 100f));
 
             if(inLow){
                 lowCont.addView(imageView);
@@ -150,7 +154,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
             case R.id.ivAddEnvio_FC:
                 AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
 //                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
-                        .show(mCallingActivity, mProduct.getId(), mProduct.getName(), mCurrentItem.getIcon(), Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
+                        .show(mCallingActivity, mProduct.getId(), mProduct.getName(), mCurrentItem.getIcon(), "", Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                 break;
             case R.id.ivMore_FC:
                 incCounter();
@@ -173,7 +177,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
             dialog.show(mCallingActivity);
         } else {
             AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                    .show(mCallingActivity, mProduct.getId(), mProduct.getName(), mCurrentItem.getIcon(), Constants.TYPE_DIALOG_ADD_CARRITA, counterValue);
+                    .show(mCallingActivity, mProduct.getId(), mProduct.getName(), mCurrentItem.getIcon(), mProduct.getEAN(), Constants.TYPE_DIALOG_ADD_CARRITA, counterValue);
         }
     }
 

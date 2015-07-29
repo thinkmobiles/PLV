@@ -6,8 +6,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvDescrSolo"
-        android:layout_alignParentTop="true"
-        android:layout_margin="@dimen/default_big_margin"/>
+        android:text="name"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvEanSolo"
+        android:text="ean"
+        android:textSize="20sp"
+        android:layout_below="@+id/tvDescrSolo"
+        android:layout_alignParentTop="false"/>
 
     <ImageView
         android:layout_width="@dimen/side_item_pager"

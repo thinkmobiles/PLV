@@ -26,13 +26,13 @@ public  class DBManager {
         dbItem.save();
     }
 
-    public static final void addItem(String _itemId, String _name, String _icon, String _pdf, int _number, final Shop _shop){
+    public static final void addItem(String _itemId, String _name, String _icon, String _pdf, String _ean, int _number, final Shop _shop){
         final List<DBItem> items = getDBItems(_shop);
         for(DBItem dbItem : items){
             if(dbItem.getId().equals(_itemId))
                 return;
         }
-        final DBItem dbItem = new DBItem(_itemId, _name, _icon, _pdf, _number, _shop);
+        final DBItem dbItem = new DBItem(_itemId, _name, _icon, _pdf, _ean, _number, _shop);
         dbItem.save();
     }
 

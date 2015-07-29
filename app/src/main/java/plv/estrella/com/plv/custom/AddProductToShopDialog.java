@@ -54,7 +54,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
     private boolean isShowListShop = false;
     private int typeDialogShop;
     private int numProducts;
-    private String mIcon, mName, mItemId;
+    private String mIcon, mName, mItemId, mEan = "";
     private ArrayAdapter<String> adapter;
 
     public static AddProductToShopDialog newInstance(final ItemSerializable _item) {
@@ -71,12 +71,13 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
         FragmentReplacer.addFragment(_mActivity, this);
     }
 
-    public void show(MainActivity _mActivity, String _itemId, String _name, String _icon, int _typeDialog, int _numProducts){
+    public void show(MainActivity _mActivity, String _itemId, String _name, String _icon, String _ean, int _typeDialog, int _numProducts){
         mItemId = _itemId;
         mIcon = _icon;
         mName = _name;
         typeDialogShop = _typeDialog;
         numProducts = _numProducts;
+        mEan = _ean;
         FragmentReplacer.addFragment(_mActivity, this);
     }
 
@@ -220,7 +221,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
             questionCheck = true;
             if (isSelectChek) {
 
-                DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), numProducts, subList.get(selected));
+                DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), mEan, numProducts, subList.get(selected));
 
                 currentShop = subList.get(selected);
                 isSelectChek = false;
@@ -228,7 +229,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
                 Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialogShop);
                 fillShopList();
 
-                DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), numProducts, shop);
+                DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), mEan, numProducts, shop);
 
                 currentShop = shop;
                 Toast.makeText(mCallingActivity, mCallingActivity.getString(R.string.add_shop_succesfull), Toast.LENGTH_SHORT).show();

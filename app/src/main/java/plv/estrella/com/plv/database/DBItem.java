@@ -14,6 +14,7 @@ public class DBItem extends SugarRecord<DBItem> {
     private String name;
     private String icon;
     private String pdf;
+    private String ean;
 
     private Shop shop;
 
@@ -31,13 +32,14 @@ public class DBItem extends SugarRecord<DBItem> {
         itemId = _item.getId();
     }
 
-    public DBItem(String _itemId, String _name, String _icon, String _pdf, int _number, Shop _shop){
+    public DBItem(String _itemId, String _name, String _icon, String _pdf, String _ean, int _number, Shop _shop){
         shop        = _shop;
         itemNumber  = _number;
         itemId      = _itemId;
         name        = _name;
         icon        = _icon;
         pdf         = _pdf;
+        ean         = _ean;
     }
 
     public Item getItem(){
@@ -74,6 +76,10 @@ public class DBItem extends SugarRecord<DBItem> {
 
     public String getName() {
         return name;
+    }
+
+    public String getEan() {
+        return ean;
     }
 
     public void setNumber(int _number){

@@ -43,8 +43,8 @@
 
     <!-- Shops-->
     <style name="CircleButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/btn_circle_size</item>
+        <item name="android:layout_height">@dimen/btn_circle_size</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_marginTop">@dimen/default_margin</item>
         <item name="android:layout_marginBottom">@dimen/default_margin</item>
