@@ -110,7 +110,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         ArrayList<ItemPagerFragment> fragments = new ArrayList<>();
         for(int i = 0; i < mListProducts.size(); ++i){
             ApiManager.getProducts(eventListener, mListProducts.get(i));
-            massivCounters[i] = 0;
+            massivCounters[i] = 1;
             fragments.add(ItemPagerFragment.newInstance(mProduct));
         }
         adapter = new ProductPagerAdapter(getChildFragmentManager(), fragments);
@@ -181,8 +181,8 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     }
 
     private void decCounter(){
-        if(--massivCounters[targetPos] < 0)
-            massivCounters[targetPos] = 0;
+        if(--massivCounters[targetPos] < 1)
+            massivCounters[targetPos] = 1;
         tvCount.setText(String.valueOf(massivCounters[targetPos]));
     }
 

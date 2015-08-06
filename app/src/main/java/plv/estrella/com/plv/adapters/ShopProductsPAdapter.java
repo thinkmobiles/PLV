@@ -132,8 +132,8 @@ public class ShopProductsPAdapter extends BaseAdapter implements View.OnClickLis
 
     private void decCounter(int _pos){
         int count = mProducts.get(_pos).getNumber();
-        if(--count < 0)
-            count = 0;
+        if(--count < 1)
+            count = 1;
         mProducts.get(_pos).setNumber(count);
         notifyDataSetChanged();
     }

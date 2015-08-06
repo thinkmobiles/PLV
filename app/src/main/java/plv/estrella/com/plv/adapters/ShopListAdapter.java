@@ -115,7 +115,7 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
                 see(position);
                 break;
             case R.id.ivDelete_IS:
-//                startDeleteDialog(position);
+                deleteShop(position);
                 break;
         }
     }

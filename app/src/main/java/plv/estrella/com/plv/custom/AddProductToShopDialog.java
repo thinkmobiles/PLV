@@ -195,11 +195,11 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
         FragmentReplacer.popSupBackStack(getActivity());
 
         if (questionCheck){
-            if(typeDialogShop == Constants.TYPE_DIALOG_ADD_CARRITA){
+//            if(typeDialogShop == Constants.TYPE_DIALOG_ADD_CARRITA){
                 FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopProductsFragment.newInstance(currentShop));
-            } else {
-                FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopsFragment.newInstance(typeDialogShop));
-            }
+//            } else {
+//                FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopsFragment.newInstance(typeDialogShop));
+//            }
             questionCheck = false;
         }
     }

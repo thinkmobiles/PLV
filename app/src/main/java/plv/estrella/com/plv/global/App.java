@@ -8,6 +8,6 @@ public class App extends SugarApp {
     @Override
     public void onCreate() {
         super.onCreate();
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/helvetica_roman.ttf"); // font from assets: "assets/fonts/helvetica_roman.ttf
+        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/helvetica_light.ttf"); // font from assets: "assets/fonts/helvetica_roman.ttf
     }
 }

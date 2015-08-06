@@ -40,7 +40,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     private Item mCurrentItem;
     private Product mProduct;
     private EventListener eventListener;
-    private int counterValue = 0;
+    private int counterValue = 1;
 
     public static ColumnaFragment newInstance(ItemSerializable _item){
         ColumnaFragment fragment = new ColumnaFragment();
@@ -186,8 +186,8 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     }
 
     private void decCounter(){
-        if(--counterValue < 0)
-            counterValue = 0;
+        if(--counterValue < 1)
+            counterValue = 1;
         mCounter.setText(String.valueOf(counterValue));
     }
 }

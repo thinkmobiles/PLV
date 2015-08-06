@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cristaliza.mvc.events.Event;
@@ -116,7 +117,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     private void fillHorizontalList() {
         mListProducts = ApiManager.getThirdList();
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(500, ViewGroup.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(300, ViewGroup.LayoutParams.MATCH_PARENT);
         params.setMargins(30, 10, 30, 10);
         LoaderImage loaderImage;
         for(int i = 0; i < mListProducts.size(); ++i){
@@ -126,7 +127,9 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
             view.setLayoutParams(params);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.ivIconProd);
+            TextView name = (TextView) view.findViewById(R.id.tvName_IH);
 
+            name.setText(mProduct.getName());
             loaderImage = new LoaderImage();
             loaderImage.imageView = imageView;
             loaderImage.path = mProduct.getImage();
@@ -179,13 +182,8 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.ivAddEnvios_FP:
                 AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-                        .show(mCallingActivity,
-                                mCurrentItem.getId(),
-                                mCurrentItem.getName(),
-                                mCurrentItem.getIcon(),
-                                Constants.TYPE_DIALOG_ADD_ENVIOS,
-                                1
-                        );
+//                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
+                        .show(mCallingActivity, mCurrentItem.getId(), mCurrentItem.getName(), mCurrentItem.getIcon(), "", Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                 break;
         }
     }
@@ -199,7 +197,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
 
         @Override
         protected Void doInBackground(Void... params) {
-            bitmap = BitmapCreator.getCompressedBitmap(path, Constants.RATIO_1_1, 600f);
+            bitmap = BitmapCreator.getCompressedBitmap(path, Constants.RATIO_1_1, 500f);
             return null;
         }
 
