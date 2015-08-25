@@ -13,6 +13,7 @@ import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.FragmentUtil;
 import plv.estrella.com.plv.untils.SlidingMenuManager;
 
 
@@ -33,6 +34,7 @@ public class MainActivity extends FragmentActivity {
 
         findUI();
         ApiManager.init(this);
+        initFragmentUtil();
         ApiManager.setOfflineMode();
         setBackground();
         startMainMenu();
@@ -63,11 +65,16 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void startMainMenu(){
-        FragmentReplacer.replaceFragmentWithStack(this, new MainMenuFragment());
+//        FragmentReplacer.replaceFragmentWithStack(this, new MainMenuFragment());
+        FragmentUtil.replaceFragmentWithStack(new MainMenuFragment());
+    }
+
+    private void initFragmentUtil(){
+        FragmentUtil.init(this, R.id.container);
     }
 
     public void setBackground() {
-        background.setImageBitmap(BitmapCreator.getCompressedBitmap(this, R.drawable.background, 1080f));
+        background.setImageBitmap(BitmapCreator.getCompressedBitmap(this, R.drawable.background, 800f));
     }
 
     public void setBackground(final String _path){
@@ -94,9 +101,11 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        if (FragmentReplacer.getSupBackStackEntryCount(this) == 1) {
+//        if (FragmentReplacer.getSupBackStackEntryCount(this) == 1) {
+        if (FragmentUtil.getBackStackCount() == 1) {
             if (doubleBackToExitPressedOnce + 2000 > System.currentTimeMillis()) {
                 super.onBackPressed();
+                FragmentUtil.popBackStack();
                 MainActivity.this.finish();
                 return;
             }
@@ -110,8 +119,11 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void goBack() {
-        if (FragmentReplacer.getSupBackStackEntryCount(this) != 0) {
-            FragmentReplacer.popSupBackStack(this);
-        }
+//        if (FragmentReplacer.getSupBackStackEntryCount(this) != 0) {
+//            FragmentReplacer.popSupBackStack(this);
+//        }
+//        if (FragmentUtil.getBackStackCount() != 0) {
+            FragmentUtil.popBackStack();
+//        }
     }
 }

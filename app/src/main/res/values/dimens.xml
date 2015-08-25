@@ -42,7 +42,7 @@
     <dimen name="shop_height_head_devider">5dp</dimen>
     <dimen name="shop_height_list_devider">1dp</dimen>
     <dimen name="shop_header_margin">12dp</dimen>
-    <dimen name="message_width">300dp</dimen>
+    <dimen name="message_width">200dp</dimen>
     <dimen name="colomn_text_size">18sp</dimen>
 
     <!-- dialogs-->
@@ -60,10 +60,11 @@
     <!-- fragment PLV-->
     <dimen name="lable_width">200dp</dimen>
     <dimen name="lable_height">150dp</dimen>
-    <dimen name="side_item_pager">350dp</dimen>
+    <dimen name="item_pager_width">350dp</dimen>
+    <dimen name="item_pager_height">500dp</dimen>
 
     <!-- Sliding Menu-->
-    <dimen name="menu_height">33dp</dimen>
+    <dimen name="menu_height">32dp</dimen>
     <dimen name="menu_text_size">15dp</dimen>
     <dimen name="menu_big_padding_left">30dp</dimen>
     <dimen name="menu_padding_left">50dp</dimen>

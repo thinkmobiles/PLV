@@ -76,44 +76,147 @@ public class PDFSender {
 
     public static void sendShopPDFsFromPedido (final Activity activity, List<DBItem> items){
 
-        int l = 50, offs;
         String message = activity.getString(R.string.mail_message_pedido) + "\n";
-        String word;
-        for(DBItem item : items){
-            message += "\n" + item.getEan() + "         " + item.getName() + "                        " + item.getNumber();
 
-//            StringBuilder builder = new StringBuilder();
-//            builder.setLength(l);
-//            for(int i = 0; i < l; ++i)
-//                builder.setCharAt(i, '\t');
-//            if(item.getEan() == null || item.getEan().length() == 0) {
-//                word = "null";
-//                offs = 12;
-//            } else {
-//                word = item.getEan();
-//                offs = 10;
-//            }
-//            for(int i = 0; i < word.length(); ++i)
-//                builder.setCharAt(i, word.charAt(i));
-//            word = item.getName();
-//            for(int i = 0; i < word.length(); ++i)
-//                builder.setCharAt(i + offs, word.charAt(i));
-//            word = item.getNumber() + "";
-//            for(int i = 0; i < word.length(); ++i)
-//                builder.setCharAt(i + l-3, word.charAt(i));
-//            message += "\n" + builder.toString() + " " + word;
+        String word;
+        int space;
+        int namePos = 20;
+        int numPos = 100;
+
+        for(DBItem item : items){
+
+            if(item.getEan() == null || item.getEan().length() == 0) {
+                word = "null";
+                message += "\n" + word + " ";
+            } else {
+                word = item.getEan();
+                message += "\n" + word;
+            }
+            space = namePos - countWeight(word);
+            for(int i = 0; i < space; ++i){
+                message += " ";
+            }
+
+            word = item.getName();
+            message += word;
+            space = numPos - countWeight(word);
+            for(int i = 0; i < space; ++i){
+                message += " ";
+            }
+
+            word = item.getNumber() + "";
+            message += word;
         }
 
         Intent intent = new Intent(Intent.ACTION_SEND);
 //        intent.putExtra(Intent.EXTRA_EMAIL, activity.getString(R.string.email));
         intent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.mail_topic_pedido));
-        intent.setType("message/rfc822");
-        intent.putExtra(Intent.EXTRA_TEXT, message);
+//        intent.setType("message/rfc822");
+//        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setType("text/html");
+        intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(makeMessage(items)));
         try {
             activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.send_mail)));
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(activity, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private static String makeMessage(List<DBItem> items){
+        StringBuilder builder = new StringBuilder();
+        builder.append("<p>Buenos días. Como hablamos, le envío el pedido...</p>");
+        int offset;
+        for(DBItem item : items){
+            offset = 58 - item.getName().length();
+            builder.append("<p><u>" +
+                    "<font face=\"monospace\">" + item.getEan());
+            if(item.getEan() == null){
+                builder.append("&#160&#160&#160&#160");
+            } else {
+                builder.append("&#160&#160");
+            }
+            builder.append("<small>" + item.getName());
+            for(int i = 0; i < offset; ++i){
+                builder.append("&#160");
+            }
+            builder.append("</small></font>" +
+                    "<font face=\"monospace\"> "+ item.getNumber() + "</font>" +
+                    "</u></p>");
+//            builder.append("<p><small><small><font>");
+//            for(int i = 0; i < 123; ++i){
+//                builder.append("&#95");
+//            }
+//            builder.append("</font face=\"sans-serif\"></small></small></p>");
+        }
+        return builder.toString();
+    }
+
+    private static String makeTable(List<DBItem> items){
+        StringBuilder builder = new StringBuilder();
+        builder.append("<p>Buenos días. Como hablamos, le envío el pedido...</p>");
+        for(DBItem item : items){
+            builder.append("<div style=\"width:700px\">");
+            builder.append("<div style=\"width:200px\">");
+            builder.append(item.getEan());
+            builder.append("</div><div style=\"width:400px\">");
+            builder.append(item.getName());
+            builder.append("</div><div style=\"width:100px\">");
+            builder.append(String.valueOf(item.getNumber()));
+            builder.append("</div></div>");
+        }
+        return builder.toString();
+    }
+
+    private static int countWeight(CharSequence word){
+        float weight = 0.0f;
+        for(int i = 0; i < word.length(); ++i){
+            weight += getWeight(word.charAt(i));
+        }
+        return (int) weight;
+    }
+
+    private static float getWeight(char symbol){
+        if(
+                symbol == 'i' ||
+                symbol == 'j' ||
+                symbol == 'l' ||
+                symbol == ',' ||
+                symbol == 'I'
+                )
+            return 1f;
+        if(
+                symbol == 'f' ||
+                symbol == 'r' ||
+                symbol == 't' )
+            return 1.0f;
+        if(
+                symbol == 'w' ||
+                symbol == 'A' ||
+                symbol == 'B' ||
+                symbol == 'D' ||
+                symbol == 'G' ||
+                symbol == 'N' ||
+                symbol == 'O' ||
+                symbol == 'P' ||
+                symbol == 'R' ||
+                symbol == 'S' ||
+                symbol == 'U' ||
+                symbol == 'X' ||
+                symbol == 'Y' ||
+                symbol == 'Z' )
+            return 2.5f;
+        if(
+                symbol == 'm' ||
+                symbol == 'H' ||
+                symbol == 'K' ||
+                symbol == 'Q'
+                )
+            return 3.0f;
+        if(
+                symbol == 'M' ||
+                symbol == 'W')
+            return 4;
+        return 2f;
     }
 
 }

@@ -84,7 +84,7 @@ public class CompaniaFragment extends Fragment implements View.OnClickListener {
             public void onEvent(Event event) {
                 switch (event.getId()){
                     case AppModel.ChangeEvent.ON_EXECUTE_ERROR_ID:
-                        Toast.makeText(getActivity(), event.getType() + getActivity().getString(R.string.error), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), event.getType() + getActivity().getString(R.string.error), Toast.LENGTH_SHORT).show();
                         break;
                     case AppModel.ChangeEvent.SECOND_LEVEL_CHANGED_ID:
                         setData();

@@ -36,8 +36,7 @@
                 android:layout_marginRight="@dimen/default_margin"
                 android:layout_gravity="center_vertical"
                 android:layout_alignTop="@+id/ivAddEnvio_FC"
-                android:layout_alignBottom="@+id/ivAddEnvio_FC"
-                android:background="@android:color/white" />
+                android:layout_alignBottom="@+id/ivAddEnvio_FC" />
 
             <ImageView
                 android:id="@+id/ivAddEnvio_FC"
@@ -78,7 +77,7 @@
                 android:layout_toLeftOf="@+id/ivAddCarrita_FC"
                 android:background="@drawable/bg_count_products"
                 android:gravity="center"
-                android:text="@string/zero"
+                android:text="1"
                 android:layout_marginRight="@dimen/default_margin" />
 
             <LinearLayout

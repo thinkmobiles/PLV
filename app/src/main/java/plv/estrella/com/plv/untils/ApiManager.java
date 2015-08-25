@@ -149,9 +149,14 @@ public abstract class ApiManager {
     public static String getDate(){
         setAppConfig();
         model.setOnlineMode(false);
-
-        String url = model.getAppConfig().getParameter("base-url")
-                + model.getAppConfig().getParameter("ws-plv-last-update");
+        String url = null;
+        try {
+            url = model.getAppConfig().getParameter("base-url")
+                    + model.getAppConfig().getParameter("ws-plv-last-update");
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            return "2000-01-01 00:00:00";
+        }
         Network.LoaderDateOfUpdate loader = new Network.LoaderDateOfUpdate();
         loader.execute(url);
 

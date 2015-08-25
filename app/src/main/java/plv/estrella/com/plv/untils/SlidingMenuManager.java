@@ -76,6 +76,7 @@ public class SlidingMenuManager {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 JumpFragmentHelper jumper = new JumpFragmentHelper();
+                jumper.setPosition(position);
                 switch (adapter.getItemViewType(position)){
                     case Constants.TYPE_INICIO:
                         jumper.setParamToMainmenu();
@@ -102,7 +103,8 @@ public class SlidingMenuManager {
                         jumper.setParamToCompania(new ItemSerializable(mMenuItemList.get(0)));
                         break;
                 }
-                FragmentReplacer.replaceFragmentWithStack(activity, jumper);
+//                FragmentReplacer.replaceFragmentWithStack(activity, jumper);
+                FragmentUtil.replaceFragmentWithStack(jumper);
                 menu.toggle();
             }
         });

@@ -71,12 +71,14 @@ public  class DBManager {
         _shop.delete();
     }
 
-    public static final void deleteAllShop(){
+    public static final void deleteAllShop(int _type){
         final ArrayList<Shop> shops = (ArrayList<Shop>) getShops();
         if (shops == null)
             return;
         for  (int i = 0; i < shops.size(); i ++){
-            deleteShop(shops.get(i));
+            if(shops.get(i).getType() == _type) {
+                deleteShop(shops.get(i));
+            }
         }
     }
 

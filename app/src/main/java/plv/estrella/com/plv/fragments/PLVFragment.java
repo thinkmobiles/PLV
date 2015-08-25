@@ -30,6 +30,7 @@ import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.FragmentUtil;
 
 /**
  * Created by samson on 22.05.2015.
@@ -132,7 +133,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
             name.setText(mProduct.getName());
             loaderImage = new LoaderImage();
             loaderImage.imageView = imageView;
-            loaderImage.path = mProduct.getImage();
+            loaderImage.path = mProduct.getImageSmall();
             loaderImage.execute();
 
             view.setOnClickListener(getClickListener(i));
@@ -142,7 +143,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setData() {
-        ivLable.setImageBitmap(BitmapCreator.getCompressedBitmap(mCurrentItem.getIcon(), Constants.RATIO_16_9, 600));
+        ivLable.setImageBitmap(BitmapCreator.getCompressedBitmap(mCurrentItem.getIcon(), Constants.RATIO_16_9, 300));
         mCallingActivity.setTitle(mCurrentItem.getName());
         mCallingActivity.setBackground(mCurrentItem.getBackgroundImage());
 
@@ -160,8 +161,11 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentReplacer.replaceFragmentWithStack(
-                        mCallingActivity,
+//                FragmentReplacer.replaceFragmentWithStack(
+//                        mCallingActivity,
+//                        ProductPagerFragment.newInstance(new ItemSerializable(mCurrentItem), pos)
+//                );
+                FragmentUtil.replaceFragmentWithStack(
                         ProductPagerFragment.newInstance(new ItemSerializable(mCurrentItem), pos)
                 );
             }
@@ -197,7 +201,7 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
 
         @Override
         protected Void doInBackground(Void... params) {
-            bitmap = BitmapCreator.getCompressedBitmap(path, Constants.RATIO_1_1, 500f);
+            bitmap = BitmapCreator.getCompressedBitmap(path, Constants.RATIO_1_1, 320f);
             return null;
         }
 

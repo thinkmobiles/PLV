@@ -123,7 +123,7 @@ public abstract class BitmapCreator {
             return Bitmap.createScaledBitmap(scaledBitmap, actualWidth, actualHeight, true);
         } catch (OutOfMemoryError error){
             error.printStackTrace();
-            Log.e("compressed bitmap", "OutOfMemoryError scale");
+            Log.e("compressed bitmap", "OutOfMemoryError scale2");
             return null;
         }
 

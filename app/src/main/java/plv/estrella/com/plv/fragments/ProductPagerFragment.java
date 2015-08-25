@@ -116,7 +116,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
         adapter = new ProductPagerAdapter(getChildFragmentManager(), fragments);
         mPager.setAdapter(adapter);
         mPager.setCurrentItem(targetPos);
-        setVisibilityArrows(targetPos);
+        setVisibilityArrows();
     }
 
     private void makeListener(){
@@ -202,7 +202,7 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
     @Override
     public void onPageSelected(int position) {
         targetPos = position;
-        setVisibilityArrows(position);
+        setVisibilityArrows();
     }
 
     @Override
@@ -210,26 +210,21 @@ public class ProductPagerFragment extends Fragment implements View.OnClickListen
 
     }
 
-    private void setVisibilityArrows(int _position){
+    private void setVisibilityArrows(){
         if (mListProducts.size() == 1){
             ivNext.setVisibility(View.GONE);
             ivPrev.setVisibility(View.GONE);
-            return;
-        }
-        if (_position == mListProducts.size() - 1) {
+        } else if (targetPos == mListProducts.size() - 1) {
             ivNext.setVisibility(View.GONE);
             ivPrev.setVisibility(View.VISIBLE);
-            return;
-        }
-        if (_position == 0) {
+        } else if (targetPos == 0) {
             ivPrev.setVisibility(View.GONE);
             ivNext.setVisibility(View.VISIBLE);
-            return;
+        } else {
+            ivPrev.setVisibility(View.VISIBLE);
+            ivNext.setVisibility(View.VISIBLE);
         }
 
-        ivPrev.setVisibility(View.VISIBLE);
-        ivNext.setVisibility(View.VISIBLE);
-
-        tvCount.setText(String.valueOf(massivCounters[_position]));
+        tvCount.setText(String.valueOf(massivCounters[targetPos]));
     }
 }

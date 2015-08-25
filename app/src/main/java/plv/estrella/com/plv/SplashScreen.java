@@ -104,9 +104,22 @@ public class SplashScreen extends Activity {
     }
 
     private void openMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
+
         mProgressView.stopAnim();
-        finish();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(600);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                        startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                    finish();
+                }
+            }
+        }).start();
     }
 
     private void downloadContent() {

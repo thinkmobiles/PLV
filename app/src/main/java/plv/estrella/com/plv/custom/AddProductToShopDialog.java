@@ -152,7 +152,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
                 tvTitle.setText(mCallingActivity.getString(R.string.anadir_pedido));
             }
 
-            fillShopList();
+            createListShops();
             setViewSettings();
         }
     }
@@ -221,20 +221,15 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
             questionCheck = true;
             if (isSelectChek) {
 
-                DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), mEan, numProducts, subList.get(selected));
-
-                currentShop = subList.get(selected);
+                Shop shop = subList.get(selected);
+                if(shop.getType() == typeDialogShop) {
+                    DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), mEan, numProducts, shop);
+                    currentShop = shop;
+                } else
+                    addNewShop();
                 isSelectChek = false;
             } else {
-                Shop shop = DBManager.addShop(autoCompleteTextView.getText().toString(), typeDialogShop);
-                fillShopList();
-
-                DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), mEan, numProducts, shop);
-
-                currentShop = shop;
-                Toast.makeText(mCallingActivity, mCallingActivity.getString(R.string.add_shop_succesfull), Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
-                autoCompleteTextView.showDropDown();
+                addNewShop();
             }
             setVisible();
         }else {
@@ -243,12 +238,34 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
 
     }
 
+    private void addNewShop(){
+        String name = autoCompleteTextView.getText().toString();
+        List<Shop> shops = DBManager.getShops();
+        for(Shop shop :shops){
+            if(shop.getName().equals(name) &&
+                    shop.getType() == typeDialogShop){
+                DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), mEan, numProducts, shop);
+                currentShop = shop;
+                return;
+            }
+        }
+
+        Shop shop = DBManager.addShop(name, typeDialogShop);
+        fillShopList();
+
+        DBManager.addItem(mItemId, mName, mIcon, mCurrentItem.getPdf(), mEan, numProducts, shop);
+
+        currentShop = shop;
+        Toast.makeText(mCallingActivity, mCallingActivity.getString(R.string.add_shop_succesfull), Toast.LENGTH_SHORT).show();
+        adapter.notifyDataSetChanged();
+    }
+
     private void makeAutocompleteItemClickListener(){
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selected = position;
-                isSelectChek=true;
+                isSelectChek = true;
                 allShop.setImageResource(R.drawable.arrow_down);
             }
         });
@@ -269,7 +286,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
         List<Shop> shops = DBManager.getShops();
         ArrayList<Shop> shopList = new ArrayList<>();
         for(Shop shop :shops){
-            if(shop.getType() == typeDialogShop)
+//            if(shop.getType() == typeDialogShop)
                 shopList.add(shop);
         }
         if (!shopList.isEmpty()) {
@@ -279,6 +296,30 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
         }
 
         initSpinner();
+    }
+
+    private void createListShops(){
+        subList = new ArrayList<>();
+        List<Shop> shops = DBManager.getShops();
+        ArrayList<Shop> shopList = new ArrayList<>();
+        for(Shop shop :shops){
+            String name = shop.getName();
+            boolean exist = false;
+            for(Shop tempShop : shopList){
+                if(tempShop.getName().equals(name))
+                    exist = true;
+            }
+            if(!exist)
+                shopList.add(shop);
+        }
+        if (!shopList.isEmpty()) {
+            Shop lastElement = shopList.get(shopList.size() - 1);
+            shopList.add(0, lastElement);
+            subList = shopList.subList(0, shopList.size() - 1);
+        }
+
+        initSpinner();
+
     }
 
     @Override

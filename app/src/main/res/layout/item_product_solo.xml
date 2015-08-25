@@ -20,12 +20,12 @@
         android:layout_alignParentTop="false"/>
 
     <ImageView
-        android:layout_width="@dimen/side_item_pager"
-        android:layout_height="@dimen/side_item_pager"
+        android:layout_width="@dimen/item_pager_width"
+        android:layout_height="@dimen/item_pager_height"
         android:id="@+id/ivIconSolo"
         android:layout_gravity="center_vertical"
         android:src="@drawable/ic_launcher"
-        android:layout_alignParentBottom="false"
-        android:layout_centerInParent="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

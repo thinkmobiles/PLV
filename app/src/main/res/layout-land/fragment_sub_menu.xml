@@ -12,7 +12,8 @@
         android:layout_marginLeft="@dimen/fragment_padding_left_right"
         android:layout_marginRight="@dimen/fragment_padding_left_right"
         android:horizontalSpacing="@dimen/space_cell"
-        android:verticalSpacing="@dimen/space_cell">
+        android:verticalSpacing="@dimen/space_cell"
+        android:numColumns="4">
 
     </GridView>
 </LinearLayout>

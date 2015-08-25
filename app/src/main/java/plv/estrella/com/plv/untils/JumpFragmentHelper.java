@@ -36,6 +36,7 @@ public class JumpFragmentHelper extends Fragment {
     private int openItemMenu;
     private int typeItem;
     private int typeShop;
+    private int position;
     private ItemSerializable itemSerializable;
 
     public void setParamToMainmenu(){
@@ -68,6 +69,10 @@ public class JumpFragmentHelper extends Fragment {
         typeItem = JUMP_COMPANIA;
     }
 
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -78,22 +83,28 @@ public class JumpFragmentHelper extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         switch (typeItem){
             case JUMP_MAINMENU:
-                FragmentReplacer.replaceCurrentFragment(mActivity, new MainMenuFragment());
+//                FragmentReplacer.replaceCurrentFragment(mActivity, new MainMenuFragment());
+                FragmentUtil.replaceCurrentFragment(new MainMenuFragment(), position);
                 break;
             case JUMP_SUBMENU:
-                FragmentReplacer.replaceCurrentFragment(mActivity, SubMenuFragment.newInstance(openItemMenu, itemSerializable));
+//                FragmentReplacer.replaceCurrentFragment(mActivity, SubMenuFragment.newInstance(openItemMenu, itemSerializable));
+                FragmentUtil.replaceCurrentFragment(SubMenuFragment.newInstance(openItemMenu, itemSerializable), position);
                 break;
             case JUMP_SPV:
-                FragmentReplacer.replaceCurrentFragment(mActivity, ColumnaFragment.newInstance(itemSerializable));
+//                FragmentReplacer.replaceCurrentFragment(mActivity, ColumnaFragment.newInstance(itemSerializable));
+                FragmentUtil.replaceCurrentFragment(ColumnaFragment.newInstance(itemSerializable), position);
                 break;
             case JUMP_PLV:
-                FragmentReplacer.replaceCurrentFragment(mActivity, PLVFragment.newInstance(itemSerializable));
+//                FragmentReplacer.replaceCurrentFragment(mActivity, PLVFragment.newInstance(itemSerializable));
+                FragmentUtil.replaceCurrentFragment(PLVFragment.newInstance(itemSerializable), position);
                 break;
             case JUMP_SHOP:
-                FragmentReplacer.replaceCurrentFragment(mActivity, ShopsFragment.newInstance(typeShop));
+//                FragmentReplacer.replaceCurrentFragment(mActivity, ShopsFragment.newInstance(typeShop));
+                FragmentUtil.replaceCurrentFragment(ShopsFragment.newInstance(typeShop), position);
                 break;
             case JUMP_COMPANIA:
-                FragmentReplacer.replaceCurrentFragment(mActivity, CompaniaFragment.newInstance(itemSerializable));
+//                FragmentReplacer.replaceCurrentFragment(mActivity, CompaniaFragment.newInstance(itemSerializable));
+                FragmentUtil.replaceCurrentFragment(CompaniaFragment.newInstance(itemSerializable), position);
                 break;
         }
         return null;

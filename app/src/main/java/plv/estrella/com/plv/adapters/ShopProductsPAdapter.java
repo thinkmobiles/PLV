@@ -85,14 +85,6 @@ public class ShopProductsPAdapter extends BaseAdapter implements View.OnClickLis
         holder.ivMoreProduct    = (ImageView) _convertView.findViewById(R.id.ivMore_PP);
         holder.ivLessProduct    = (ImageView) _convertView.findViewById(R.id.ivLess_PP);
 
-        holder.ivDeleteProduct.setTag(_position);
-        holder.ivMoreProduct.setTag(_position);
-        holder.ivLessProduct.setTag(_position);
-
-        holder.ivDeleteProduct.setOnClickListener(this);
-        holder.ivMoreProduct.setOnClickListener(this);
-        holder.ivLessProduct.setOnClickListener(this);
-
         _convertView.setTag(holder);
         return holder;
     }
@@ -101,6 +93,14 @@ public class ShopProductsPAdapter extends BaseAdapter implements View.OnClickLis
         _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getCompressedBitmap(_dbItem.getIcon(), Constants.RATIO_1_1, 256f));
         _holder.tvProductName.setText(_dbItem.getName());
         _holder.tvCountProduct.setText(String.valueOf(_dbItem.getNumber()));
+
+        _holder.ivDeleteProduct.setTag(_pos);
+        _holder.ivMoreProduct.setTag(_pos);
+        _holder.ivLessProduct.setTag(_pos);
+
+        _holder.ivDeleteProduct.setOnClickListener(this);
+        _holder.ivMoreProduct.setOnClickListener(this);
+        _holder.ivLessProduct.setOnClickListener(this);
 
         if(!isCorrects[_pos])
             _holder.tvMessage.setVisibility(View.VISIBLE);

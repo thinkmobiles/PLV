@@ -1,8 +1,10 @@
 package plv.estrella.com.plv.fragments;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,7 +121,10 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
 
         mCallingActivity.setTitle(mProduct.getName());
 
-        mBackground.setImageBitmap(BitmapCreator.getCompressedBitmap(mProduct.getBackgroundImage(), Constants.RATIO_16_9, 1280f));
+        Bitmap bitmap = BitmapCreator.getCompressedBitmap(mProduct.getBackgroundImage(), Constants.RATIO_16_9, 1280f);
+        bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight() * 2 / 3);
+
+        mBackground.setImageBitmap(bitmap);
         List<String> families = mProduct.getFamilyImages();
         boolean inLow = true;
 //        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

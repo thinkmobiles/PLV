@@ -24,6 +24,7 @@ import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.FragmentUtil;
 
 /**
  * Created by vasia on 22.05.2015.
@@ -53,8 +54,8 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
         if (getArguments() != null){
             mMenuOpen = getArguments().getInt(Constants.OPEN_MENU);
             mMenuItem = ((ItemSerializable) getArguments().getSerializable(Constants.ITEM)).getItem();
-            getArguments().remove(Constants.OPEN_MENU);
-            getArguments().remove(Constants.ITEM);
+//            getArguments().remove(Constants.OPEN_MENU);
+//            getArguments().remove(Constants.ITEM);
         }
     }
 
@@ -106,14 +107,14 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
 
     private void createSubMenu(){
         mSubMenuItemList = ApiManager.getSecondList();
-        switch (mMenuOpen){
-            case Constants.MENU_COLUMNAS:
-                gvSubMenuContainer.setNumColumns(5);
-                break;
-            case Constants.MENU_PLV:
-                gvSubMenuContainer.setNumColumns(4);
-                break;
-        }
+//        switch (mMenuOpen){
+//            case Constants.MENU_COLUMNAS:
+//                gvSubMenuContainer.setNumColumns(5);
+//                break;
+//            case Constants.MENU_PLV:
+//                gvSubMenuContainer.setNumColumns(4);
+//                break;
+//        }
         gvSubMenuContainer.setAdapter(new SubMenuAdapter(mCallingActivity, mSubMenuItemList, mMenuOpen));
         gvSubMenuContainer.setOnItemClickListener(this);
     }
@@ -122,14 +123,20 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (mMenuOpen){
             case Constants.MENU_COLUMNAS:
-                FragmentReplacer.replaceFragmentWithStack(
-                        mCallingActivity,
+//                FragmentReplacer.replaceFragmentWithStack(
+//                        mCallingActivity,
+//                        ColumnaFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
+//                );
+                FragmentUtil.replaceFragmentWithStack(
                         ColumnaFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
                 );
                 break;
             case Constants.MENU_PLV:
-                FragmentReplacer.replaceFragmentWithStack(
-                        mCallingActivity,
+//                FragmentReplacer.replaceFragmentWithStack(
+//                        mCallingActivity,
+//                        PLVFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
+//                );
+                FragmentUtil.replaceFragmentWithStack(
                         PLVFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
                 );
                 break;

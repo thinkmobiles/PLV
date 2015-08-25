@@ -78,7 +78,7 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
             holder = (ViewHolder) _convertView.getTag();
         }
 
-        setListeners(holder);
+        setListeners(holder, _position);
         holder.tvShopName.setText(mShops.get(_position).getName());
         return _convertView;
     }
@@ -90,15 +90,17 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
         holder.ivSee        = (ImageView) _convertView.findViewById(R.id.ivSee_IS);
         holder.ivDelete     = (ImageView) _convertView.findViewById(R.id.ivDelete_IS);
 
-        holder.ivSend.setTag(_position);
-        holder.ivSee.setTag(_position);
-        holder.ivDelete.setTag(_position);
 
         _convertView.setTag(holder);
         return holder;
     }
 
-    private void setListeners(ViewHolder _holder){
+    private void setListeners(ViewHolder _holder, int _position){
+
+        _holder.ivSend.setTag(_position);
+        _holder.ivSee.setTag(_position);
+        _holder.ivDelete.setTag(_position);
+
         _holder.ivSend.setOnClickListener(this);
         _holder.ivSee.setOnClickListener(this);
         _holder.ivDelete.setOnClickListener(this);

@@ -24,6 +24,7 @@ import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.FragmentUtil;
 
 /**
  * Created by vasia on 21.05.2015.
@@ -96,20 +97,29 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ivColumnas_FMM:
-                FragmentReplacer.replaceFragmentWithStack(
-                        mCallingActivity,
+//                FragmentReplacer.replaceFragmentWithStack(
+//                        mCallingActivity,
+//                        SubMenuFragment.newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(1)))
+//                );
+                FragmentUtil.replaceFragmentWithStack(
                         SubMenuFragment.newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(1)))
                 );
                 break;
             case R.id.ivPLV_FMM:
-                FragmentReplacer.replaceFragmentWithStack(
-                        mCallingActivity,
+//                FragmentReplacer.replaceFragmentWithStack(
+//                        mCallingActivity,
+//                        SubMenuFragment.newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(2)))
+//                );
+                FragmentUtil.replaceFragmentWithStack(
                         SubMenuFragment.newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(2)))
                 );
                 break;
             case R.id.tvCompania:
-                FragmentReplacer.replaceFragmentWithStack(
-                        mCallingActivity,
+//                FragmentReplacer.replaceFragmentWithStack(
+//                        mCallingActivity,
+//                        CompaniaFragment.newInstance(new ItemSerializable(mMenuItemList.get(0)))
+//                );
+                FragmentUtil.replaceFragmentWithStack(
                         CompaniaFragment.newInstance(new ItemSerializable(mMenuItemList.get(0)))
                 );
                 break;

@@ -52,7 +52,7 @@
             android:id="@+id/tvCantidad"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="340dp"
+            android:layout_marginRight="240dp"
             android:visibility="invisible" />
     </RelativeLayout>
 
@@ -73,7 +73,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/lvProductContainer_FSP"
         android:listSelector="@android:color/transparent"
         android:layout_below="@+id/rlDevider"

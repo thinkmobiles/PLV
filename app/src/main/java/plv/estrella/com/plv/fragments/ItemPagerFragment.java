@@ -73,7 +73,7 @@ public class ItemPagerFragment extends Fragment {
     }
 
     private void setData(){
-        ivIconSolo.setImageBitmap(BitmapCreator.getCompressedBitmap(product.getImage(), Constants.RATIO_1_1, 512f));
+        ivIconSolo.setImageBitmap(BitmapCreator.getCompressedBitmap(product.getImageSmall(), Constants.RATIO_1_1, 350f));
         tvDescrSolo.setText(product.getName());
         tvEanSolo.setText(product.getEAN());
     }

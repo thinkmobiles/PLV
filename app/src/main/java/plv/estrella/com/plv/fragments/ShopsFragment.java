@@ -18,6 +18,7 @@ import plv.estrella.com.plv.adapters.ShopListAdapter;
 import plv.estrella.com.plv.database.DBManager;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.FragmentUtil;
 
 /**
  * Created by vasia on 27.05.2015.
@@ -99,11 +100,12 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int _position, long id) {
-        FragmentReplacer.replaceFragmentWithStack(mCallingActivity, ShopProductsFragment.newInstance(mAdapter.getShops().get(_position)));
+//        FragmentReplacer.replaceFragmentWithStack(mCallingActivity, ShopProductsFragment.newInstance(mAdapter.getShops().get(_position)));
+        FragmentUtil.replaceFragmentWithStack( ShopProductsFragment.newInstance(mAdapter.getShops().get(_position)));
     }
 
     private void clearShopList(){
-        DBManager.deleteAllShop();
+        DBManager.deleteAllShop(typeShops);
         mAdapter.setShops(DBManager.getShops());
         mAdapter.notifyDataSetChanged();
     }

@@ -68,7 +68,7 @@ public class ShopProductsEAdapter extends BaseAdapter implements View.OnClickLis
         }else {
             holder = (ViewHolder) _convertView.getTag();
         }
-        fillData(holder, mProducts.get(_position));
+        fillData(holder, mProducts.get(_position), _position);
         return _convertView;
     }
 
@@ -76,15 +76,15 @@ public class ShopProductsEAdapter extends BaseAdapter implements View.OnClickLis
         final ViewHolder holder = new ViewHolder();
         holder.tvProductName = (TextView) _convertView.findViewById(R.id.tvProductName_IP);
         holder.ivDeleteProduct = (ImageView) _convertView.findViewById(R.id.ivDeleteProduct_IP);
-        holder.ivDeleteProduct.setTag(_position);
-        holder.ivDeleteProduct.setOnClickListener(this);
         holder.ivProductPhoto = (ImageView) _convertView.findViewById(R.id.ivProductPhoto_IP);
         _convertView.setTag(holder);
         return holder;
     }
 
-    private void fillData(ViewHolder _holder, DBItem _item){
+    private void fillData(ViewHolder _holder, DBItem _item, int _position){
         _holder.ivProductPhoto.setImageBitmap(BitmapCreator.getCompressedBitmap(_item.getIcon(), Constants.RATIO_1_1, 256f));
+        _holder.ivDeleteProduct.setTag(_position);
+        _holder.ivDeleteProduct.setOnClickListener(this);
         _holder.tvProductName.setText(_item.getName());
     }
 
