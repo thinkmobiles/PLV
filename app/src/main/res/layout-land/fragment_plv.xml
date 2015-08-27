@@ -9,15 +9,6 @@
     android:paddingTop="@dimen/fragment_padding_top_bottom">
 
     <ImageView
-        android:id="@+id/ivPrev"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true"
-        android:padding="@dimen/default_padding"
-        android:src="@drawable/btn_prev" />
-
-        <ImageView
             android:id="@+id/ivLable"
             android:layout_width="@dimen/lable_width"
             android:layout_height="@dimen/lable_height"
@@ -25,19 +16,9 @@
             android:src="@drawable/btn_circle_save" />
 
     <ImageView
-        android:id="@+id/ivNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerInParent="true"
-        android:padding="@dimen/default_padding"
-        android:src="@drawable/btn_next" />
-
-    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ivVolver_FP"
-        android:layout_toRightOf="@+id/ivLable"
         android:src="@drawable/btn_volver"
         android:layout_marginLeft="@dimen/default_big_margin"
         android:layout_alignTop="@+id/ivAddEnvios_FP"
@@ -48,31 +29,61 @@
         android:layout_height="@dimen/btn_height"
         android:id="@+id/ivAddEnvios_FP"
         android:src="@drawable/btn_add_envio"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/default_big_margin"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/ivLable"
-        android:layout_toLeftOf="@id/ivNext"
-        android:layout_toRightOf="@id/ivPrev"
-        android:layout_marginTop="@dimen/default_big_margin"
+        android:layout_marginTop="@dimen/default_margin"
         android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_above="@+id/ivAddEnvios_FP">
 
-        <HorizontalScrollView
-            android:id="@+id/hsvListProducts"
+        <ImageView
+            android:id="@+id/ivPrev"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:scrollbars="none">
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/default_padding"
+            android:src="@drawable/btn_prev"
+            android:layout_gravity="center_vertical" />
 
-            <LinearLayout
-                android:id="@+id/llContProd"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <HorizontalScrollView
+                android:id="@+id/hsvListProducts"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" />
-        </HorizontalScrollView>
+                android:layout_gravity="center_horizontal"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/llContProd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/default_padding"
+            android:src="@drawable/btn_next"
+            android:layout_gravity="center_vertical" />
+
     </LinearLayout>
 
 </RelativeLayout>

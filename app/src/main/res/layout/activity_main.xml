@@ -54,7 +54,7 @@
             android:layout_marginRight="@dimen/fragment_padding_left_right"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
-            android:src="@drawable/logo_spv_plv"
+            android:src="@drawable/logo_hdr"
             android:layout_alignParentRight="true"
             />
 

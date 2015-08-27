@@ -54,8 +54,6 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
         if (getArguments() != null){
             mMenuOpen = getArguments().getInt(Constants.OPEN_MENU);
             mMenuItem = ((ItemSerializable) getArguments().getSerializable(Constants.ITEM)).getItem();
-//            getArguments().remove(Constants.OPEN_MENU);
-//            getArguments().remove(Constants.ITEM);
         }
     }
 
@@ -107,14 +105,6 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
 
     private void createSubMenu(){
         mSubMenuItemList = ApiManager.getSecondList();
-//        switch (mMenuOpen){
-//            case Constants.MENU_COLUMNAS:
-//                gvSubMenuContainer.setNumColumns(5);
-//                break;
-//            case Constants.MENU_PLV:
-//                gvSubMenuContainer.setNumColumns(4);
-//                break;
-//        }
         gvSubMenuContainer.setAdapter(new SubMenuAdapter(mCallingActivity, mSubMenuItemList, mMenuOpen));
         gvSubMenuContainer.setOnItemClickListener(this);
     }
@@ -123,19 +113,11 @@ public class SubMenuFragment extends Fragment implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (mMenuOpen){
             case Constants.MENU_COLUMNAS:
-//                FragmentReplacer.replaceFragmentWithStack(
-//                        mCallingActivity,
-//                        ColumnaFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
-//                );
                 FragmentUtil.replaceFragmentWithStack(
                         ColumnaFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
                 );
                 break;
             case Constants.MENU_PLV:
-//                FragmentReplacer.replaceFragmentWithStack(
-//                        mCallingActivity,
-//                        PLVFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
-//                );
                 FragmentUtil.replaceFragmentWithStack(
                         PLVFragment.newInstance(new ItemSerializable(mSubMenuItemList.get(position)))
                 );

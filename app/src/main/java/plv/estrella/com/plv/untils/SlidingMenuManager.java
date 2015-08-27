@@ -103,7 +103,6 @@ public class SlidingMenuManager {
                         jumper.setParamToCompania(new ItemSerializable(mMenuItemList.get(0)));
                         break;
                 }
-//                FragmentReplacer.replaceFragmentWithStack(activity, jumper);
                 FragmentUtil.replaceFragmentWithStack(jumper);
                 menu.toggle();
             }

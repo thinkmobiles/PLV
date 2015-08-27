@@ -37,13 +37,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     private EventListener mMenuListener;
     private List<Item> mMenuItemList;
 
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mCallingActivity = (MainActivity) activity;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -97,34 +95,20 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ivColumnas_FMM:
-//                FragmentReplacer.replaceFragmentWithStack(
-//                        mCallingActivity,
-//                        SubMenuFragment.newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(1)))
-//                );
                 FragmentUtil.replaceFragmentWithStack(
                         SubMenuFragment.newInstance(Constants.MENU_COLUMNAS, new ItemSerializable(mMenuItemList.get(1)))
                 );
                 break;
             case R.id.ivPLV_FMM:
-//                FragmentReplacer.replaceFragmentWithStack(
-//                        mCallingActivity,
-//                        SubMenuFragment.newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(2)))
-//                );
                 FragmentUtil.replaceFragmentWithStack(
                         SubMenuFragment.newInstance(Constants.MENU_PLV, new ItemSerializable(mMenuItemList.get(2)))
                 );
                 break;
             case R.id.tvCompania:
-//                FragmentReplacer.replaceFragmentWithStack(
-//                        mCallingActivity,
-//                        CompaniaFragment.newInstance(new ItemSerializable(mMenuItemList.get(0)))
-//                );
                 FragmentUtil.replaceFragmentWithStack(
                         CompaniaFragment.newInstance(new ItemSerializable(mMenuItemList.get(0)))
                 );
                 break;
         }
-
-
     }
 }

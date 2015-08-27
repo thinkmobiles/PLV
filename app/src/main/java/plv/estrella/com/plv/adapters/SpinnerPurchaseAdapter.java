@@ -15,12 +15,10 @@ import plv.estrella.com.plv.database.Shop;
  * Created by vasia on 26.05.2015.
  */
 public class SpinnerPurchaseAdapter extends BaseAdapter {
-    private Context context;
     private List<Shop> shops;
     private LayoutInflater inflater;
 
     public SpinnerPurchaseAdapter(Context _context, List<Shop> _data){
-        context = _context;
         shops = _data;
 
         inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

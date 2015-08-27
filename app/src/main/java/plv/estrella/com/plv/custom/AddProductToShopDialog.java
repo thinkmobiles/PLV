@@ -33,6 +33,7 @@ import plv.estrella.com.plv.fragments.ShopsFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.models.ItemSerializable;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.FragmentUtil;
 
 /**
  * Created by samson on 25.06.2015.
@@ -195,11 +196,7 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
         FragmentReplacer.popSupBackStack(getActivity());
 
         if (questionCheck){
-//            if(typeDialogShop == Constants.TYPE_DIALOG_ADD_CARRITA){
-                FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopProductsFragment.newInstance(currentShop));
-//            } else {
-//                FragmentReplacer.replaceFragmentWithStack(getActivity(), ShopsFragment.newInstance(typeDialogShop));
-//            }
+                FragmentUtil.replaceFragmentWithStack(ShopProductsFragment.newInstance(currentShop));
             questionCheck = false;
         }
     }
@@ -286,7 +283,6 @@ public class AddProductToShopDialog extends Fragment implements AdapterView.OnIt
         List<Shop> shops = DBManager.getShops();
         ArrayList<Shop> shopList = new ArrayList<>();
         for(Shop shop :shops){
-//            if(shop.getType() == typeDialogShop)
                 shopList.add(shop);
         }
         if (!shopList.isEmpty()) {

@@ -21,6 +21,7 @@ import plv.estrella.com.plv.database.Shop;
 import plv.estrella.com.plv.fragments.ShopProductsFragment;
 import plv.estrella.com.plv.global.Constants;
 import plv.estrella.com.plv.untils.FragmentReplacer;
+import plv.estrella.com.plv.untils.FragmentUtil;
 import plv.estrella.com.plv.untils.PDFSender;
 
 /**
@@ -90,7 +91,6 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
         holder.ivSee        = (ImageView) _convertView.findViewById(R.id.ivSee_IS);
         holder.ivDelete     = (ImageView) _convertView.findViewById(R.id.ivDelete_IS);
 
-
         _convertView.setTag(holder);
         return holder;
     }
@@ -135,21 +135,7 @@ public class ShopListAdapter extends BaseAdapter implements View.OnClickListener
     }
 
     private void see(int _position){
-        FragmentReplacer.replaceFragmentWithStack(mActivity, ShopProductsFragment.newInstance(mShops.get(_position)));
-    }
-
-    private void startDeleteDialog(final int _position){
-        final CustomDialog dialog = new CustomDialog.Builder()
-                .setPositiveButton(mActivity.getString(R.string.button_accept), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        deleteShop(_position);
-                    }
-                })
-                .setNegativeButton(mActivity.getString(R.string.button_cancel), null)
-                .setMessage(mActivity.getString(R.string.delete_shop))
-                .create();
-        dialog.show(mActivity);
+        FragmentUtil.replaceFragmentWithStack(ShopProductsFragment.newInstance(mShops.get(_position)));
     }
 
     private void deleteShop(int _position){

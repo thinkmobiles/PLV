@@ -93,14 +93,13 @@ public class ShopsFragment extends Fragment implements View.OnClickListener, Ada
                 clearShopList();
                 break;
             case R.id.btnVolver_FS:
-                getActivity().onBackPressed();
+                mCallingActivity.onBackPressed();
                 break;
         }
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int _position, long id) {
-//        FragmentReplacer.replaceFragmentWithStack(mCallingActivity, ShopProductsFragment.newInstance(mAdapter.getShops().get(_position)));
         FragmentUtil.replaceFragmentWithStack( ShopProductsFragment.newInstance(mAdapter.getShops().get(_position)));
     }
 

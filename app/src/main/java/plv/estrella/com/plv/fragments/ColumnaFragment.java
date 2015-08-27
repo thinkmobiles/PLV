@@ -38,7 +38,7 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
     private MainActivity mCallingActivity;
     private ImageView mGoToBack,mAddEnvio, mAddCarrita, mMore, mLess, mBackground;
     private TextView mCounter;
-    private LinearLayout lowCont, highCont;
+    private LinearLayout highCont;
     private Item mCurrentItem;
     private Product mProduct;
     private EventListener eventListener;
@@ -83,7 +83,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mBackground     = (ImageView) _view.findViewById(R.id.ivBackground_FC);
         mGoToBack       = (ImageView) _view.findViewById(R.id.btnVolver_FC);
         mCounter        = (TextView) _view.findViewById(R.id.tvCount_FC);
-        lowCont         = (LinearLayout) _view.findViewById(R.id.llContLow);
         highCont        = (LinearLayout) _view.findViewById(R.id.llContHigh);
 
         mCallingActivity.setBackground();
@@ -122,30 +121,21 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
         mCallingActivity.setTitle(mProduct.getName());
 
         Bitmap bitmap = BitmapCreator.getCompressedBitmap(mProduct.getBackgroundImage(), Constants.RATIO_16_9, 1280f);
-        bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight() * 2 / 3);
+        bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight() * 7 / 10);
 
         mBackground.setImageBitmap(bitmap);
         List<String> families = mProduct.getFamilyImages();
-        boolean inLow = true;
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 (int)mCallingActivity.getResources().getDimension(R.dimen.size_side_family_logo),
                 (int)mCallingActivity.getResources().getDimension(R.dimen.size_side_family_logo)
         );
-        params.setMargins(5, 5, 5, 5);
+        params.setMargins(2, 2, 2, 2);
         for(int i = 0; i < families.size(); ++i){
             ImageView imageView = new ImageView(mCallingActivity);
             imageView.setLayoutParams(params);
 
             imageView.setImageBitmap(BitmapCreator.getCompressedBitmap(families.get(i), Constants.RATIO_1_1, 100f));
-
-            if(inLow){
-                lowCont.addView(imageView);
-                inLow = false;
-            } else {
-                highCont.addView(imageView);
-                inLow = true;
-            }
+            highCont.addView(imageView);
         }
         mCounter.setText(String.valueOf(counterValue));
     }
@@ -158,7 +148,6 @@ public class ColumnaFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.ivAddEnvio_FC:
                 AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-//                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                         .show(mCallingActivity, mProduct.getId(), mProduct.getName(), mCurrentItem.getIcon(), "", Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                 break;
             case R.id.ivMore_FC:

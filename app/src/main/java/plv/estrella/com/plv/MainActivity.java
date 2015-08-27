@@ -65,7 +65,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void startMainMenu(){
-//        FragmentReplacer.replaceFragmentWithStack(this, new MainMenuFragment());
         FragmentUtil.replaceFragmentWithStack(new MainMenuFragment());
     }
 
@@ -89,19 +88,8 @@ public class MainActivity extends FragmentActivity {
         menuManager.enableMenu(isEnable);
     }
 
-    public void setFullScreenSetting(boolean isFull){
-        if(isFull){
-            header.setVisibility(View.GONE);
-            footer.setVisibility(View.GONE);
-        } else {
-            header.setVisibility(View.VISIBLE);
-            footer.setVisibility(View.VISIBLE);
-        }
-    }
-
     @Override
     public void onBackPressed() {
-//        if (FragmentReplacer.getSupBackStackEntryCount(this) == 1) {
         if (FragmentUtil.getBackStackCount() == 1) {
             if (doubleBackToExitPressedOnce + 2000 > System.currentTimeMillis()) {
                 super.onBackPressed();
@@ -114,16 +102,7 @@ public class MainActivity extends FragmentActivity {
             Toast.makeText(this, getString(R.string.click_back), Toast.LENGTH_SHORT).show();
 
         } else {
-            goBack();
-        }
-    }
-
-    private void goBack() {
-//        if (FragmentReplacer.getSupBackStackEntryCount(this) != 0) {
-//            FragmentReplacer.popSupBackStack(this);
-//        }
-//        if (FragmentUtil.getBackStackCount() != 0) {
             FragmentUtil.popBackStack();
-//        }
+        }
     }
 }

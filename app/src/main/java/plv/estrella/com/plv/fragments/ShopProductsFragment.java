@@ -89,7 +89,7 @@ public class ShopProductsFragment extends Fragment implements View.OnClickListen
                 clearProductList();
                 break;
             case R.id.btnVolver_FSP:
-                getActivity().onBackPressed();
+                mCallingActivity.onBackPressed();
                 break;
             case R.id.tvEnviar:
                 if(mShop.getType() == Constants.TYPE_SHOPS_PEDIDOS){

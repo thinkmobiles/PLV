@@ -161,10 +161,6 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                FragmentReplacer.replaceFragmentWithStack(
-//                        mCallingActivity,
-//                        ProductPagerFragment.newInstance(new ItemSerializable(mCurrentItem), pos)
-//                );
                 FragmentUtil.replaceFragmentWithStack(
                         ProductPagerFragment.newInstance(new ItemSerializable(mCurrentItem), pos)
                 );
@@ -186,7 +182,6 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.ivAddEnvios_FP:
                 AddProductToShopDialog.newInstance(new ItemSerializable(mCurrentItem))
-//                        .show(mCallingActivity, Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                         .show(mCallingActivity, mCurrentItem.getId(), mCurrentItem.getName(), mCurrentItem.getIcon(), "", Constants.TYPE_DIALOG_ADD_ENVIOS, 1);
                 break;
         }
