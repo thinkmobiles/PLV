@@ -42,8 +42,8 @@
 
             <ImageView
                 android:id="@+id/ivAddEnvio_FC"
-                android:layout_width="@dimen/btn_width"
-                android:layout_height="@dimen/btn_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/btnVolver_FC"
                 android:src="@drawable/btn_add_envio"
                 android:layout_alignParentBottom="true"/>
@@ -70,8 +70,8 @@
 
             <ImageView
                 android:id="@+id/ivAddCarrita_FC"
-                android:layout_width="@dimen/btn_width"
-                android:layout_height="@dimen/btn_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/btn_cart"
                 android:layout_alignParentBottom="true" />
@@ -85,7 +85,9 @@
                 android:gravity="center"
                 android:text="1"
                 android:layout_marginRight="@dimen/default_margin"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignParentBottom="true"
+                android:layout_alignTop="@+id/ivAddCarrita_FC"
+                android:layout_alignBottom="@+id/ivAddCarrita_FC" />
 
             <LinearLayout
                 android:orientation="vertical"

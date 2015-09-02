@@ -118,7 +118,8 @@ public class PLVFragment extends Fragment implements View.OnClickListener {
     private void fillHorizontalList() {
         mListProducts = ApiManager.getThirdList();
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(300, ViewGroup.LayoutParams.MATCH_PARENT);
+        int widthItem = mCallingActivity.getResources().getDisplayMetrics().widthPixels / 4;
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(widthItem, ViewGroup.LayoutParams.MATCH_PARENT);
         params.setMargins(30, 10, 30, 10);
         LoaderImage loaderImage;
         for(int i = 0; i < mListProducts.size(); ++i){

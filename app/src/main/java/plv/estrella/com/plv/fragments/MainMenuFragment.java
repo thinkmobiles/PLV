@@ -81,8 +81,10 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     private void createMenu(){
         mMenuItemList = ApiManager.getFirstList();
 
-        ivColumnas.setImageBitmap(BitmapCreator.getCompressedBitmap(mMenuItemList.get(1).getIcon(), Constants.RATIO_3_4, 600f));
-        ivPLV.setImageBitmap(BitmapCreator.getCompressedBitmap(mMenuItemList.get(2).getIcon(), Constants.RATIO_3_4, 600f));
+//        ivColumnas.setImageBitmap(BitmapCreator.getCompressedBitmap(mMenuItemList.get(1).getIcon(), Constants.RATIO_3_4, 600f));
+//        ivPLV.setImageBitmap(BitmapCreator.getCompressedBitmap(mMenuItemList.get(2).getIcon(), Constants.RATIO_3_4, 600f));
+        ivColumnas.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(1).getIcon()));
+        ivPLV.setImageBitmap(BitmapCreator.getBitmap(mMenuItemList.get(2).getIcon()));
     }
 
     private void setListeners(){

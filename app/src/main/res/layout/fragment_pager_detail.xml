@@ -22,8 +22,8 @@
         android:id="@+id/rlContEnvio">
 
         <ImageView
-            android:layout_width="@dimen/btn_width"
-            android:layout_height="@dimen/btn_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/ivCarrita_P"
             android:src="@drawable/btn_cart"
             android:layout_alignParentBottom="false"
@@ -56,7 +56,9 @@
             android:background="@drawable/bg_count_products"
             android:layout_marginLeft="@dimen/default_margin"
             android:layout_toLeftOf="@+id/ivCarrita_P"
-            android:layout_alignParentBottom="false" />
+            android:layout_alignParentBottom="false"
+            android:layout_alignTop="@+id/ivCarrita_P"
+            android:layout_alignBottom="@+id/ivCarrita_P" />
 
         <ImageView
             android:layout_width="wrap_content"

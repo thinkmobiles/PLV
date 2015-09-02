@@ -25,8 +25,8 @@
         android:layout_alignBottom="@+id/ivAddEnvios_FP" />
 
     <ImageView
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="@dimen/btn_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/ivAddEnvios_FP"
         android:src="@drawable/btn_add_envio"
         android:layout_alignParentRight="true"

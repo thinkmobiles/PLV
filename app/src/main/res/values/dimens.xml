@@ -5,17 +5,11 @@
     <dimen name="action_bar_title_txt">28dp</dimen>
     <dimen name="action_bar_menu_icon_margin">30dp</dimen>
 
-    <!-- btn addition-->
-    <dimen name="btn_height">50px</dimen>
-    <dimen name="btn_width">180px</dimen>
-    <dimen name="btn_more_side">25px</dimen>
-    <dimen name="btn_circle_size">35px</dimen>
-
     <!-- drawable-->
-    <dimen name="side_counter_products">50px</dimen>
-    <dimen name="width_border_counter_products">2px</dimen>
-    <dimen name="enviar_height">50px</dimen>
-    <dimen name="enviar_width">120px</dimen>
+    <dimen name="side_counter_products">50dp</dimen>
+    <dimen name="width_border_counter_products">1dp</dimen>
+    <dimen name="enviar_height">50dp</dimen>
+    <dimen name="enviar_width">120dp</dimen>
 
     <!-- progressBar-->
     <dimen name="default_circle_view_size">200dp</dimen>
@@ -64,8 +58,8 @@
     <dimen name="item_pager_height">500dp</dimen>
 
     <!-- Sliding Menu-->
-    <dimen name="menu_height">32dp</dimen>
-    <dimen name="menu_text_size">15dp</dimen>
+    <dimen name="menu_height">33dp</dimen>
+    <dimen name="menu_text_size">14dp</dimen>
     <dimen name="menu_big_padding_left">30dp</dimen>
     <dimen name="menu_padding_left">50dp</dimen>
     <dimen name="slidingmenu_shadow_width">5dp</dimen>

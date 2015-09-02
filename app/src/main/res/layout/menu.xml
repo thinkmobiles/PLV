@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/lvMenu"
     android:paddingLeft="@dimen/menu_padding_left"
-    android:paddingTop="@dimen/default_margin"
+    android:paddingTop="@dimen/default_padding"
     android:background="@color/menu_background_black">
 
 </ListView>
