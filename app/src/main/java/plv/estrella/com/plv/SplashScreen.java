@@ -126,6 +126,7 @@ public class SplashScreen extends Activity {
         mIsLoadContent = true;
         ApiManager.downloadContent(downloadListener);
         mProgressView.setVisibility(View.VISIBLE);
+        mInfo.setVisibility(View.VISIBLE);
         mProgressView.startAnim();
     }
 
@@ -140,13 +141,6 @@ public class SplashScreen extends Activity {
                             public void run() {
                                 SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
                                 openMainActivity();
-                            }
-                        });
-                        break;
-                    case AppModel.ChangeEvent.DOWNLOAD_FILE_CHANGED_ID:
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                mInfo.setText(event.getMessage());
                             }
                         });
                         break;
@@ -168,9 +162,7 @@ public class SplashScreen extends Activity {
         Calendar lastUpdate = Calendar.getInstance();
         currentUpdate.setTimeInMillis(SharedPreferencesManager.getUpdateDate(getBaseContext()));
         lastUpdate.setTime(getDate(ApiManager.getDate()));
-        if(currentUpdate.before(lastUpdate))
-            return true;
-        return false;
+        return currentUpdate.before(lastUpdate);
 
     }
 

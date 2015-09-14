@@ -3,7 +3,7 @@
 
     <string name="title_inicio">INICIO</string>
     <string name="title_envios">ENVÍOS PENDIENTES</string>
-    <string name="download">Download..</string>
+    <string name="download">Carga de contenidos</string>
     <string name="columnas">COLUMNAS</string>
     <string name="columna">COLUMNA</string>
     <string name="galeria">GALERÍA</string>
@@ -47,7 +47,6 @@
     <string name="attachment_error">Attachment Error</string>
     <string name="error">_error</string>
     <string name="click_back">Por favor, haga clic de nuevo para salir</string>
-    <!--<string name="click_back">Please click BACK again to exit</string>-->
 
     <string name="email">ana.pascual@cristaliza.com</string>
     <string name="send_mail">Send email...</string>

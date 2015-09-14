@@ -16,12 +16,15 @@
         android:id="@+id/tvDownloadProcess"
         android:layout_width="match_parent"
         android:textSize="@dimen/action_bar_title_txt"
+        android:text="@string/download"
         android:layout_marginLeft="@dimen/default_big_margin"
         android:layout_marginRight="@dimen/default_big_margin"
         android:layout_marginBottom="@dimen/action_bar_title_height"
         android:textColor="@color/text_grey"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>
