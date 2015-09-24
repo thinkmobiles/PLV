@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cristaliza.mvc.events.Event;
 import com.cristaliza.mvc.events.EventListener;
@@ -24,6 +25,7 @@ import plv.estrella.com.plv.custom.circleprogress.CircleProgress;
 import plv.estrella.com.plv.untils.ApiManager;
 import plv.estrella.com.plv.untils.Network;
 import plv.estrella.com.plv.untils.SharedPreferencesManager;
+import plv.estrella.com.plv.untils.WatcherContent;
 
 public class SplashScreen extends Activity {
 
@@ -37,19 +39,22 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
-        mProgressView   = (CircleProgress) findViewById(R.id.progress);
-        mInfo           = (TextView) findViewById(R.id.tvDownloadProcess);
+        mProgressView = (CircleProgress) findViewById(R.id.progress);
+        mInfo = (TextView) findViewById(R.id.tvDownloadProcess);
 
         ApiManager.init(this);
+        WatcherContent.initContext(this);
         makeDownloadListener();
 
         checkContent();
 
     }
 
-    private void checkContent(){
+    private void checkContent() {
         if (Network.isInternetConnectionAvailable(this)) {
-            if(isHasContent()){
+            if (WatcherContent.isNeedLoad()) {
+                downloadContent();
+            } else if (isHasContent()) {
                 if (hasNewContent()) {
                     showDialogUpdate();
                 } else {
@@ -115,7 +120,7 @@ public class SplashScreen extends Activity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                        startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
                     finish();
                 }
             }
@@ -140,6 +145,7 @@ public class SplashScreen extends Activity {
                             @Override
                             public void run() {
                                 SharedPreferencesManager.saveUpdateDate(getBaseContext(), System.currentTimeMillis());
+                                SharedPreferencesManager.setNeedDownload(getBaseContext(), false);
                                 openMainActivity();
                             }
                         });
@@ -147,7 +153,6 @@ public class SplashScreen extends Activity {
                 }
             }
         };
-
     }
 
     @Override

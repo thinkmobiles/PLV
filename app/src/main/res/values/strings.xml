@@ -35,6 +35,7 @@
     <string name="ok">OK</string>
     <string name="check_connection">Compruebe la conexin a Internet por favor</string>
     <string name="want_update">Quiere descargar nuevo contenido ahora?</string>
+    <string name="miss_content">Error en la descarga de datos. Reinicie la aplicación para descargar los datos de nuevo.</string>
 
     <!-- Toasts-->
     <string name="enter_shop">Por favor, añade un local</string>

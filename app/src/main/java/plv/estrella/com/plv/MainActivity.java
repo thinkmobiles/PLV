@@ -15,14 +15,14 @@ import plv.estrella.com.plv.untils.BitmapCreator;
 import plv.estrella.com.plv.untils.FragmentReplacer;
 import plv.estrella.com.plv.untils.FragmentUtil;
 import plv.estrella.com.plv.untils.SlidingMenuManager;
+import plv.estrella.com.plv.untils.WatcherContent;
 
 
 public class MainActivity extends FragmentActivity {
 
-    private LinearLayout header, footer;
     private TextView mTitle;
     private ImageView background;
-    private double doubleBackToExitPressedOnce;
+    private long doubleBackToExitPressedOnce;
     private SlidingMenuManager menuManager;
 
     private boolean isOpen = false;
@@ -34,6 +34,7 @@ public class MainActivity extends FragmentActivity {
 
         findUI();
         ApiManager.init(this);
+        WatcherContent.initActivity(this);
         initFragmentUtil();
         ApiManager.setOfflineMode();
         setBackground();
@@ -47,8 +48,6 @@ public class MainActivity extends FragmentActivity {
     private void findUI() {
         background          = (ImageView) findViewById(R.id.mainBg);
         mTitle              = (TextView) findViewById(R.id.tvMenuTitle);
-        header              = (LinearLayout) findViewById(R.id.llHeader);
-        footer              = (LinearLayout) findViewById(R.id.llFooter);
 
         (findViewById(R.id.ivMenu)).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -24,4 +24,17 @@ public abstract class SharedPreferencesManager {
                  SplashScreen.class.getSimpleName(), Context.MODE_PRIVATE);
         return prefs.getLong(Constants.UPDATE_TIME, 0);
     }
+
+    public static void setNeedDownload(final Context context, boolean needDownload){
+        final SharedPreferences prefs = context.getSharedPreferences(SplashScreen.class.getSimpleName(), Context.MODE_PRIVATE);
+        prefs.edit()
+                .putBoolean(Constants.NEED_LOAD, needDownload)
+                .apply();
+    }
+
+    public static boolean needDownload(final Context context){
+        final SharedPreferences prefs = context.getSharedPreferences(
+                SplashScreen.class.getSimpleName(), Context.MODE_PRIVATE);
+        return prefs.getBoolean(Constants.NEED_LOAD, true);
+    }
 }

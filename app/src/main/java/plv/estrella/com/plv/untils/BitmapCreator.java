@@ -28,15 +28,27 @@ import plv.estrella.com.plv.global.Constants;
 public abstract class BitmapCreator {
 
     public static Bitmap getBitmap(String _path) {
-        return BitmapFactory.decodeFile(ApiManager.getPath() + _path);
+        Bitmap bitmap = BitmapFactory.decodeFile(ApiManager.getPath() + _path);
+        checkData(bitmap);
+        return bitmap;
     }
 
     public static Bitmap getCompressedBitmap(String _path, float _ratio, float _width){
-        return tryCompressBitmap(_width, _ratio, _path, null, 0);
+        Bitmap bitmap = tryCompressBitmap(_width, _ratio, _path, null, 0);
+        checkData(bitmap);
+        return bitmap;
     }
 
     public static Bitmap getCompressedBitmap(Context _context, int _resId, float _width){
-        return tryCompressBitmap(_width, Constants.RATIO_4_3, null, _context, _resId);
+        Bitmap bitmap = tryCompressBitmap(_width, Constants.RATIO_4_3, null, _context, _resId);
+        checkData(bitmap);
+        return bitmap;
+    }
+
+    private static void checkData(Bitmap bitmap){
+        if(bitmap == null && !WatcherContent.isNeedLoad()){
+            WatcherContent.showError();
+        }
     }
 
     public static Bitmap tryCompressBitmap(float _width, float _ratio, String _path, Context _context, int _resId){

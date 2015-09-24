@@ -3,6 +3,7 @@ package plv.estrella.com.plv.global;
 public abstract class Constants {
 
     public static final String UPDATE_TIME      = "update_time";
+    public static final String NEED_LOAD        = "need_load";
     public static final String OPEN_MENU        = "open";
     public static final String ITEM             = "item";
     public static final  int MENU_COLUMNAS      = 0;
