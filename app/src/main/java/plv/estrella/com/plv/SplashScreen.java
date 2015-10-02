@@ -14,6 +14,8 @@ import com.cristaliza.mvc.events.Event;
 import com.cristaliza.mvc.events.EventListener;
 import com.cristaliza.mvc.models.estrella.AppModel;
 
+import org.apache.http.impl.conn.tsccm.WaitingThread;
+
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -150,9 +152,34 @@ public class SplashScreen extends Activity {
                             }
                         });
                         break;
+                    case AppModel.ChangeEvent.ON_EXECUTE_ERROR_ID:
+                        restartApp();
+                        break;
                 }
             }
         };
+    }
+
+    private void restartApp(){
+        SharedPreferencesManager.setNeedDownload(getBaseContext(), false);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new AlertDialog.Builder(SplashScreen.this)
+                        .setMessage(getString(R.string.error_connection))
+                        .setPositiveButton(getString(R.string.ok),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        finish();
+                                        dialog.dismiss();
+                                    }
+                                })
+                        .setCancelable(false)
+                        .create()
+                        .show();
+            }
+        });
     }
 
     @Override
